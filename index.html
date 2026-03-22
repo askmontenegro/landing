@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AskMontenegro — AI-гид по Черногории</title>
+<meta name="description" content="Бесплатный AI-ассистент для туристов в Черногории. Рестораны, пляжи, маршруты на вашем языке.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1a24;color:#fff;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:2rem}
+h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;margin-bottom:.75rem;line-height:1.1}
+h1 span{color:#0fb5ae}
+.sub{color:rgba(255,255,255,.5);max-width:480px;margin:0 auto 2.5rem;line-height:1.7;font-size:clamp(.9rem,2vw,1.05rem)}
+form{display:flex;gap:.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+input[type=email]{flex:1;min-width:200px;padding:.8rem 1rem;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
+  color:#fff;border-radius:8px;font-size:1rem;outline:none}
+input[type=email]:focus{border-color:#0fb5ae}
+button{padding:.8rem 1.6rem;background:#0fb5ae;color:#fff;border:none;
+  border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;
+  transition:opacity .15s;white-space:nowrap}
+button:hover{opacity:.88}
+.msg{margin-top:1rem;font-size:.85rem;color:#0fb5ae;min-height:1.2em}
+.links{margin-top:2rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.links a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.9rem;transition:color .15s}
+.links a:hover{color:#0fb5ae}
+nav{position:fixed;top:1rem;right:1.5rem;display:flex;gap:.75rem;font-size:.82rem}
+nav button{background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;
+  padding:.2rem .4rem;transition:color .15s;font-size:.82rem}
+nav button.on,nav button:hover{color:#0fb5ae}
+</style>
+</head>
+<body>
+<nav>
+  <button class="on" onclick="setLang('ru',this)">RU</button>
+  <button onclick="setLang('en',this)">EN</button>
+  <button onclick="setLang('de',this)">DE</button>
+</nav>
+<div>
+  <h1>Ask<span>Montenegro</span></h1>
+  <p class="sub" id="desc">AI-гид по Черногории — рестораны, пляжи, маршруты и экстренная помощь на вашем языке. Скоро запуск.</p>
+  <form onsubmit="return false">
+    <input type="email" id="email" placeholder="your@email.com">
+    <button onclick="subscribe()" id="btn">Уведомить о запуске</button>
+  </form>
+  <div class="msg" id="msg"></div>
+  <div class="links">
+    <a href="https://t.me/askmontenegro">Telegram</a>
+    <a href="https://instagram.com/ask.montenegro">Instagram</a>
+  </div>
+</div>
+<script>
+const T={
+  ru:{d:'AI-гид по Черногории — рестораны, пляжи, маршруты и экстренная помощь на вашем языке. Скоро запуск.',b:'Уведомить о запуске',ok:'Спасибо! Уведомим при запуске.'},
+  en:{d:'AI guide for Montenegro — restaurants, beaches, routes and emergency help in your language. Launching soon.',b:'Notify me',ok:'Thanks! We\'ll notify you at launch.'},
+  de:{d:'KI-Reiseführer für Montenegro — Restaurants, Strände, Routen in Ihrer Sprache. Bald verfügbar.',b:'Benachrichtigen',ok:'Danke! Wir benachrichtigen Sie beim Start.'}
+};
+let lang='ru';
+function setLang(l,el){
+  lang=l;
+  document.getElementById('desc').textContent=T[l].d;
+  document.getElementById('btn').textContent=T[l].b;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+}
+function subscribe(){
+  const e=document.getElementById('email').value.trim();
+  if(!e||!e.includes('@')){document.getElementById('msg').textContent='Введите корректный email';return;}
+  document.getElementById('msg').textContent=T[lang].ok;
+  document.getElementById('email').value='';
+}
+</script>
+</body>
+</html>
