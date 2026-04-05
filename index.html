@@ -1,76 +1,956 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AskMontenegro — AI-гид по Черногории</title>
-<meta name="description" content="Бесплатный AI-ассистент для туристов в Черногории. Рестораны, пляжи, маршруты на вашем языке.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AskMontenegro — Your AI-Powered Guide to Montenegro</title>
+<meta name="description" content="Ask anything about Montenegro. Get local expert answers about beaches, restaurants, routes, and more. In 8 languages. Coming May 2026.">
+<meta name="theme-color" content="#0A7E8C">
+<meta property="og:title" content="AskMontenegro — Your AI-Powered Guide to Montenegro">
+<meta property="og:description" content="Ask anything. Get local expert answers. In 8 languages.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://askmontenegro.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0b1a24;color:#fff;
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:2rem}
-h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;margin-bottom:.75rem;line-height:1.1}
-h1 span{color:#0fb5ae}
-.sub{color:rgba(255,255,255,.5);max-width:480px;margin:0 auto 2.5rem;line-height:1.7;font-size:clamp(.9rem,2vw,1.05rem)}
-form{display:flex;gap:.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-input[type=email]{flex:1;min-width:200px;padding:.8rem 1rem;
-  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
-  color:#fff;border-radius:8px;font-size:1rem;outline:none}
-input[type=email]:focus{border-color:#0fb5ae}
-button{padding:.8rem 1.6rem;background:#0fb5ae;color:#fff;border:none;
-  border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;
-  transition:opacity .15s;white-space:nowrap}
-button:hover{opacity:.88}
-.msg{margin-top:1rem;font-size:.85rem;color:#0fb5ae;min-height:1.2em}
-.links{margin-top:2rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
-.links a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.9rem;transition:color .15s}
-.links a:hover{color:#0fb5ae}
-nav{position:fixed;top:1rem;right:1.5rem;display:flex;gap:.75rem;font-size:.82rem}
-nav button{background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;
-  padding:.2rem .4rem;transition:color .15s;font-size:.82rem}
-nav button.on,nav button:hover{color:#0fb5ae}
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --teal: #0A7E8C;
+  --teal-dark: #076570;
+  --teal-light: rgba(10,126,140,0.10);
+  --coral: #FF6B35;
+  --coral-light: rgba(255,107,53,0.10);
+  --navy: #1B2B3A;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --bg-tertiary: #EAEAEC;
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-tertiary: #AEAEB2;
+  --divider: #E5E5EA;
+  --surface: #FFFFFF;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --shadow-xl: 0 25px 80px rgba(0,0,0,0.15);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --logo-bubble: #0A7E8C;
+  --logo-mountain: #FFFFFF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1C1C1E;
+    --text-primary: #F5F5F7;
+    --text-secondary: #98989D;
+    --text-tertiary: #636366;
+    --divider: #2C2C2E;
+    --surface: #1C1C1E;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+    --shadow-xl: 0 25px 80px rgba(0,0,0,0.5);
+    --logo-bubble: #FFFFFF;
+    --logo-mountain: #0A7E8C;
+  }
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; line-height: 1.2; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input { font-family: inherit; }
+
+/* ===== UTILITY ===== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.section-subtitle {
+  font-size: clamp(16px, 2.5vw, 18px);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ===== FADE IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+}
+.nav.scrolled {
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+}
+@supports (backdrop-filter: blur(20px)) {
+  .nav.scrolled {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  @media (prefers-color-scheme: dark) {
+    .nav.scrolled {
+      background: rgba(10,10,10,0.8);
+    }
+  }
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo svg { width: 32px; height: 32px; }
+.nav-logo span {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal) !important;
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s, background 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.9; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 30%, var(--teal-light) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+.hero-logo {
+  margin: 0 auto 32px;
+  width: 96px;
+  height: 96px;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero h1 {
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-tagline {
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+}
+.hero-subtitle {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--coral);
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(255,107,53,0); }
+}
+.hero-form {
+  display: flex;
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-form input {
+  flex: 1;
+  min-width: 240px;
+  height: 52px;
+  padding: 0 20px;
+  border: 2px solid var(--divider);
+  border-radius: 100px;
+  font-size: 16px;
+  background: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.hero-form input:focus { border-color: var(--teal); }
+.hero-form input::placeholder { color: var(--text-tertiary); }
+.hero-form button {
+  height: 52px;
+  padding: 0 32px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.hero-form button:hover { background: var(--teal-dark); }
+.hero-form button:active { transform: scale(0.97); }
+.hero-form-msg {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: var(--teal);
+  min-height: 20px;
+  margin-top: 4px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+  padding: 100px 0;
+}
+.features-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.features-header .section-subtitle {
+  margin: 0 auto;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 20px;
+  background: var(--teal-light);
+}
+.feature-card:nth-child(2) .feature-icon { background: var(--coral-light); }
+.feature-card:nth-child(3) .feature-icon { background: rgba(52,199,89,0.10); }
+.feature-card:nth-child(4) .feature-icon { background: rgba(255,214,10,0.12); }
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== APP PREVIEW ===== */
+.app-preview {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+}
+.app-preview-inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.app-preview-text {
+  flex: 1;
+}
+.app-preview-phone {
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .app-preview-inner {
+    flex-direction: column-reverse;
+    gap: 48px;
+    text-align: center;
+  }
+  .app-preview-text .section-subtitle { margin: 0 auto; }
+}
+
+/* Phone Mockup */
+.phone-mockup {
+  width: 280px;
+  height: 580px;
+  background: var(--bg-primary);
+  border-radius: 40px;
+  box-shadow: var(--shadow-xl), 0 0 0 2px var(--divider);
+  position: relative;
+  overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+  .phone-mockup { box-shadow: var(--shadow-xl), 0 0 0 2px #333; }
+}
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 24px;
+  background: #000;
+  border-radius: 0 0 16px 16px;
+  z-index: 10;
+}
+@media (prefers-color-scheme: dark) {
+  .phone-notch { background: #1a1a1a; }
+}
+.phone-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.phone-status-bar {
+  height: 44px;
+  padding: 14px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 11;
+}
+.phone-header {
+  padding: 12px 20px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--divider);
+  flex-shrink: 0;
+}
+.phone-header-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.phone-header-credits {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--coral);
+  background: var(--coral-light);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.phone-chat {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+.chat-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--teal);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.chat-msg.bot {
+  align-self: flex-start;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+}
+.chat-msg.bot strong { color: var(--teal); font-weight: 700; }
+.phone-input-bar {
+  padding: 10px 16px 28px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid var(--divider);
+  flex-shrink: 0;
+}
+.phone-input-field {
+  flex: 1;
+  height: 36px;
+  background: var(--bg-secondary);
+  border-radius: 100px;
+  padding: 0 14px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+}
+.phone-send-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.phone-send-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+.phone-bottom-nav {
+  display: none;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 100px 0;
+}
+.about-inner {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+.about-text { flex: 1; }
+.about-stats { flex-shrink: 0; }
+@media (max-width: 900px) {
+  .about-inner {
+    flex-direction: column;
+    gap: 48px;
+  }
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  min-width: 140px;
+}
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.about-topics {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.topic-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--bg-secondary);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--divider);
+}
+
+/* ===== CONTACT / SOCIAL ===== */
+.contact {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+  text-align: center;
+}
+.contact-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 220px;
+}
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.contact-info {
+  text-align: left;
+}
+.contact-info .label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.contact-info .value {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid var(--divider);
+}
+.footer p {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+}
+.footer .heart { color: var(--coral); }
+
+/* ===== SCROLL TOP BUTTON ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+  font-size: 20px;
+}
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-top:hover { background: var(--teal-dark); }
 </style>
 </head>
 <body>
-<nav>
-  <button class="on" onclick="setLang('ru',this)">RU</button>
-  <button onclick="setLang('en',this)">EN</button>
-  <button onclick="setLang('de',this)">DE</button>
-</nav>
-<div>
-  <h1>Ask<span>Montenegro</span></h1>
-  <p class="sub" id="desc">AI-гид по Черногории — рестораны, пляжи, маршруты и экстренная помощь на вашем языке. Скоро запуск.</p>
-  <form onsubmit="return false">
-    <input type="email" id="email" placeholder="your@email.com">
-    <button onclick="subscribe()" id="btn">Уведомить о запуске</button>
-  </form>
-  <div class="msg" id="msg"></div>
-  <div class="links">
-    <a href="https://t.me/askmontenegro">Telegram</a>
-    <a href="https://instagram.com/ask.montenegro">Instagram</a>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 640 640" width="32" height="32">
+        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
+        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
+      </svg>
+      <span>AskMontenegro</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#preview">Preview</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#hero" class="nav-cta">Get Notified</a>
+    </div>
   </div>
-</div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-logo fade-in">
+      <svg viewBox="0 0 640 640" width="96" height="96">
+        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
+        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
+      </svg>
+    </div>
+    <h1 class="fade-in fade-in-delay-1">AskMontenegro</h1>
+    <p class="hero-tagline fade-in fade-in-delay-1">Your AI-Powered Guide to Montenegro</p>
+    <p class="hero-subtitle fade-in fade-in-delay-2">Ask anything. Get local expert answers. In 8 languages.</p>
+    <div class="fade-in fade-in-delay-2">
+      <span class="hero-badge">Coming May 2026</span>
+    </div>
+    <form class="hero-form fade-in fade-in-delay-3" id="subscribeForm" onsubmit="return handleSubscribe(event)">
+      <input type="email" id="emailInput" placeholder="your@email.com" required>
+      <button type="submit">Notify Me</button>
+    </form>
+    <p class="hero-form-msg" id="formMsg"></p>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header fade-in">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">Everything you need<br>to explore Montenegro</h2>
+      <p class="section-subtitle">From hidden beaches to the best local restaurants, your AI assistant knows it all.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon">&#129302;</div>
+        <h3>AI Chat</h3>
+        <p>Ask about beaches, restaurants, routes, and more. Powered by AI with local expertise.</p>
+      </div>
+      <div class="feature-card fade-in fade-in-delay-1">
+        <div class="feature-icon">&#128506;</div>
+        <h3>Explore</h3>
+        <p>Discover places on an interactive map with curated local recommendations.</p>
+      </div>
+      <div class="feature-card fade-in fade-in-delay-2">
+        <div class="feature-icon">&#127758;</div>
+        <h3>8 Languages</h3>
+        <p>RU, EN, DE, PL, FR, IT, SR, TR &mdash; we speak your language fluently.</p>
+      </div>
+      <div class="feature-card fade-in fade-in-delay-3">
+        <div class="feature-icon">&#128176;</div>
+        <h3>50 Free Credits</h3>
+        <p>Start for free every month. No credit card required. Just ask.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APP PREVIEW ===== -->
+<section class="app-preview" id="preview">
+  <div class="container">
+    <div class="app-preview-inner">
+      <div class="app-preview-text fade-in">
+        <p class="section-label">App Preview</p>
+        <h2 class="section-title">Like chatting with a local friend</h2>
+        <p class="section-subtitle">Natural conversation. Instant answers. Whether you need the best beach near Herceg Novi or emergency numbers &mdash; just ask.</p>
+      </div>
+      <div class="app-preview-phone fade-in fade-in-delay-2">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar">
+              <span>9:41</span>
+              <span style="display:flex;gap:4px;align-items:center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+              </span>
+            </div>
+            <div class="phone-header">
+              <span class="phone-header-title">AskMontenegro</span>
+              <span class="phone-header-credits">47 credits</span>
+            </div>
+            <div class="phone-chat">
+              <div class="chat-msg user">What are the best beaches near Herceg Novi?</div>
+              <div class="chat-msg bot"><strong>Top 3 beaches:</strong><br>1. Zhanjice &mdash; crystal clear water, boat access<br>2. Mirista &mdash; hidden gem near a monastery<br>3. Savina &mdash; family-friendly, easy to reach</div>
+              <div class="chat-msg user">How do I get to Zhanjice?</div>
+              <div class="chat-msg bot">Take a boat from Herceg Novi marina (15 min, ~5&euro;) or drive via Lustica peninsula (30 min). Boats run every 30 min in summer.</div>
+              <div class="chat-msg user">Any restaurants nearby?</div>
+              <div class="chat-msg bot"><strong>Recommended:</strong> Ribarsko Selo &mdash; fresh seafood right on the beach. Try the grilled octopus!</div>
+            </div>
+            <div class="phone-input-bar">
+              <div class="phone-input-field">Ask anything about Montenegro...</div>
+              <div class="phone-send-btn">
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text fade-in">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Built for tourists exploring Montenegro</h2>
+        <p class="section-subtitle" style="margin-bottom:20px;">Phase 1 launches in Herceg Novi, expanding to cover all 25 municipalities of Montenegro.</p>
+        <p class="section-subtitle">Over 2.5 million tourists visit Montenegro every year. We're building the guide they deserve &mdash; one that speaks their language and knows every hidden corner.</p>
+        <div class="about-topics">
+          <span class="topic-tag">Beaches</span>
+          <span class="topic-tag">Restaurants</span>
+          <span class="topic-tag">Attractions</span>
+          <span class="topic-tag">Routes</span>
+          <span class="topic-tag">Emergency Info</span>
+          <span class="topic-tag">Transport</span>
+          <span class="topic-tag">Weather</span>
+          <span class="topic-tag">Nightlife</span>
+        </div>
+      </div>
+      <div class="about-stats fade-in fade-in-delay-2">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-number">2.5M+</div>
+            <div class="stat-label">Tourists / year</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">25</div>
+            <div class="stat-label">Municipalities</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Languages</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50</div>
+            <div class="stat-label">Free credits / mo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Stay connected</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Follow us for updates, tips, and launch announcements.</p>
+    </div>
+    <div class="contact-links fade-in fade-in-delay-1">
+      <a href="https://instagram.com/ask.montenegro" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">&#128247;</div>
+        <div class="contact-info">
+          <div class="label">Instagram</div>
+          <div class="value">@ask.montenegro</div>
+        </div>
+      </a>
+      <a href="https://t.me/askmontenegro" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">&#9992;&#65039;</div>
+        <div class="contact-info">
+          <div class="label">Telegram</div>
+          <div class="value">t.me/askmontenegro</div>
+        </div>
+      </a>
+      <a href="mailto:hello@askmontenegro.com" class="contact-card">
+        <div class="contact-icon">&#9993;&#65039;</div>
+        <div class="contact-info">
+          <div class="label">Email</div>
+          <div class="value">hello@askmontenegro.com</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 AskMontenegro</p>
+    <p>Made with <span class="heart">&hearts;</span> in Herceg Novi, Montenegro</p>
+  </div>
+</footer>
+
+<!-- ===== SCROLL TOP ===== -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">&#8593;</button>
+
 <script>
-const T={
-  ru:{d:'AI-гид по Черногории — рестораны, пляжи, маршруты и экстренная помощь на вашем языке. Скоро запуск.',b:'Уведомить о запуске',ok:'Спасибо! Уведомим при запуске.'},
-  en:{d:'AI guide for Montenegro — restaurants, beaches, routes and emergency help in your language. Launching soon.',b:'Notify me',ok:'Thanks! We\'ll notify you at launch.'},
-  de:{d:'KI-Reiseführer für Montenegro — Restaurants, Strände, Routen in Ihrer Sprache. Bald verfügbar.',b:'Benachrichtigen',ok:'Danke! Wir benachrichtigen Sie beim Start.'}
-};
-let lang='ru';
-function setLang(l,el){
-  lang=l;
-  document.getElementById('desc').textContent=T[l].d;
-  document.getElementById('btn').textContent=T[l].b;
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
+/* ===== NAV SCROLL ===== */
+const nav = document.getElementById('nav');
+const scrollTop = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 50);
+  scrollTop.classList.toggle('visible', y > 600);
+});
+
+/* ===== FADE IN ON SCROLL ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* ===== SUBSCRIBE FORM ===== */
+function handleSubscribe(e) {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value.trim();
+  const msg = document.getElementById('formMsg');
+  if (!email || !email.includes('@')) {
+    msg.textContent = 'Please enter a valid email address.';
+    msg.style.color = 'var(--coral)';
+    return false;
+  }
+  msg.textContent = 'Thanks! We\'ll notify you when we launch.';
+  msg.style.color = 'var(--teal)';
+  document.getElementById('emailInput').value = '';
+  return false;
 }
-function subscribe(){
-  const e=document.getElementById('email').value.trim();
-  if(!e||!e.includes('@')){document.getElementById('msg').textContent='Введите корректный email';return;}
-  document.getElementById('msg').textContent=T[lang].ok;
-  document.getElementById('email').value='';
-}
+
+/* ===== SMOOTH SCROLL FOR NAV LINKS ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 </body>
 </html>
