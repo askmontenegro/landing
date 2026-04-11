@@ -651,6 +651,23 @@ input { font-family: inherit; }
   margin-top: 3px;
   display: inline-block;
 }
+@media (prefers-color-scheme: dark) {
+  .chat-msg.bot {
+    background: #2C2C2E;
+    color: #F5F5F7;
+  }
+  .rec-card {
+    background: #1C1C1E;
+    border-color: #3A3A3C;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .rec-card-title { color: #F5F5F7; }
+  .rec-card-desc { color: #AEAEB2; }
+  .rec-card-meta { color: #8E8E93; }
+  .phone-screen { background: #1C1C1E; }
+  .phone-chat-header { background: #1C1C1E; border-color: #3A3A3C; }
+  .phone-input-bar { background: #1C1C1E; border-color: #3A3A3C; }
+}
 .phone-input-bar {
   padding: 10px 16px 28px;
   display: flex;
