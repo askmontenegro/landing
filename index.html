@@ -513,7 +513,7 @@ input { font-family: inherit; }
 /* Phone Mockup */
 .phone-mockup {
   width: 300px;
-  height: 620px;
+  height: 720px;
   background: var(--bg-primary);
   border-radius: 40px;
   box-shadow: var(--shadow-xl), 0 0 0 2px var(--divider);
@@ -611,6 +611,9 @@ input { font-family: inherit; }
   color: #1D1D1F;
   border-bottom-left-radius: 4px;
 }
+.bot-text { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
+.bot-tip { font-size: 11.5px; color: #6E6E73; margin-top: 6px; line-height: 1.4; }
+@media (prefers-color-scheme: dark) { .bot-tip { color: #AEAEB2; } }
 .rec-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
 .rec-card {
   background: #FFFFFF;
@@ -656,6 +659,7 @@ input { font-family: inherit; }
   .phone-input-bar { background: #2C2C2E; border-color: #48484A; }
   .phone-input-field { background: #3A3A3C; color: #F5F5F7; }
   .phone-bottom-nav { background: #2C2C2E; border-color: #48484A; }
+  .rec-card-link { color: #12B5C9; }
 }
 .phone-input-bar {
   padding: 10px 16px 28px;
@@ -1076,49 +1080,39 @@ input { font-family: inherit; }
             <div class="phone-chat" id="phoneChat">
               <div class="chat-msg user">Best beaches near Herceg Novi?</div>
               <div class="chat-msg bot">
+                <div class="bot-text">Honestly, take the boat to Žanjice &mdash; nothing else compares. But if you want something wilder, hop off one stop earlier:</div>
                 <div class="rec-cards">
                   <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Žanjice Beach</div>
-                    <div class="rec-card-desc">Crystal clear water, Luštica peninsula</div>
-                    <div class="rec-card-meta">&#128674; Boat from HN marina, 20 min, ~&euro;5</div>
+                    <div class="rec-card-title">&#127958; Žanjice Beach <span class="rating">&starf; 4.9</span></div>
+                    <div class="rec-card-desc">Turquoise water, pine shade, beach bar. The one everyone talks about.</div>
+                    <div class="rec-card-meta">&#128674; Boat from HN marina, 20 min, &euro;5 round trip</div>
                     <span class="rec-card-link">&#128205; View on map &rarr;</span>
                   </div>
                   <div class="rec-card">
                     <div class="rec-card-title">&#127958; Mirišta Beach</div>
-                    <div class="rec-card-desc">Hidden gem, wild and peaceful</div>
-                    <div class="rec-card-meta">&#128674; Same boat route from marina</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Savina Beach</div>
-                    <div class="rec-card-desc">Closest to Old Town, easy access</div>
-                    <div class="rec-card-meta">&#128694; 10 min walk from center</div>
+                    <div class="rec-card-desc">Same boat, one stop before Žanjice. No crowds, no sunbeds &mdash; just you and the sea.</div>
+                    <div class="rec-card-meta">&#128161; Bring water and snacks, no shops nearby</div>
                     <span class="rec-card-link">&#128205; View on map &rarr;</span>
                   </div>
                 </div>
+                <div class="bot-tip">&#128172; Tip: boats leave every 30 min from 9 AM. Go before 11 to grab a good spot at Žanjice.</div>
               </div>
               <div class="chat-msg user">Where to eat fresh seafood?</div>
               <div class="chat-msg bot">
+                <div class="bot-text">Go to Konoba Feral, right on the marina. Order the grilled octopus &mdash; trust me.</div>
                 <div class="rec-cards">
                   <div class="rec-card">
                     <div class="rec-card-title">&#127869; Konoba Feral <span class="rating">&starf; 4.8</span></div>
-                    <div class="rec-card-desc">Marina waterfront, huge portions</div>
-                    <div class="rec-card-meta">Best: grilled octopus, fish platter. ~&euro;12-18</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127869; Konoba Škver <span class="rating">&starf; 4.7</span></div>
-                    <div class="rec-card-desc">Pick your fish from the daily catch</div>
-                    <div class="rec-card-meta">Best: sea bass, black risotto. ~&euro;10-15</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127869; Restoran Nautica <span class="rating">&starf; 4.6</span></div>
-                    <div class="rec-card-desc">Stunning bay views, upscale seafood</div>
-                    <div class="rec-card-meta">Best: calamari, squid ink risotto. ~&euro;15-20</div>
+                    <div class="rec-card-desc">Waterfront terrace, huge portions, locals eat here too.</div>
+                    <div class="rec-card-meta">&#128176; &euro;12&ndash;18 per dish &middot; &#128694; 5 min walk from Old Town</div>
                     <span class="rec-card-link">&#128205; View on map &rarr;</span>
                   </div>
                 </div>
+                <div class="bot-tip">&#128172; Tip: no reservation needed for lunch, but book ahead for dinner &mdash; it fills up fast in summer.</div>
+              </div>
+              <div class="chat-msg user">Can I pay by card everywhere?</div>
+              <div class="chat-msg bot">
+                <div class="bot-text">Most restaurants and shops in Herceg Novi accept Visa and Mastercard. Smaller konobas and markets are still cash-only though, so keep &euro;20&ndash;30 on you. ATMs are on Njegoševa street and by the main square &mdash; use ones from CKB or Erste to avoid extra fees.</div>
               </div>
             </div>
             <div class="phone-input-bar">
