@@ -512,8 +512,8 @@ input { font-family: inherit; }
 
 /* Phone Mockup */
 .phone-mockup {
-  width: 280px;
-  height: 580px;
+  width: 300px;
+  height: 620px;
   background: var(--bg-primary);
   border-radius: 40px;
   box-shadow: var(--shadow-xl), 0 0 0 2px var(--divider);
@@ -619,6 +619,38 @@ input { font-family: inherit; }
   border-bottom-left-radius: 4px;
 }
 .chat-msg.bot strong { color: var(--teal); font-weight: 700; }
+.chat-msg.bot .rec-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.rec-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.rec-card-title {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--text-primary);
+}
+.rec-card-title .rating { color: var(--coral); font-weight: 600; font-size: 11px; margin-left: 4px; }
+.rec-card-desc {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+.rec-card-meta {
+  font-size: 10.5px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+.rec-card-link {
+  font-size: 11px;
+  color: var(--teal);
+  font-weight: 600;
+  margin-top: 3px;
+  display: inline-block;
+}
 .phone-input-bar {
   padding: 10px 16px 28px;
   display: flex;
@@ -1036,12 +1068,52 @@ input { font-family: inherit; }
               <span class="phone-header-credits">47 credits</span>
             </div>
             <div class="phone-chat" id="phoneChat">
-              <div class="chat-msg user">What are the best beaches near Herceg Novi?</div>
-              <div class="chat-msg bot"><strong>Top 3 beaches:</strong><br>1. Zhanjice &mdash; crystal clear water, boat access<br>2. Mirista &mdash; hidden gem near a monastery<br>3. Savina &mdash; family-friendly, easy to reach</div>
-              <div class="chat-msg user">How do I get to Zhanjice?</div>
-              <div class="chat-msg bot">Take a boat from Herceg Novi marina (15 min, ~5&euro;) or drive via Lustica peninsula (30 min). Boats run every 30 min in summer.</div>
-              <div class="chat-msg user">Any restaurants nearby?</div>
-              <div class="chat-msg bot"><strong>Recommended:</strong> Ribarsko Selo &mdash; fresh seafood right on the beach. Try the grilled octopus!</div>
+              <div class="chat-msg user">Best beaches near Herceg Novi?</div>
+              <div class="chat-msg bot">
+                <div class="rec-cards">
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127958; Žanjice Beach</div>
+                    <div class="rec-card-desc">Crystal clear water, Luštica peninsula</div>
+                    <div class="rec-card-meta">&#128674; Boat from HN marina, 20 min, ~&euro;5</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127958; Mirišta Beach</div>
+                    <div class="rec-card-desc">Hidden gem, wild and peaceful</div>
+                    <div class="rec-card-meta">&#128674; Same boat route from marina</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127958; Savina Beach</div>
+                    <div class="rec-card-desc">Closest to Old Town, easy access</div>
+                    <div class="rec-card-meta">&#128694; 10 min walk from center</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-msg user">Where to eat fresh seafood?</div>
+              <div class="chat-msg bot">
+                <div class="rec-cards">
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127869; Konoba Feral <span class="rating">&starf; 4.8</span></div>
+                    <div class="rec-card-desc">Marina waterfront, huge portions</div>
+                    <div class="rec-card-meta">Best: grilled octopus, fish platter. ~&euro;12-18</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127869; Konoba Škver <span class="rating">&starf; 4.7</span></div>
+                    <div class="rec-card-desc">Pick your fish from the daily catch</div>
+                    <div class="rec-card-meta">Best: sea bass, black risotto. ~&euro;10-15</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                  <div class="rec-card">
+                    <div class="rec-card-title">&#127869; Restoran Nautica <span class="rating">&starf; 4.6</span></div>
+                    <div class="rec-card-desc">Stunning bay views, upscale seafood</div>
+                    <div class="rec-card-meta">Best: calamari, squid ink risotto. ~&euro;15-20</div>
+                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
+                  </div>
+                </div>
+              </div>
               <div class="typing-indicator" id="typingIndicator">
                 <div class="typing-dot"></div>
                 <div class="typing-dot"></div>
@@ -1307,6 +1379,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ===== PHONE MOCKUP TYPING ANIMATION ===== */
 function animateChat() {
+  const chatContainer = document.getElementById('phoneChat');
   const chatMsgs = document.querySelectorAll('#phoneChat .chat-msg');
   const typingIndicator = document.getElementById('typingIndicator');
   let index = 0;
@@ -1318,13 +1391,16 @@ function animateChat() {
     msg.classList.remove('animated');
   });
   if (typingIndicator) typingIndicator.classList.remove('show');
+  chatContainer.scrollTop = 0;
+
+  function scrollToBottom() {
+    chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: 'smooth' });
+  }
 
   function showNext() {
     if (index >= chatMsgs.length) {
-      /* Restart after a pause */
-      setTimeout(() => {
-        animateChat();
-      }, 4000);
+      /* Restart after 5s pause */
+      setTimeout(() => { animateChat(); }, 5000);
       return;
     }
 
@@ -1334,14 +1410,19 @@ function animateChat() {
     if (isBot && typingIndicator) {
       /* Show typing indicator before bot message */
       typingIndicator.classList.add('show');
+      scrollToBottom();
       setTimeout(() => {
         typingIndicator.classList.remove('show');
         msg.classList.add('animated');
+        scrollToBottom();
         index++;
-        setTimeout(showNext, 800);
-      }, 1200);
+        /* Pause 2s between exchanges, 1s within */
+        const isLastInExchange = index < chatMsgs.length && chatMsgs[index].classList.contains('user');
+        setTimeout(showNext, isLastInExchange ? 2000 : 1000);
+      }, 1500);
     } else {
       msg.classList.add('animated');
+      scrollToBottom();
       index++;
       setTimeout(showNext, 600);
     }
