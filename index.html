@@ -652,21 +652,50 @@ input { font-family: inherit; }
   display: inline-block;
 }
 @media (prefers-color-scheme: dark) {
-  .chat-msg.bot {
+  .phone-mockup {
+    background: #1C1C1E;
+  }
+  .phone-screen {
+    background: #1C1C1E;
+  }
+  .phone-header {
     background: #2C2C2E;
+    border-color: #3A3A3C;
+  }
+  .phone-status-bar {
     color: #F5F5F7;
   }
-  .rec-card {
+  .phone-chat {
     background: #1C1C1E;
-    border-color: #3A3A3C;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .chat-msg.bot {
+    background: #3A3A3C;
+    color: #F5F5F7;
+  }
+  .chat-msg.user {
+    background: var(--teal);
+    color: #fff;
+  }
+  .rec-card {
+    background: #2C2C2E;
+    border-color: #48484A;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   }
   .rec-card-title { color: #F5F5F7; }
   .rec-card-desc { color: #AEAEB2; }
   .rec-card-meta { color: #8E8E93; }
-  .phone-screen { background: #1C1C1E; }
-  .phone-chat-header { background: #1C1C1E; border-color: #3A3A3C; }
-  .phone-input-bar { background: #1C1C1E; border-color: #3A3A3C; }
+  .phone-input-bar {
+    background: #2C2C2E;
+    border-color: #3A3A3C;
+  }
+  .phone-input-field {
+    background: #3A3A3C;
+    color: #F5F5F7;
+  }
+  .phone-bottom-nav {
+    background: #2C2C2E;
+    border-color: #3A3A3C;
+  }
 }
 .phone-input-bar {
   padding: 10px 16px 28px;
