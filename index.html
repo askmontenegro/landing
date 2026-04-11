@@ -10,6 +10,15 @@
 <meta property="og:description" content="Ask anything. Get local expert answers. In 8 languages.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://askmontenegro.com">
+<meta property="og:image" content="https://askmontenegro.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AskMontenegro — AI Tourist Guide">
+<meta name="twitter:description" content="Ask anything about Montenegro. Get expert answers in 8 languages.">
+<meta name="twitter:image" content="https://askmontenegro.com/og-image.png">
+<link rel="canonical" href="https://askmontenegro.com/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 640 640' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z' fill='%230A7E8C'/%3E%3Cpath d='M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -188,8 +197,46 @@ input { font-family: inherit; }
   transition: opacity 0.2s, background 0.2s !important;
 }
 .nav-cta:hover { opacity: 0.9; }
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 1000;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 20px; }
 }
 
 /* ===== HERO ===== */
@@ -229,7 +276,7 @@ input { font-family: inherit; }
   50% { transform: translateY(-10px); }
 }
 .hero h1 {
-  font-size: clamp(36px, 7vw, 64px);
+  font-size: clamp(32px, 6vw, 56px);
   font-weight: 800;
   letter-spacing: -1.5px;
   margin-bottom: 16px;
@@ -237,6 +284,7 @@ input { font-family: inherit; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.15;
 }
 .hero-tagline {
   font-size: clamp(20px, 3.5vw, 28px);
@@ -251,6 +299,47 @@ input { font-family: inherit; }
   margin-bottom: 32px;
   line-height: 1.6;
 }
+
+/* Countdown */
+.countdown {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 72px;
+}
+.countdown-number {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1;
+}
+.countdown-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+.countdown-sep {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--text-tertiary);
+  align-self: flex-start;
+  line-height: 1;
+  padding-top: 2px;
+}
+
 .hero-badge {
   display: inline-block;
   background: var(--coral);
@@ -262,13 +351,27 @@ input { font-family: inherit; }
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
   50% { box-shadow: 0 0 0 12px rgba(255,107,53,0); }
 }
+
+/* Social proof */
+.social-proof {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.social-proof-count {
+  color: var(--teal);
+  font-weight: 800;
+}
+
 .hero-form {
   display: flex;
   gap: 12px;
@@ -314,6 +417,13 @@ input { font-family: inherit; }
   min-height: 20px;
   margin-top: 4px;
 }
+.hero-incentive {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--coral);
+  font-weight: 600;
+  margin-top: 12px;
+}
 
 /* ===== FEATURES ===== */
 .features {
@@ -356,10 +466,10 @@ input { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
   margin: 0 auto 20px;
   background: var(--teal-light);
 }
+.feature-icon svg { width: 28px; height: 28px; }
 .feature-card:nth-child(2) .feature-icon { background: var(--coral-light); }
 .feature-card:nth-child(3) .feature-icon { background: rgba(52,199,89,0.10); }
 .feature-card:nth-child(4) .feature-icon { background: rgba(255,214,10,0.12); }
@@ -488,6 +598,13 @@ input { font-family: inherit; }
   border-radius: 16px;
   font-size: 13px;
   line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.chat-msg.animated {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .chat-msg.user {
   align-self: flex-end;
@@ -534,6 +651,32 @@ input { font-family: inherit; }
 .phone-send-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
 .phone-bottom-nav {
   display: none;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  align-self: flex-start;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  padding: 12px 18px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+}
+.typing-indicator.show { opacity: 1; }
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
 }
 
 /* ===== ABOUT ===== */
@@ -595,10 +738,73 @@ input { font-family: inherit; }
   border: 1px solid var(--divider);
 }
 
+/* ===== SECOND CTA ===== */
+.second-cta {
+  padding: 80px 0;
+  background: var(--bg-secondary);
+  text-align: center;
+}
+.second-cta .section-title {
+  margin-bottom: 8px;
+}
+.second-cta .section-subtitle {
+  margin: 0 auto 32px;
+}
+.second-cta .social-proof {
+  margin-bottom: 20px;
+}
+.second-cta-form {
+  display: flex;
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.second-cta-form input {
+  flex: 1;
+  min-width: 240px;
+  height: 52px;
+  padding: 0 20px;
+  border: 2px solid var(--divider);
+  border-radius: 100px;
+  font-size: 16px;
+  background: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.second-cta-form input:focus { border-color: var(--teal); }
+.second-cta-form input::placeholder { color: var(--text-tertiary); }
+.second-cta-form button {
+  height: 52px;
+  padding: 0 32px;
+  background: var(--coral);
+  color: #fff;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.second-cta-form button:hover { background: #e55a28; }
+.second-cta-form button:active { transform: scale(0.97); }
+.second-cta-msg {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: var(--teal);
+  min-height: 20px;
+  margin-top: 4px;
+}
+.second-cta .hero-incentive {
+  margin-top: 12px;
+}
+
 /* ===== CONTACT / SOCIAL ===== */
 .contact {
   padding: 100px 0;
-  background: var(--bg-secondary);
   text-align: center;
 }
 .contact-links {
@@ -631,9 +837,9 @@ input { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
   flex-shrink: 0;
 }
+.contact-icon svg { width: 22px; height: 22px; }
 .contact-info {
   text-align: left;
 }
@@ -663,6 +869,18 @@ input { font-family: inherit; }
   line-height: 1.8;
 }
 .footer .heart { color: var(--coral); }
+.footer-legal {
+  margin-top: 8px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+.footer-legal a {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--teal); }
 
 /* ===== SCROLL TOP BUTTON ===== */
 .scroll-top {
@@ -703,7 +921,12 @@ input { font-family: inherit; }
       </svg>
       <span>AskMontenegro</span>
     </a>
-    <div class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="#features">Features</a>
       <a href="#preview">Preview</a>
       <a href="#about">About</a>
@@ -722,17 +945,28 @@ input { font-family: inherit; }
         <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
       </svg>
     </div>
-    <h1 class="fade-in fade-in-delay-1">AskMontenegro</h1>
+    <h1 class="fade-in fade-in-delay-1">Ask Anything About Montenegro.<br>Get Expert Answers Instantly.</h1>
     <p class="hero-tagline fade-in fade-in-delay-1">Your AI-Powered Guide to Montenegro</p>
-    <p class="hero-subtitle fade-in fade-in-delay-2">Ask anything. Get local expert answers. In 8 languages.</p>
+    <p class="hero-subtitle fade-in fade-in-delay-2">Local expertise in 8 languages. Beaches, restaurants, routes, and more.</p>
     <div class="fade-in fade-in-delay-2">
       <span class="hero-badge">Coming May 2026</span>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="countdown-number" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item"><span class="countdown-number" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item"><span class="countdown-number" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item"><span class="countdown-number" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
+      </div>
     </div>
-    <form class="hero-form fade-in fade-in-delay-3" id="subscribeForm" onsubmit="return handleSubscribe(event)">
+    <p class="social-proof fade-in fade-in-delay-3">Join <span class="social-proof-count" id="socialProofHero">340+</span> early adopters already on the waitlist</p>
+    <form class="hero-form fade-in fade-in-delay-3" id="subscribeForm" onsubmit="return handleSubscribe(event, 'hero')">
       <input type="email" id="emailInput" placeholder="your@email.com" required>
       <button type="submit">Notify Me</button>
     </form>
     <p class="hero-form-msg" id="formMsg"></p>
+    <p class="hero-incentive fade-in fade-in-delay-3">First 500 subscribers get 200 bonus credits at launch</p>
   </div>
 </section>
 
@@ -746,24 +980,32 @@ input { font-family: inherit; }
     </div>
     <div class="features-grid">
       <div class="feature-card fade-in">
-        <div class="feature-icon">&#129302;</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+        </div>
         <h3>AI Chat</h3>
         <p>Ask about beaches, restaurants, routes, and more. Powered by AI with local expertise.</p>
       </div>
       <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">&#128506;</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
         <h3>Explore</h3>
         <p>Discover places on an interactive map with curated local recommendations.</p>
       </div>
       <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">&#127758;</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
         <h3>8 Languages</h3>
         <p>RU, EN, DE, PL, FR, IT, SR, TR &mdash; we speak your language fluently.</p>
       </div>
       <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">&#128176;</div>
-        <h3>50 Free Credits</h3>
-        <p>Start for free every month. No credit card required. Just ask.</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD60A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+        </div>
+        <h3>50 Free Questions</h3>
+        <p>Start for free every month. No credit card needed. Just ask.</p>
       </div>
     </div>
   </div>
@@ -793,13 +1035,18 @@ input { font-family: inherit; }
               <span class="phone-header-title">AskMontenegro</span>
               <span class="phone-header-credits">47 credits</span>
             </div>
-            <div class="phone-chat">
+            <div class="phone-chat" id="phoneChat">
               <div class="chat-msg user">What are the best beaches near Herceg Novi?</div>
               <div class="chat-msg bot"><strong>Top 3 beaches:</strong><br>1. Zhanjice &mdash; crystal clear water, boat access<br>2. Mirista &mdash; hidden gem near a monastery<br>3. Savina &mdash; family-friendly, easy to reach</div>
               <div class="chat-msg user">How do I get to Zhanjice?</div>
               <div class="chat-msg bot">Take a boat from Herceg Novi marina (15 min, ~5&euro;) or drive via Lustica peninsula (30 min). Boats run every 30 min in summer.</div>
               <div class="chat-msg user">Any restaurants nearby?</div>
               <div class="chat-msg bot"><strong>Recommended:</strong> Ribarsko Selo &mdash; fresh seafood right on the beach. Try the grilled octopus!</div>
+              <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
             </div>
             <div class="phone-input-bar">
               <div class="phone-input-field">Ask anything about Montenegro...</div>
@@ -850,11 +1097,29 @@ input { font-family: inherit; }
           </div>
           <div class="stat-card">
             <div class="stat-number">50</div>
-            <div class="stat-label">Free credits / mo</div>
+            <div class="stat-label">Free questions / mo</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== SECOND EMAIL CTA ===== -->
+<section class="second-cta" id="secondCta">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Get Early Access</p>
+      <h2 class="section-title">Ready to explore Montenegro smarter?</h2>
+      <p class="section-subtitle">Join the waitlist and be the first to experience AI-powered local expertise.</p>
+    </div>
+    <p class="social-proof fade-in fade-in-delay-1">Join <span class="social-proof-count" id="socialProofCta">340+</span> early adopters already on the waitlist</p>
+    <form class="second-cta-form fade-in fade-in-delay-2" id="subscribeForm2" onsubmit="return handleSubscribe(event, 'cta')">
+      <input type="email" id="emailInput2" placeholder="your@email.com" required>
+      <button type="submit">Join the Waitlist</button>
+    </form>
+    <p class="second-cta-msg" id="formMsg2"></p>
+    <p class="hero-incentive fade-in fade-in-delay-2">First 500 subscribers get 200 bonus credits at launch</p>
   </div>
 </section>
 
@@ -868,21 +1133,27 @@ input { font-family: inherit; }
     </div>
     <div class="contact-links fade-in fade-in-delay-1">
       <a href="https://instagram.com/ask.montenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">&#128247;</div>
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
         <div class="contact-info">
           <div class="label">Instagram</div>
           <div class="value">@ask.montenegro</div>
         </div>
       </a>
       <a href="https://t.me/askmontenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">&#9992;&#65039;</div>
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9 22 2z"/></svg>
+        </div>
         <div class="contact-info">
           <div class="label">Telegram</div>
           <div class="value">t.me/askmontenegro</div>
         </div>
       </a>
       <a href="mailto:hello@askmontenegro.com" class="contact-card">
-        <div class="contact-icon">&#9993;&#65039;</div>
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
         <div class="contact-info">
           <div class="label">Email</div>
           <div class="value">hello@askmontenegro.com</div>
@@ -897,6 +1168,10 @@ input { font-family: inherit; }
   <div class="container">
     <p>&copy; 2026 AskMontenegro</p>
     <p>Made with <span class="heart">&hearts;</span> in Herceg Novi, Montenegro</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
   </div>
 </footer>
 
@@ -906,12 +1181,28 @@ input { font-family: inherit; }
 <script>
 /* ===== NAV SCROLL ===== */
 const nav = document.getElementById('nav');
-const scrollTop = document.getElementById('scrollTop');
+const scrollTopBtn = document.getElementById('scrollTop');
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   nav.classList.toggle('scrolled', y > 50);
-  scrollTop.classList.toggle('visible', y > 600);
+  scrollTopBtn.classList.toggle('visible', y > 600);
+});
+
+/* ===== HAMBURGER MENU ===== */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
 });
 
 /* ===== FADE IN ON SCROLL ===== */
@@ -925,19 +1216,81 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+/* ===== COUNTDOWN TIMER ===== */
+const launchDate = new Date('2026-05-15T00:00:00').getTime();
+
+function updateCountdown() {
+  const now = Date.now();
+  const diff = launchDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '0';
+    document.getElementById('cd-hours').textContent = '0';
+    document.getElementById('cd-mins').textContent = '0';
+    document.getElementById('cd-secs').textContent = '0';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent = days;
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ===== SUBSCRIBER COUNT (localStorage) ===== */
+const BASE_COUNT = 340;
+function getSubscriberCount() {
+  const stored = localStorage.getItem('am_subscribers');
+  return stored ? parseInt(stored, 10) : 0;
+}
+function addSubscriber() {
+  const current = getSubscriberCount();
+  localStorage.setItem('am_subscribers', current + 1);
+  updateSocialProof();
+}
+function updateSocialProof() {
+  const total = BASE_COUNT + getSubscriberCount();
+  const text = total + '+';
+  const heroEl = document.getElementById('socialProofHero');
+  const ctaEl = document.getElementById('socialProofCta');
+  if (heroEl) heroEl.textContent = text;
+  if (ctaEl) ctaEl.textContent = text;
+}
+updateSocialProof();
+
 /* ===== SUBSCRIBE FORM ===== */
-function handleSubscribe(e) {
+function handleSubscribe(e, source) {
   e.preventDefault();
-  const email = document.getElementById('emailInput').value.trim();
-  const msg = document.getElementById('formMsg');
+  const inputId = source === 'hero' ? 'emailInput' : 'emailInput2';
+  const msgId = source === 'hero' ? 'formMsg' : 'formMsg2';
+  const email = document.getElementById(inputId).value.trim();
+  const msg = document.getElementById(msgId);
+
   if (!email || !email.includes('@')) {
     msg.textContent = 'Please enter a valid email address.';
     msg.style.color = 'var(--coral)';
     return false;
   }
+
+  /* Store in localStorage */
+  const emails = JSON.parse(localStorage.getItem('am_emails') || '[]');
+  if (!emails.includes(email)) {
+    emails.push(email);
+    localStorage.setItem('am_emails', JSON.stringify(emails));
+    addSubscriber();
+  }
+
   msg.textContent = 'Thanks! We\'ll notify you when we launch.';
   msg.style.color = 'var(--teal)';
-  document.getElementById('emailInput').value = '';
+  document.getElementById(inputId).value = '';
   return false;
 }
 
@@ -951,6 +1304,64 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+/* ===== PHONE MOCKUP TYPING ANIMATION ===== */
+function animateChat() {
+  const chatMsgs = document.querySelectorAll('#phoneChat .chat-msg');
+  const typingIndicator = document.getElementById('typingIndicator');
+  let index = 0;
+
+  /* Hide all messages first */
+  chatMsgs.forEach(msg => {
+    msg.style.opacity = '0';
+    msg.style.transform = 'translateY(10px)';
+    msg.classList.remove('animated');
+  });
+  if (typingIndicator) typingIndicator.classList.remove('show');
+
+  function showNext() {
+    if (index >= chatMsgs.length) {
+      /* Restart after a pause */
+      setTimeout(() => {
+        animateChat();
+      }, 4000);
+      return;
+    }
+
+    const msg = chatMsgs[index];
+    const isBot = msg.classList.contains('bot');
+
+    if (isBot && typingIndicator) {
+      /* Show typing indicator before bot message */
+      typingIndicator.classList.add('show');
+      setTimeout(() => {
+        typingIndicator.classList.remove('show');
+        msg.classList.add('animated');
+        index++;
+        setTimeout(showNext, 800);
+      }, 1200);
+    } else {
+      msg.classList.add('animated');
+      index++;
+      setTimeout(showNext, 600);
+    }
+  }
+
+  showNext();
+}
+
+/* Start animation when phone mockup is visible */
+const phoneObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(animateChat, 500);
+      phoneObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const phoneMockup = document.querySelector('.phone-mockup');
+if (phoneMockup) phoneObserver.observe(phoneMockup);
 </script>
 </body>
 </html>
