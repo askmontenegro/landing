@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AskMontenegro — Your AI-Powered Guide to Montenegro</title>
-<meta name="description" content="Ask anything about Montenegro. Get local expert answers about beaches, restaurants, routes, and more. In 8 languages. Coming May 2026.">
+<meta name="description" content="Ask anything about Montenegro. Get local expert answers about beaches, restaurants, routes, and more. In 6 languages. Coming Q3 2026.">
 <meta name="theme-color" content="#0A7E8C">
 <meta property="og:title" content="AskMontenegro — Your AI-Powered Guide to Montenegro">
-<meta property="og:description" content="Ask anything. Get local expert answers. In 8 languages.">
+<meta property="og:description" content="Ask anything. Get local expert answers. In 6 languages.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://askmontenegro.com">
 <meta property="og:image" content="https://askmontenegro.com/og-image.png">
@@ -15,1388 +15,1271 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AskMontenegro — AI Tourist Guide">
-<meta name="twitter:description" content="Ask anything about Montenegro. Get expert answers in 8 languages.">
+<meta name="twitter:description" content="Ask anything about Montenegro. Get expert answers in 6 languages.">
 <meta name="twitter:image" content="https://askmontenegro.com/og-image.png">
 <link rel="canonical" href="https://askmontenegro.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 640 640' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z' fill='%230A7E8C'/%3E%3Cpath d='M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ===== CSS CUSTOM PROPERTIES ===== */
+/* ===== TOKENS ===== */
 :root {
-  --teal: #0A7E8C;
-  --teal-dark: #076570;
-  --teal-light: rgba(10,126,140,0.10);
   --coral: #FF6B35;
-  --coral-light: rgba(255,107,53,0.10);
+  --coral-glow: rgba(255,107,53,0.18);
+  --teal: #0A7E8C;
   --navy: #1B2B3A;
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-tertiary: #EAEAEC;
-  --text-primary: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-tertiary: #AEAEB2;
-  --divider: #E5E5EA;
-  --surface: #FFFFFF;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-  --shadow-xl: 0 25px 80px rgba(0,0,0,0.15);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --logo-bubble: #0A7E8C;
-  --logo-mountain: #FFFFFF;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #141414;
-    --bg-tertiary: #1C1C1E;
-    --text-primary: #F5F5F7;
-    --text-secondary: #98989D;
-    --text-tertiary: #636366;
-    --divider: #2C2C2E;
-    --surface: #1C1C1E;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
-    --shadow-xl: 0 25px 80px rgba(0,0,0,0.5);
-    --logo-bubble: #FFFFFF;
-    --logo-mountain: #0A7E8C;
-  }
+  --gold: #E8B84B;
+  --off-white: #FAFAFA;
+  --gray-light: #F3F4F6;
+  --gray-mid: #E5E7EB;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --radius-card: 24px;
+  --shadow-card: 0 8px 40px rgba(27,43,58,.08);
+  --section-pad: clamp(80px, 12vh, 160px);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font);
+  background: var(--off-white);
+  color: var(--navy);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; line-height: 1.2; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
-input { font-family: inherit; }
+img { display:block; max-width:100%; }
+a { color: inherit; text-decoration:none; }
+button, input { font-family: inherit; }
 
-/* ===== UTILITY ===== */
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.section-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--teal);
-  margin-bottom: 12px;
-}
-.section-title {
-  font-size: clamp(28px, 5vw, 44px);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
-}
-.section-subtitle {
-  font-size: clamp(16px, 2.5vw, 18px);
-  color: var(--text-secondary);
-  max-width: 560px;
-  line-height: 1.7;
-}
-
-/* ===== FADE IN ANIMATION ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-
-/* ===== NAV ===== */
-.nav {
+/* ===== LANGUAGE SELECTOR ===== */
+.lang-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 16px 0;
-  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
-}
-.nav.scrolled {
-  background: var(--bg-primary);
-  box-shadow: var(--shadow-sm);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--divider);
-}
-@supports (backdrop-filter: blur(20px)) {
-  .nav.scrolled {
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-  /* Remove backdrop-filter when mobile menu is open — backdrop-filter creates
-     a new containing block, breaking position:fixed on .nav-links child */
-  .nav.scrolled.menu-open {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: var(--bg-primary);
-  }
-  @media (prefers-color-scheme: dark) {
-    .nav.scrolled {
-      background: rgba(10,10,10,0.8);
-    }
-    .nav.scrolled.menu-open {
-      background: var(--bg-primary);
-    }
-  }
-}
-.nav-inner {
+  top: 20px;
+  right: 24px;
+  z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 4px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(27,43,58,.1);
+  border-radius: 50px;
+  padding: 6px 10px;
 }
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-logo svg { width: 32px; height: 32px; }
-.nav-logo span {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.nav-links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-.nav-links a {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--teal); }
-.nav-cta {
-  background: var(--teal) !important;
-  color: #fff !important;
-  padding: 8px 20px;
-  border-radius: 100px;
-  font-weight: 600 !important;
-  transition: opacity 0.2s, background 0.2s !important;
-}
-.nav-cta:hover { opacity: 0.9; }
-
-/* ===== HAMBURGER MENU ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
+.lang-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: none;
+  border: none;
   cursor: pointer;
-  position: relative;
-  z-index: 1001;
-  padding: 4px;
+  padding: 4px 6px;
+  border-radius: 20px;
+  transition: all 0.15s;
 }
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-@media (max-width: 768px) {
-  .hamburger { display: flex; }
-  .nav-links {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--bg-primary);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  }
-  .nav-links.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .nav-links a { font-size: 20px; }
+.lang-btn:hover { color: var(--navy); background: var(--gray-light); }
+.lang-btn.active {
+  color: #fff;
+  background: var(--navy);
 }
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100vh;
+  position: relative;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 24px 80px;
-  position: relative;
   overflow: hidden;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 50% 30%, var(--teal-light) 0%, transparent 50%);
-  pointer-events: none;
+  inset: 0;
+  background-image: url('assets/hero-bay-2026.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(27,43,58,0.72) 0%, rgba(27,43,58,0.35) 60%, rgba(27,43,58,0.55) 100%);
 }
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 720px;
+  z-index: 2;
+  padding: 0 24px;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.hero-logo {
-  margin: 0 auto 32px;
-  width: 96px;
-  height: 96px;
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.hero h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.15;
-}
-.hero-tagline {
-  font-size: clamp(20px, 3.5vw, 28px);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  font-family: 'Inter', sans-serif;
-}
-.hero-subtitle {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-/* Countdown */
-.countdown {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.countdown-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 72px;
-}
-.countdown-number {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 800;
-  color: var(--teal);
-  line-height: 1;
-}
-.countdown-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
+.hero-wordmark {
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-tertiary);
-  margin-top: 4px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
 }
-.countdown-sep {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(28px, 4vw, 40px);
+.hero-headline {
+  font-size: clamp(48px, 8vw, 96px);
   font-weight: 800;
-  color: var(--text-tertiary);
-  align-self: flex-start;
-  line-height: 1;
-  padding-top: 2px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 24px;
 }
-
-.hero-badge {
+.hero-sub {
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+.cta-btn {
   display: inline-block;
   background: var(--coral);
   color: #fff;
-  padding: 8px 24px;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(255,107,53,0.4);
+  text-decoration: none;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255,107,53,0.5);
+}
+
+/* ===== CHAT STREAM SECTION ===== */
+.chat-stream {
+  background: var(--off-white);
+  padding: var(--section-pad) 24px;
+}
+.section-eyebrow {
+  text-align: center;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--teal);
   margin-bottom: 16px;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.section-sub {
+  text-align: center;
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 64px;
+  line-height: 1.6;
+}
+
+/* Chat grid */
+.chat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .chat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+/* Chat card */
+.chat-card {
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s;
+}
+.chat-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-card:hover {
+  box-shadow: 0 16px 56px rgba(27,43,58,.13);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-card { opacity:1; transform:none; }
+}
+
+/* Context tag */
+.context-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--gray-light);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+.dot.live {
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(255,107,53,0); }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
 }
 
-/* Social proof */
-.social-proof {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-.social-proof-count {
-  color: var(--teal);
-  font-weight: 800;
-}
-
-.hero-form {
-  display: flex;
-  gap: 12px;
-  max-width: 460px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.hero-form input {
-  flex: 1;
-  min-width: 240px;
-  height: 52px;
-  padding: 0 20px;
-  border: 2px solid var(--divider);
-  border-radius: 100px;
-  font-size: 16px;
-  background: var(--surface);
-  color: var(--text-primary);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.hero-form input:focus { border-color: var(--teal); }
-.hero-form input::placeholder { color: var(--text-tertiary); }
-.hero-form button {
-  height: 52px;
-  padding: 0 32px;
-  background: var(--teal);
-  color: #fff;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.1s;
-  white-space: nowrap;
-}
-.hero-form button:hover { background: var(--teal-dark); }
-.hero-form button:active { transform: scale(0.97); }
-.hero-form-msg {
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: var(--teal);
-  min-height: 20px;
-  margin-top: 4px;
-}
-.hero-incentive {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: var(--coral);
-  font-weight: 600;
-  margin-top: 12px;
-}
-
-/* ===== FEATURES ===== */
-.features {
-  padding: 100px 0;
-}
-.features-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-.features-header .section-subtitle {
-  margin: 0 auto;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-@media (max-width: 900px) {
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 520px) {
-  .features-grid { grid-template-columns: 1fr; }
-}
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  background: var(--teal-light);
-}
-.feature-icon svg { width: 28px; height: 28px; }
-.feature-card:nth-child(2) .feature-icon { background: var(--coral-light); }
-.feature-card:nth-child(3) .feature-icon { background: rgba(52,199,89,0.10); }
-.feature-card:nth-child(4) .feature-icon { background: rgba(255,214,10,0.12); }
-.feature-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text-primary);
-}
-.feature-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* ===== APP PREVIEW ===== */
-.app-preview {
-  padding: 100px 0;
-  background: var(--bg-secondary);
-}
-.app-preview-inner {
-  display: flex;
-  align-items: center;
-  gap: 80px;
-}
-.app-preview-text {
-  flex: 1;
-}
-.app-preview-phone {
-  flex-shrink: 0;
-}
-@media (max-width: 900px) {
-  .app-preview-inner {
-    flex-direction: column-reverse;
-    gap: 48px;
-    text-align: center;
-  }
-  .app-preview-text .section-subtitle { margin: 0 auto; }
-}
-
-/* Phone Mockup */
-.phone-mockup {
-  width: 300px;
-  height: 720px;
-  background: var(--bg-primary);
-  border-radius: 40px;
-  box-shadow: var(--shadow-xl), 0 0 0 2px var(--divider);
-  position: relative;
-  overflow: hidden;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-mockup { box-shadow: var(--shadow-xl), 0 0 0 2px #333; }
-}
-.phone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 24px;
-  background: #000;
-  border-radius: 0 0 16px 16px;
-  z-index: 10;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-notch { background: #1a1a1a; }
-}
-.phone-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.phone-status-bar {
-  height: 44px;
-  padding: 14px 24px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 11;
-}
-.phone-header {
-  padding: 12px 20px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--divider);
-  flex-shrink: 0;
-}
-.phone-header-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.phone-header-credits {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--coral);
-  background: var(--coral-light);
-  padding: 4px 10px;
-  border-radius: 100px;
-}
-.phone-chat {
-  flex: 1;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow-y: auto;
-}
-.chat-msg {
-  max-width: 85%;
-  padding: 10px 14px;
-  border-radius: 16px;
-  font-size: 13px;
+/* Bubbles */
+.msg {
+  max-width: 88%;
+  font-size: 15px;
   line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 18px;
+  margin-bottom: 8px;
 }
-.chat-msg.user {
-  align-self: flex-end;
-  background: #0A7E8C;
+.msg:last-child { margin-bottom: 0; }
+.msg-user {
+  background: var(--gray-light);
+  color: var(--navy);
+  border-bottom-left-radius: 6px;
+  margin-right: auto;
+}
+.msg-app {
+  background: var(--navy);
   color: #fff;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  max-width: 92%;
 }
-.chat-msg.bot {
-  align-self: flex-start;
-  background: #F0F0F5;
-  color: #1D1D1F;
-  border-bottom-left-radius: 4px;
-}
-.bot-text { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
-.bot-tip { font-size: 11.5px; color: #6E6E73; margin-top: 6px; line-height: 1.4; }
-@media (prefers-color-scheme: dark) { .bot-tip { color: #AEAEB2; } }
-.rec-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-.rec-card {
-  background: #FFFFFF;
-  border: 1px solid #E5E5E5;
-  border-radius: 10px;
-  padding: 8px 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.rec-card-title {
-  font-weight: 700;
-  font-size: 12.5px;
-  color: #1D1D1F;
-}
-.rec-card-title .rating { color: #FF6B35; font-weight: 600; font-size: 11px; margin-left: 4px; }
-.rec-card-desc {
-  font-size: 11.5px;
-  color: #6E6E73;
-  line-height: 1.4;
-  margin-top: 2px;
-}
-.rec-card-meta {
-  font-size: 10.5px;
-  color: #8E8E93;
-  margin-top: 2px;
-}
-.rec-card-link {
-  font-size: 11px;
-  color: #0A7E8C;
-  font-weight: 600;
-  margin-top: 3px;
-  display: inline-block;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-mockup { background: #2C2C2E; }
-  .phone-header { background: #2C2C2E; border-color: #48484A; }
-  .phone-status-bar { color: #F5F5F7; }
-  .phone-chat { background: #1C1C1E; }
-  .chat-msg.bot { background: #3A3A3C; color: #F5F5F7; }
-  .rec-card { background: #2C2C2E; border-color: #48484A; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-  .rec-card-title { color: #F5F5F7; }
-  .rec-card-desc { color: #AEAEB2; }
-  .rec-card-meta { color: #8E8E93; }
-  .phone-input-bar { background: #2C2C2E; border-color: #48484A; }
-  .phone-input-field { background: #3A3A3C; color: #F5F5F7; }
-  .phone-bottom-nav { background: #2C2C2E; border-color: #48484A; }
-  .rec-card-link { color: #12B5C9; }
-}
-.phone-input-bar {
-  padding: 10px 16px 28px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  border-top: 1px solid var(--divider);
-  flex-shrink: 0;
-}
-.phone-input-field {
-  flex: 1;
-  height: 36px;
-  background: var(--bg-secondary);
-  border-radius: 100px;
-  padding: 0 14px;
-  font-size: 12px;
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-}
-.phone-send-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.phone-send-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
-.phone-bottom-nav {
+
+/* Ambient images between cards */
+.chat-ambient {
   display: none;
 }
-
-/* Typing indicator */
-.typing-indicator {
-  align-self: flex-start;
-  background: var(--bg-secondary);
-  border-radius: 16px;
-  border-bottom-left-radius: 4px;
-  padding: 12px 18px;
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-}
-.typing-indicator.show { opacity: 1; }
-.typing-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-tertiary);
-  animation: typingBounce 1.4s infinite ease-in-out;
-}
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes typingBounce {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-6px); }
-}
-
-/* ===== ABOUT ===== */
-.about {
-  padding: 100px 0;
-}
-.about-inner {
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
-}
-.about-text { flex: 1; }
-.about-stats { flex-shrink: 0; }
-@media (max-width: 900px) {
-  .about-inner {
-    flex-direction: column;
-    gap: 48px;
+@media (min-width: 768px) {
+  .chat-ambient {
+    display: block;
+    grid-column: span 2;
+    text-align: center;
+    margin: 8px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .chat-ambient.visible { opacity: 1; transform: translateY(0); }
+  .chat-ambient img {
+    width: 100%;
+    max-width: 320px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0.32;
+    display: inline-block;
+    filter: saturate(0.7);
   }
 }
-.stat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+
+/* ===== WHY IT WORKS ===== */
+.why-section {
+  background: linear-gradient(135deg, #0A7E8C 0%, #1B2B3A 100%);
+  padding: var(--section-pad) 24px;
+  position: relative;
+  overflow: hidden;
 }
-.stat-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-md);
-  padding: 24px;
+.why-inner {
+  max-width: 720px;
+  margin: 0 auto;
   text-align: center;
-  min-width: 140px;
+  position: relative;
+  z-index: 2;
 }
-.stat-number {
-  font-family: 'Inter', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--teal);
-  margin-bottom: 4px;
+.why-title {
+  font-size: clamp(13px, 1.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 40px;
 }
-.stat-label {
-  font-size: 13px;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-.about-topics {
-  margin-top: 28px;
+.why-sentences {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 24px;
 }
-.topic-tag {
-  display: inline-block;
-  padding: 6px 14px;
-  background: var(--bg-secondary);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  border: 1px solid var(--divider);
+.why-paragraph {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.why-paragraph.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .why-paragraph { opacity:1; transform:none; }
+}
+.why-ambient {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  opacity: 0.18;
+  border-radius: 20px;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .why-ambient { display:none; }
 }
 
-/* ===== SECOND CTA ===== */
-.second-cta {
-  padding: 80px 0;
-  background: var(--bg-secondary);
+/* ===== TRUST MANIFESTO ===== */
+.trust-manifesto {
+  padding: clamp(80px, 12vh, 160px) 24px;
+  background: #FAFAFA;
+}
+.trust-inner {
+  max-width: 720px;
+  margin: 0 auto;
   text-align: center;
 }
-.second-cta .section-title {
-  margin-bottom: 8px;
+.trust-heading {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: #1B2B3A;
+  margin-bottom: 32px;
+  line-height: 1.15;
 }
-.second-cta .section-subtitle {
-  margin: 0 auto 32px;
+.trust-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #FF6B35;
+  margin: 24px auto 0;
 }
-.second-cta .social-proof {
-  margin-bottom: 20px;
+.trust-body {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.7;
+  color: #1B2B3A;
+  font-weight: 400;
 }
-.second-cta-form {
+.trust-body p {
+  margin-bottom: 1.2em;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  min-height: 100svh;
+  background: var(--navy);
   display: flex;
-  gap: 12px;
-  max-width: 460px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px;
+}
+.cta-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.final-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.final-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+}
+.final-headline {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+.final-sub {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 40px;
+  letter-spacing: 0.06em;
+}
+.waitlist-form {
+  display: flex;
+  gap: 10px;
+  max-width: 420px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
 }
-.second-cta-form input {
+.waitlist-input {
   flex: 1;
-  min-width: 240px;
-  height: 52px;
-  padding: 0 20px;
-  border: 2px solid var(--divider);
-  border-radius: 100px;
-  font-size: 16px;
-  background: var(--surface);
-  color: var(--text-primary);
+  min-width: 200px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 15px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.15s;
 }
-.second-cta-form input:focus { border-color: var(--teal); }
-.second-cta-form input::placeholder { color: var(--text-tertiary); }
-.second-cta-form button {
-  height: 52px;
-  padding: 0 32px;
+.waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
+.waitlist-input:focus { border-color: var(--coral); }
+.waitlist-submit {
   background: var(--coral);
   color: #fff;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.1s;
-  white-space: nowrap;
-}
-.second-cta-form button:hover { background: #e55a28; }
-.second-cta-form button:active { transform: scale(0.97); }
-.second-cta-msg {
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: var(--teal);
-  min-height: 20px;
-  margin-top: 4px;
-}
-.second-cta .hero-incentive {
-  margin-top: 12px;
-}
-
-/* ===== CONTACT / SOCIAL ===== */
-.contact {
-  padding: 100px 0;
-  text-align: center;
-}
-.contact-links {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-.contact-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-lg);
-  padding: 28px 36px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-width: 220px;
-}
-.contact-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.contact-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--teal-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon svg { width: 22px; height: 22px; }
-.contact-info {
-  text-align: left;
-}
-.contact-info .label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.contact-info .value {
-  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 28px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.35);
+  white-space: nowrap;
+}
+.waitlist-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,53,0.45); }
+.form-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+}
+.form-thanks {
+  display: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  margin-top: 16px;
+}
+
+/* ===== ACTION CHIPS ===== */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1.5px solid #0A7E8C;
+  color: #0A7E8C;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+  user-select: none;
+}
+.chip:hover, .chip:focus {
+  background: #0A7E8C;
+  color: #FFFFFF;
+}
+@media (max-width: 480px) {
+  .chip { font-size: 12px; padding: 5px 10px; }
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 32px 0;
-  text-align: center;
-  border-top: 1px solid var(--divider);
-}
-.footer p {
-  font-size: 14px;
-  color: var(--text-tertiary);
-  line-height: 1.8;
-}
-.footer .heart { color: var(--coral); }
-.footer-legal {
-  margin-top: 8px;
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-}
-.footer-legal a {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  transition: color 0.2s;
-}
-.footer-legal a:hover { color: var(--teal); }
-
-/* ===== SCROLL TOP BUTTON ===== */
-.scroll-top {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--teal);
-  color: #fff;
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s, transform 0.3s;
-  z-index: 999;
-  font-size: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-.scroll-top.visible {
-  opacity: 1;
-  transform: translateY(0);
+.footer-wordmark {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: -0.01em;
 }
-.scroll-top:hover { background: var(--teal-dark); }
+.footer-right {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-right a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#" class="nav-logo">
-      <svg viewBox="0 0 640 640" width="32" height="32">
-        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
-        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
-      </svg>
-      <span>AskMontenegro</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#features">Features</a>
-      <a href="#preview">Preview</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#hero" class="nav-cta">Get Notified</a>
-    </div>
-  </div>
+<!-- ===== LANGUAGE TOGGLE ===== -->
+<nav class="lang-bar" aria-label="Language selector">
+  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="ru">RU</button>
+  <button class="lang-btn" data-lang="sr">SR</button>
+  <button class="lang-btn" data-lang="me">ME</button>
+  <button class="lang-btn" data-lang="uk">UK</button>
+  <button class="lang-btn" data-lang="hr">HR</button>
+  <button class="lang-btn" data-lang="zh">中文</button>
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero" id="hero">
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Bay of Kotor panorama"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-logo fade-in">
-      <svg viewBox="0 0 640 640" width="96" height="96">
-        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
-        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
-      </svg>
+    <p class="hero-wordmark">AskMontenegro</p>
+    <h1 class="hero-headline" data-i18n="hero.headline">One chat.<br>Many lives.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">
+      It already knows when the shop's closed, when the rain's coming, when you depart, what your kids drink off-menu.
+    </p>
+    <a href="#waitlist" class="cta-btn" data-i18n="hero.cta">Join the waitlist</a>
+  </div>
+</section>
+
+<!-- ===== CHAT STREAM ===== -->
+<section class="chat-stream" id="chat-stream">
+  <p class="section-eyebrow" data-i18n="stream.eyebrow">Real conversations</p>
+  <h2 class="section-title" data-i18n="stream.title">One chat. Many lives.</h2>
+  <p class="section-sub" data-i18n="stream.sub">Six languages. Eight moments. This is what it actually feels like.</p>
+
+  <div class="chat-grid" id="chat-grid">
+    <!-- cards injected by renderChatCards() -->
+  </div>
+</section>
+
+<!-- ===== WHY IT WORKS ===== -->
+<section class="why-section">
+  <img src="assets/persona-marko-modern.png" alt="" class="why-ambient" loading="lazy" decoding="async" width="280" height="400">
+  <div class="why-inner">
+    <p class="why-title" data-i18n="why.eyebrow">Why this works</p>
+    <div class="why-sentences">
+      <p class="why-paragraph" data-reveal data-i18n="why.paragraph">It moves with you — today's weather, today's hours, today's plan. It responds the way you'd actually ask, not the way a guidebook would answer. It knows what changes by evening, what never made it online, what locals only tell each other.</p>
     </div>
-    <h1 class="fade-in fade-in-delay-1">Ask Anything About Montenegro.<br>Get Expert Answers Instantly.</h1>
-    <p class="hero-tagline fade-in fade-in-delay-1">Your AI-Powered Guide to Montenegro</p>
-    <p class="hero-subtitle fade-in fade-in-delay-2">Local expertise in 8 languages. Beaches, restaurants, routes, and more.</p>
-    <div class="fade-in fade-in-delay-2">
-      <span class="hero-badge">Coming May 2026</span>
-      <div class="countdown" id="countdown">
-        <div class="countdown-item"><span class="countdown-number" id="cd-days">--</span><span class="countdown-label">Days</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
-      </div>
-    </div>
-    <p class="social-proof fade-in fade-in-delay-3">Join <span class="social-proof-count" id="socialProofHero">340+</span> early adopters already on the waitlist</p>
-    <form class="hero-form fade-in fade-in-delay-3" id="subscribeForm" onsubmit="return handleSubscribe(event, 'hero')">
-      <input type="email" id="emailInput" placeholder="your@email.com" required>
-      <button type="submit">Notify Me</button>
+  </div>
+</section>
+
+<!-- ===== TRUST MANIFESTO ===== -->
+<section class="trust-manifesto" id="trust">
+  <div class="trust-inner">
+    <h2 class="trust-heading" data-i18n="trust.heading">Feel like a local.</h2>
+    <div class="trust-body" data-i18n="trust.body"><p>Not a tourist. Not someone given the same advice as everyone. Someone who knows the fishermen sell sea bass straight off their boats at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p></div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" id="waitlist">
+  <div class="cta-glow"></div>
+  <div class="final-inner">
+    <p class="final-eyebrow" data-i18n="cta.eyebrow">Early access</p>
+    <h2 class="final-headline" data-i18n="cta.headline">Coming<br>Q3 2026</h2>
+    <p class="final-sub" data-i18n="cta.platforms">iOS &middot; Android &middot; Web</p>
+    <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
+      <input
+        type="email"
+        class="waitlist-input"
+        id="waitlist-email"
+        placeholder="your@email.com"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      >
+      <button type="submit" class="waitlist-submit" data-i18n="cta.submit">Join waitlist</button>
     </form>
-    <p class="hero-form-msg" id="formMsg"></p>
-    <p class="hero-incentive fade-in fade-in-delay-3">First 500 subscribers get 200 bonus credits at launch</p>
-  </div>
-</section>
-
-<!-- ===== FEATURES ===== -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="features-header fade-in">
-      <p class="section-label">Features</p>
-      <h2 class="section-title">Everything you need<br>to explore Montenegro</h2>
-      <p class="section-subtitle">From hidden beaches to the best local restaurants, your AI assistant knows it all.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
-        </div>
-        <h3>AI Chat</h3>
-        <p>Ask about beaches, restaurants, routes, and more. Powered by AI with local expertise.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3>Explore</h3>
-        <p>Discover places on an interactive map with curated local recommendations.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>8 Languages</h3>
-        <p>RU, EN, DE, PL, FR, IT, SR, TR &mdash; we speak your language fluently.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD60A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
-        </div>
-        <h3>50 Free Questions</h3>
-        <p>Start for free every month. No credit card needed. Just ask.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== APP PREVIEW ===== -->
-<section class="app-preview" id="preview">
-  <div class="container">
-    <div class="app-preview-inner">
-      <div class="app-preview-text fade-in">
-        <p class="section-label">App Preview</p>
-        <h2 class="section-title">Like chatting with a local friend</h2>
-        <p class="section-subtitle">Natural conversation. Instant answers. Whether you need the best beach near Herceg Novi or emergency numbers &mdash; just ask.</p>
-      </div>
-      <div class="app-preview-phone fade-in fade-in-delay-2">
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-status-bar">
-              <span>9:41</span>
-              <span style="display:flex;gap:4px;align-items:center;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
-              </span>
-            </div>
-            <div class="phone-header">
-              <span class="phone-header-title">AskMontenegro</span>
-              <span class="phone-header-credits">47 credits</span>
-            </div>
-            <div class="phone-chat" id="phoneChat">
-              <div class="chat-msg user">Best beaches near Herceg Novi?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Honestly, take the boat to Žanjice &mdash; nothing else compares. But if you want something wilder, hop off one stop earlier:</div>
-                <div class="rec-cards">
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Žanjice Beach <span class="rating">&starf; 4.9</span></div>
-                    <div class="rec-card-desc">Turquoise water, pine shade, beach bar. The one everyone talks about.</div>
-                    <div class="rec-card-meta">&#128674; Boat from HN marina, 20 min, &euro;5 round trip</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Mirišta Beach</div>
-                    <div class="rec-card-desc">Same boat, one stop before Žanjice. No crowds, no sunbeds &mdash; just you and the sea.</div>
-                    <div class="rec-card-meta">&#128161; Bring water and snacks, no shops nearby</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                </div>
-                <div class="bot-tip">&#128172; Tip: boats leave every 30 min from 9 AM. Go before 11 to grab a good spot at Žanjice.</div>
-              </div>
-              <div class="chat-msg user">Where to eat fresh seafood?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Go to Konoba Feral, right on the marina. Order the grilled octopus &mdash; trust me.</div>
-                <div class="rec-cards">
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127869; Konoba Feral <span class="rating">&starf; 4.8</span></div>
-                    <div class="rec-card-desc">Waterfront terrace, huge portions, locals eat here too.</div>
-                    <div class="rec-card-meta">&#128176; &euro;12&ndash;18 per dish &middot; &#128694; 5 min walk from Old Town</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                </div>
-                <div class="bot-tip">&#128172; Tip: no reservation needed for lunch, but book ahead for dinner &mdash; it fills up fast in summer.</div>
-              </div>
-              <div class="chat-msg user">Can I pay by card everywhere?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Most restaurants and shops in Herceg Novi accept Visa and Mastercard. Smaller konobas and markets are still cash-only though, so keep &euro;20&ndash;30 on you. ATMs are on Njegoševa street and by the main square &mdash; use ones from CKB or Erste to avoid extra fees.</div>
-              </div>
-            </div>
-            <div class="phone-input-bar">
-              <div class="phone-input-field">Ask anything about Montenegro...</div>
-              <div class="phone-send-btn">
-                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-inner">
-      <div class="about-text fade-in">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Built for tourists exploring Montenegro</h2>
-        <p class="section-subtitle" style="margin-bottom:20px;">Phase 1 launches in Herceg Novi, expanding to cover all 25 municipalities of Montenegro.</p>
-        <p class="section-subtitle">Over 2.5 million tourists visit Montenegro every year. We're building the guide they deserve &mdash; one that speaks their language and knows every hidden corner.</p>
-        <div class="about-topics">
-          <span class="topic-tag">Beaches</span>
-          <span class="topic-tag">Restaurants</span>
-          <span class="topic-tag">Attractions</span>
-          <span class="topic-tag">Routes</span>
-          <span class="topic-tag">Emergency Info</span>
-          <span class="topic-tag">Transport</span>
-          <span class="topic-tag">Weather</span>
-          <span class="topic-tag">Nightlife</span>
-        </div>
-      </div>
-      <div class="about-stats fade-in fade-in-delay-2">
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-number">2.5M+</div>
-            <div class="stat-label">Tourists / year</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">25</div>
-            <div class="stat-label">Municipalities</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Languages</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">50</div>
-            <div class="stat-label">Free questions / mo</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SECOND EMAIL CTA ===== -->
-<section class="second-cta" id="secondCta">
-  <div class="container">
-    <div class="fade-in">
-      <p class="section-label">Get Early Access</p>
-      <h2 class="section-title">Ready to explore Montenegro smarter?</h2>
-      <p class="section-subtitle">Join the waitlist and be the first to experience AI-powered local expertise.</p>
-    </div>
-    <p class="social-proof fade-in fade-in-delay-1">Join <span class="social-proof-count" id="socialProofCta">340+</span> early adopters already on the waitlist</p>
-    <form class="second-cta-form fade-in fade-in-delay-2" id="subscribeForm2" onsubmit="return handleSubscribe(event, 'cta')">
-      <input type="email" id="emailInput2" placeholder="your@email.com" required>
-      <button type="submit">Join the Waitlist</button>
-    </form>
-    <p class="second-cta-msg" id="formMsg2"></p>
-    <p class="hero-incentive fade-in fade-in-delay-2">First 500 subscribers get 200 bonus credits at launch</p>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="fade-in">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Stay connected</h2>
-      <p class="section-subtitle" style="margin:0 auto;">Follow us for updates, tips, and launch announcements.</p>
-    </div>
-    <div class="contact-links fade-in fade-in-delay-1">
-      <a href="https://instagram.com/ask.montenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Instagram</div>
-          <div class="value">@ask.montenegro</div>
-        </div>
-      </a>
-      <a href="https://t.me/askmontenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9 22 2z"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Telegram</div>
-          <div class="value">t.me/askmontenegro</div>
-        </div>
-      </a>
-      <a href="mailto:hello@askmontenegro.com" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Email</div>
-          <div class="value">hello@askmontenegro.com</div>
-        </div>
-      </a>
-    </div>
+    <p class="form-note" data-i18n="cta.note">No spam. One email when we launch.</p>
+    <p class="form-thanks" id="form-thanks" data-i18n="cta.thanks">You're on the list. We'll be in touch.</p>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <div class="container">
-    <p>&copy; 2026 AskMontenegro</p>
-    <p>Made with <span class="heart">&hearts;</span> in Herceg Novi, Montenegro</p>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-  </div>
+  <span class="footer-wordmark">AskMontenegro</span>
+  <span class="footer-right">
+    &copy; 2026 AskMontenegro &nbsp;&middot;&nbsp;
+    <a href="mailto:hello@askmontenegro.com">hello@askmontenegro.com</a>
+  </span>
 </footer>
 
-<!-- ===== SCROLL TOP ===== -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">&#8593;</button>
-
 <script>
-/* ===== NAV SCROLL ===== */
-const nav = document.getElementById('nav');
-const scrollTopBtn = document.getElementById('scrollTop');
+/* ===== CHAT CARDS DATA (8 cards × 6 langs) ===== */
+const chatCards = {
+  ru: [
+    {
+      tag: 'Соло · Активный · RU · Херцег-Нови · 16:23',
+      user: 'где щас свежая рыба недорого',
+      app: 'Прямо сейчас: Konoba Skoljka, 4 мин, кальмар €10. Или в 16:00 — рыбаки у причала, сибас прямо с лодок €8/кг, наличные. Не для туристов.',
+      actions: ['📍 Маршрут к причалу', '⏰ Напомнить 16:00']
+    },
+    {
+      tag: 'Семья · Турист · RU · Тиват · 11:42',
+      user: 'аквариум сегодня открыт? у нас 4-летка в истерике lol',
+      app: 'По понедельникам закрыт. Аквариум в Тивате до 18:00, 22 мин на машине, дети €4. Яблочный сок в кафе (нет в меню) — спросите персонал.',
+      actions: ['📍 Открыть в картах', '⏰ До 18:00']
+    },
+    {
+      tag: 'Местный · RU · Котор · Суббота 09:15',
+      user: 'где можно оплатить парковку в Которе в субботу',
+      app: 'Старая зона 1: SMS на 9135, €2/час. Площадка у рынка €1.5/час. По воскресеньям бесплатно везде в старой зоне до 12:00.',
+      actions: ['📋 SMS-код 9135', '📍 Площадка у рынка']
+    },
+    {
+      tag: 'До приезда · Пара · RU · Будва · Воскресенье утро',
+      user: 'приезжаю в воскресенье в Будву, где позавтракать',
+      app: 'Pekara Mediteran — свежий бурек с 7:00, очередь местных, €3-4. Или Mozart на променаде €8-12 — медленнее, но с видом.',
+      actions: ['📍 Маршрут к Pekara']
+    },
+    {
+      tag: 'Пара · Активный · RU · Котор · вечер',
+      user: 'где закат лучше всего, не сильно туристическое',
+      app: 'Крепость Святой Иван над Котором — 1200 ступенек, 45 мин подъема. Завтра закат 19:42, ясно. Кафе нет, возьми воду.',
+      actions: ['📅 В календарь 19:42', '📍 Маршрут']
+    },
+    {
+      tag: 'Соло · Активный · RU · Рисан · январь утро',
+      user: 'завтра рано на каяках? море холодное',
+      app: 'Сегодня утром 16°C, завтра 17°C — на грани. Аренда Risan Bay с неопреном 5мм включён €30/3ч. Не советую если впервые.',
+      actions: ['📞 Risan Bay', '📅 Завтра утро']
+    },
+    {
+      tag: 'Соло · Турист · RU · Котор · 22:18',
+      user: 'какие интересные бары сегодня, не для туристов',
+      app: 'Bokun в старом городе — местные, меню без английского, открывается в 21:00. Или Caribic Pub если хочешь живую музыку — среда джазовый вечер.',
+      actions: ['📍 Маршрут Bokun', '📅 Джаз ср.']
+    },
+    {
+      tag: 'Семья · Турист · RU · Тиват · 14:50',
+      user: 'где купаться с маленькими детьми, чтобы вход в воду пологий',
+      app: 'Trašte (5 мин от Тивата) — пологий вход, песок, навесы. €15/день за два лежака. Альтернатива Plavi Horizonti €20.',
+      actions: ['📍 Маршрут Trašte', '🅿️ Парковка рядом']
+    }
+  ],
+  en: [
+    {
+      tag: 'Solo · Active · EN · Herceg Novi · 16:23',
+      user: 'where can i get fresh fish cheap right now',
+      app: 'Right now: Konoba Skoljka, 4 min, squid €10. Or at 16:00 — fishermen at the dock, sea bass straight off the boats, €8/kg, cash only. Locals only.',
+      actions: ['📍 Route to dock', '⏰ Remind at 16:00']
+    },
+    {
+      tag: 'Family · Tourist · EN · Tivat · 11:42',
+      user: 'is the aquarium open today? we have a 4yo melting down lol',
+      app: 'Closed Mondays. Tivat aquarium open till 18:00, 22 min drive, kids €4. Apple juice at cafe (off menu) — ask staff.',
+      actions: ['📍 Open in Maps', '⏰ Hours till 18:00']
+    },
+    {
+      tag: 'Resident · EN · Kotor · Saturday 09:15',
+      user: 'where can i pay for parking in Kotor on Saturday',
+      app: 'Old town zone 1: SMS to 9135, €2/h. Market square parking €1.5/h. Sundays free everywhere in old town until 12:00.',
+      actions: ['📋 Copy SMS 9135', '📍 Market square']
+    },
+    {
+      tag: 'Pre-arrival · Couple · EN · Budva · Sunday morning',
+      user: 'arriving Sunday in Budva, where to grab breakfast',
+      app: 'Pekara Mediteran — fresh burek from 7:00, locals queue, €3-4. Or Mozart on the promenade €8-12 — slower but with the view.',
+      actions: ['📍 Route to Pekara']
+    },
+    {
+      tag: 'Couple · Active · EN · Kotor · evening',
+      user: "where's sunset best, not too touristy",
+      app: 'Sveti Ivan Fortress above Kotor — 1200 steps, 45 min climb. Tomorrow sunset 19:42, clear sky. No cafe, bring water.',
+      actions: ['📅 Add to calendar 19:42', '📍 Route']
+    },
+    {
+      tag: 'Solo · Active · EN · Risan · January morning',
+      user: 'kayaking early tomorrow? sea is cold',
+      app: 'This morning 16°C, tomorrow 17°C — borderline. Risan Bay rental with 5mm wetsuit included €30/3h. Not recommended if first time.',
+      actions: ['📞 Risan Bay', '📅 Tomorrow morning']
+    },
+    {
+      tag: 'Solo · Tourist · EN · Kotor · 22:18',
+      user: "any cool bars tonight that aren't tourist traps",
+      app: 'Bokun in old town — locals, no English menu, opens 21:00. Or Caribic Pub if you want live music — Wed is jazz night.',
+      actions: ['📍 Route to Bokun', '📅 Jazz Wed']
+    },
+    {
+      tag: 'Family · Tourist · EN · Tivat · 14:50',
+      user: 'where to swim with toddlers, gentle entry to water',
+      app: 'Trašte (5 min from Tivat) — shallow entry, sand, sun shades. €15/day for two loungers. Alternative Plavi Horizonti €20.',
+      actions: ['📍 Route to Trašte', '🅿️ Parking nearby']
+    }
+  ],
+  sr: [
+    {
+      tag: 'Sam · Aktivan · SR · Herceg Novi · 16:23',
+      user: 'gdje mogu da uzmem svježu ribu jeftino sad',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na molu, brancin direktno s čamaca €8/kg, keš. Samo za domaće.',
+      actions: ['📍 Ruta do mola', '⏰ Podsjeti u 16:00']
+    },
+    {
+      tag: 'Porodica · Turist · SR · Tivat · 11:42',
+      user: 'da li je akvarijum otvoren danas? imamo klinku od 4 god koja histerično plače lol',
+      app: 'Ponedeljkom zatvoreno. Akvarijum u Tivtu radi do 18:00, 22 min vožnje, djeca €4. Jabukovi sok u kafiću (nije na meniju) — pitajte osoblje.',
+      actions: ['📍 Otvori u kartama', '⏰ Do 18:00']
+    },
+    {
+      tag: 'Lokalac · SR · Kotor · Subota 09:15',
+      user: 'gde mogu da platim parking u Kotoru subotom',
+      app: 'Stara zona 1: SMS na 9135, 2€/h. Plac kod tržnice 1.5€/h. Nedjeljom besplatno svuda u staroj zoni do 12:00.',
+      actions: ['📋 SMS 9135', '📍 Plac kod tržnice']
+    },
+    {
+      tag: 'Pre dolaska · Par · SR · Budva · Nedelja jutro',
+      user: 'stignem u nedjelju u Budvu, gdje da doručkujem',
+      app: 'Pekara Mediteran — svjež burek od 7:00, red domaćih, €3-4. Ili Mozart na šetalištu €8-12 — sporije ali s pogledom.',
+      actions: ['📍 Ruta do Pekare']
+    },
+    {
+      tag: 'Par · Aktivan · SR · Kotor · veče',
+      user: 'gdje za sunset najbolje, ne preturistično',
+      app: 'Tvrđava Sveti Ivan iznad Kotora — 1200 stepenika, 45 min penjanja. Sutra zalazak 19:42, vedro. Bez kafića, ponesi vodu.',
+      actions: ['📅 U kalendar 19:42', '📍 Ruta']
+    },
+    {
+      tag: 'Sam · Aktivan · SR · Risan · januar jutro',
+      user: 'kajaking sutra rano? more je hladno',
+      app: 'Jutros 16°C, sutra 17°C — granica. Iznajmljivanje Risan Bay s neoprenom 5mm uključen €30/3h. Ne preporučujem ako prvi put.',
+      actions: ['📞 Risan Bay', '📅 Sutra ujutro']
+    },
+    {
+      tag: 'Sam · Turist · SR · Kotor · 22:18',
+      user: 'ima li kakvih zanimljivih barova večeras, ne turistički',
+      app: 'Bokun u starom gradu — domaći, meni bez engleskog, otvara se u 21:00. Ili Caribic Pub ako hoćeš živu muziku — srijeda je jazz veče.',
+      actions: ['📍 Ruta Bokun', '📅 Jazz sri']
+    },
+    {
+      tag: 'Porodica · Turist · SR · Tivat · 14:50',
+      user: 'gdje kupati malu djecu, da je ulaz u vodu blag',
+      app: 'Trašte (5 min od Tivta) — blag ulaz, pijesak, suncobrani. €15/dan za dva ležaljka. Alternativa Plavi Horizonti €20.',
+      actions: ['📍 Ruta Trašte', '🅿️ Parking blizu']
+    }
+  ],
+  me: [
+    {
+      tag: 'Sam · Aktivan · ME · Herceg Novi · 16:23',
+      user: 'gdje mogu da nađem svježu ribu jeftino sad',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na molu, brancin direktno s čamaca €8/kg, keš. Samo za mještane.',
+      actions: ['📍 Ruta do mola', '⏰ Podsjeti u 16:00']
+    },
+    {
+      tag: 'Porodica · Turist · ME · Tivat · 11:42',
+      user: 'da li je akvarijum otvoren danas? imamo klinku od 4 god koja histerično plače lol',
+      app: 'Ponedeljkom zatvoreno. Akvarijum u Tivtu radi do 18:00, 22 min vožnje, djeca €4. Jabukovi sok u kafiću (nije na meniju) — pitajte osoblje.',
+      actions: ['📍 Otvori u kartama', '⏰ Do 18:00']
+    },
+    {
+      tag: 'Domaći · ME · Kotor · Subota 09:15',
+      user: 'gdje mogu da platim parking u Kotoru subotom',
+      app: 'Stara zona 1: SMS na 9135, 2€/h. Plac kod tržnice 1.5€/h. Nedjeljom besplatno svuda u staroj zoni do 12:00.',
+      actions: ['📋 SMS 9135', '📍 Plac kod tržnice']
+    },
+    {
+      tag: 'Prije dolaska · Par · ME · Budva · Nedjelja jutro',
+      user: 'stignem u nedjelju u Budvu, gdje da doručkujem',
+      app: 'Pekara Mediteran — svjež burek od 7:00, red mještana, €3-4. Ili Mozart na šetalištu €8-12 — sporije ali s pogledom.',
+      actions: ['📍 Ruta do Pekare']
+    },
+    {
+      tag: 'Par · Aktivan · ME · Kotor · veče',
+      user: 'gdje za sunset najbolje, ne preturistično',
+      app: 'Tvrđava Sveti Ivan iznad Kotora — 1200 stepenica, 45 min penjanja. Sutra zalazak 19:42, vedro. Bez kafića, ponesi vodu.',
+      actions: ['📅 U kalendar 19:42', '📍 Ruta']
+    },
+    {
+      tag: 'Sam · Aktivan · ME · Risan · januar jutro',
+      user: 'kajaking sutra rano? more je hladno',
+      app: 'Jutros 16°C, sutra 17°C — granica. Iznajmljivanje Risan Bay s neoprenom 5mm uključen €30/3h. Ne preporučujem ako prvi put.',
+      actions: ['📞 Risan Bay', '📅 Sutra ujutro']
+    },
+    {
+      tag: 'Sam · Turist · ME · Kotor · 22:18',
+      user: 'ima li kakvih zanimljivih barova večeras, ne turistički',
+      app: 'Bokun u starom gradu — mještani, meni bez engleskog, otvara se u 21:00. Ili Caribic Pub ako hoćeš živu muziku — srijeda je jazz veče.',
+      actions: ['📍 Ruta Bokun', '📅 Jazz sri']
+    },
+    {
+      tag: 'Porodica · Turist · ME · Tivat · 14:50',
+      user: 'gdje kupati malu djecu, da je ulaz u vodu blag',
+      app: 'Trašte (5 min od Tivta) — blag ulaz, pijesak, suncobrani. €15/dan za dva ležaljka. Alternativa Plavi Horizonti €20.',
+      actions: ['📍 Ruta Trašte', '🅿️ Parking blizu']
+    }
+  ],
+  uk: [
+    {
+      tag: 'Соло · Активний · UK · Херцег-Нові · 16:23',
+      user: 'де зараз свіжа риба недорого',
+      app: 'Прямо зараз: Konoba Skoljka, 4 хв, кальмар €10. Або о 16:00 — рибалки у причалу, морський окунь прямо з човнів €8/кг, готівка. Не для туристів.',
+      actions: ['📍 Маршрут до причалу', '⏰ Нагадати о 16:00']
+    },
+    {
+      tag: "Сім'я · Турист · UK · Тиват · 11:42",
+      user: 'акваріум сьогодні відкритий? у нас 4-річна в істериці lol',
+      app: 'У понеділок зачинено. Акваріум у Тиваті до 18:00, 22 хв їзди, діти €4. Яблучний сік у кафе (не в меню) — запитайте персонал.',
+      actions: ['📍 Відкрити на карті', '⏰ До 18:00']
+    },
+    {
+      tag: 'Місцевий · UK · Котор · Субота 03:15',
+      user: 'де можна сплатити парковку в Которі в суботу',
+      app: 'Стара зона 1: SMS на 9135, €2/год. Майданчик біля ринку €1.5/год. У неділю безкоштовно скрізь у старій зоні до 12:00.',
+      actions: ['📋 SMS 9135', '📍 Площа біля ринку']
+    },
+    {
+      tag: 'До приїзду · Пара · UK · Будва · Неділя ранок',
+      user: 'приїжджаю в неділю в Будву, де поснідати',
+      app: 'Pekara Mediteran — свіжий бурек з 7:00, місцеві черги, €3-4. Або кафе Mozart на променаді €8-12 — повільніше але з видом.',
+      actions: ['📍 Маршрут до Pekara']
+    },
+    {
+      tag: 'Пара · Активний · UK · Котор · вечір',
+      user: 'де найкращий захід сонця, не надто туристичне',
+      app: 'Фортеця Свети Іван над Котором — 1200 сходинок, 45 хв підйому. Завтра захід 19:42, ясно. Кафе нема, візьми воду.',
+      actions: ['📅 У календар 19:42', '📍 Маршрут']
+    },
+    {
+      tag: 'Соло · Активний · UK · Рисан · січень ранок',
+      user: 'завтра рано на каяках? море холодне',
+      app: 'Сьогодні вранці 16°C, завтра 17°C — на межі. Оренда Risan Bay з гідрокостюмом 5мм включено €30/3год. Не раджу якщо вперше.',
+      actions: ['📞 Risan Bay', '📅 Завтра вранці']
+    },
+    {
+      tag: 'Соло · Турист · UK · Котор · 22:18',
+      user: 'які цікаві бари сьогодні, не для туристів',
+      app: 'Bokun у старому місті — місцеві, меню без англійського, відкривається о 21:00. Або Caribic Pub якщо хочеш живу музику — середа джазовий вечір.',
+      actions: ['📍 Маршрут Bokun', '📅 Джаз ср.']
+    },
+    {
+      tag: "Сім'я · Турист · UK · Тиват · 14:50",
+      user: 'де купатися з маленькими дітьми, щоб вхід у воду пологий',
+      app: 'Trašte (5 хв від Тивата) — пологий вхід, пісок, навіси. €15/день за два шезлонги. Альтернатива Plavi Horizonti €20.',
+      actions: ['📍 Маршрут Trašte', '🅿️ Парковка поряд']
+    }
+  ],
+  hr: [
+    {
+      tag: 'Sam · Aktivan · HR · Herceg Novi · 16:23',
+      user: 'gdje mogu nabaviti svježu ribu jeftino sad',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na gatu, brancin direktno s čamaca €8/kg, gotovina. Samo za domaće.',
+      actions: ['📍 Put do mola', '⏰ Podsjeti u 16:00']
+    },
+    {
+      tag: 'Obitelj · Turist · HR · Tivat · 11:42',
+      user: 'je li akvarij otvoren danas? imamo 4-godišnjakinju koja urlava lol',
+      app: 'Ponedjeljkom zatvoreno. Akvarij u Tivtu radi do 18:00, 22 min vožnje, djeca €4. Sok od jabuke u kafiću (nije na jelovniku) — pitajte osoblje.',
+      actions: ['📍 Otvori u kartama', '⏰ Do 18:00']
+    },
+    {
+      tag: 'Domaći · HR · Kotor · Subota 09:15',
+      user: 'gdje mogu platiti parking u Kotoru u subotu',
+      app: 'Stara zona 1: SMS na 9135, €2/h. Parkiralište kod tržnice 1.5€/h. Nedjeljom besplatno svugdje u staroj zoni do 12:00.',
+      actions: ['📋 SMS 9135', '📍 Tržnica']
+    },
+    {
+      tag: 'Prije dolaska · Par · HR · Budva · Nedjelja ujutro',
+      user: 'dolazim u nedjelju u Budvu, gdje doručkovati',
+      app: 'Pekara Mediteran — svjež burek od 7:00, red domaćih, €3-4. Ili Mozart na šetnici €8-12 — sporije ali s pogledom.',
+      actions: ['📍 Ruta do Pekare']
+    },
+    {
+      tag: 'Par · Aktivan · HR · Kotor · večer',
+      user: 'gdje je zalazak sunca najljepši, ne previše turistički',
+      app: 'Tvrđava Sveti Ivan iznad Kotora — 1200 stepenica, 45 min penjanja. Sutra zalazak 19:42, vedro. Bez kafića, ponesi vodu.',
+      actions: ['📅 Dodaj u kalendar 19:42', '📍 Ruta']
+    },
+    {
+      tag: 'Sam · Aktivan · HR · Risan · siječanj jutro',
+      user: 'kayaking sutra rano? more je hladno',
+      app: 'Jutros 16°C, sutra 17°C — granica. Iznajmljivanje Risan Bay s neoprenom 5mm uključen €30/3h. Ne preporučujem ako prvi put.',
+      actions: ['📞 Risan Bay', '📅 Sutra ujutro']
+    },
+    {
+      tag: 'Sam · Turist · HR · Kotor · 22:18',
+      user: 'ima li zanimljivih barova večeras, ne turistički',
+      app: 'Bokun u starom gradu — domaći, meni bez engleskog, otvara se u 21:00. Ili Caribic Pub ako želiš živu glazbu — srijeda je jazz večer.',
+      actions: ['📍 Ruta Bokun', '📅 Jazz sri']
+    },
+    {
+      tag: 'Obitelj · Turist · HR · Tivat · 14:50',
+      user: 'gdje se kupati s malom djecom, da je ulaz u vodu blag',
+      app: 'Trašte (5 min od Tivta) — blag ulaz, pijesak, suncobrani. €15/dan za dvije ležaljke. Alternativa Plavi Horizonti €20.',
+      actions: ['📍 Ruta Trašte', '🅿️ Parking blizu']
+    }
+  ],
+  zh: [
+    {
+      tag: '独行 · 活跃 · ZH · 赫尔采格诺维 · 16:23',
+      user: '现在哪里有便宜的新鲜鱼',
+      app: '现在: Konoba Skoljka 步行4分钟，鱿鱼€10。或者下午4点 — 渔民在码头直接从船上卖海鲈鱼 €8/公斤，现金，本地人才知道。',
+      actions: ['📍 路线到码头', '⏰ 16:00 提醒']
+    },
+    {
+      tag: '家庭 · 游客 · ZH · 蒂瓦特 · 11:42',
+      user: '今天水族馆开门吗？我们有个4岁孩子在闹脾气',
+      app: '周一闭馆。蒂瓦特水族馆开到18:00，22分钟车程，儿童€4。咖啡厅有菜单外的苹果汁 — 问服务员。',
+      actions: ['📍 在地图打开', '⏰ 营业到 18:00']
+    },
+    {
+      tag: '本地人 · ZH · 科托尔 · 周六 09:15',
+      user: '周六在科托尔哪里能付停车费',
+      app: '老城1区: 短信发9135，€2/小时。市场广场停车 €1.5/小时。周日老城正午前免费。',
+      actions: ['📋 复制短信码 9135', '📍 市场广场']
+    },
+    {
+      tag: '到达前 · 情侣 · ZH · 布德瓦 · 周日早晨',
+      user: '周日去布德瓦，哪里吃早餐',
+      app: 'Pekara Mediteran — 早7点开门有新鲜布雷克饼，本地人排队，€3-4。或者海滨大道的Mozart咖啡 €8-12，慢一点但有海景。',
+      actions: ['📍 路线到 Pekara']
+    },
+    {
+      tag: '情侣 · 活跃 · ZH · 科托尔 · 傍晚',
+      user: '日落最佳地点，不要太游客化',
+      app: '科托尔上方的圣伊万要塞 — 1200级台阶，爬45分钟。明天日落 19:42，晴。无咖啡厅，自带水。',
+      actions: ['📅 加入日历 19:42', '📍 路线']
+    },
+    {
+      tag: '独行 · 活跃 · ZH · 里桑 · 一月清晨',
+      user: '明早去划皮划艇？海水冷不冷',
+      app: '今早 16°C，明天 17°C — 勉强可以。Risan Bay 含5mm潜水服出租 €30/3小时。第一次不建议。',
+      actions: ['📞 联系 Risan Bay', '📅 明早']
+    },
+    {
+      tag: '独行 · 游客 · ZH · 科托尔 · 22:18',
+      user: '今晚有什么不是游客陷阱的酒吧',
+      app: '老城的 Bokun — 本地人去，没有英文菜单，21:00开门。或者 Caribic Pub 想听现场音乐 — 周三爵士夜。',
+      actions: ['📍 路线到 Bokun', '📅 周三爵士']
+    },
+    {
+      tag: '家庭 · 游客 · ZH · 蒂瓦特 · 14:50',
+      user: '带小孩在哪里游泳，水浅一点的',
+      app: 'Trašte（距蒂瓦特5分钟）— 浅水入口，沙滩，遮阳棚。两张躺椅€15/天。备选 Plavi Horizonti €20。',
+      actions: ['📍 路线到 Trašte', '🅿️ 附近停车']
+    }
+  ]
+};
 
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  nav.classList.toggle('scrolled', y > 50);
-  scrollTopBtn.classList.toggle('visible', y > 600);
-});
+/* Ambient images config — interleaved between card pairs */
+const ambientImages = [
+  { src: 'assets/persona-marta-modern.png', after: 1 },
+  { src: 'assets/persona-aleks-modern.png', after: 3 },
+  { src: 'assets/persona-sofia-modern.png', after: 5 }
+];
 
-/* ===== HAMBURGER MENU ===== */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+/* XSS safety */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('open');
-  nav.classList.toggle('menu-open', navLinks.classList.contains('open'));
-  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-});
+/* Build chip HTML */
+function buildChips(actions) {
+  if (!actions || !actions.length) return '';
+  return `<div class="chip-row">${actions.map(a => `<button class="chip" type="button">${escapeHtml(a)}</button>`).join('')}</div>`;
+}
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('open');
-    nav.classList.remove('menu-open');
-    document.body.style.overflow = '';
-  });
-});
+/* Re-render the chat grid for a given language */
+function renderChatCards(lang) {
+  const grid = document.getElementById('chat-grid');
+  if (!grid) return;
+  const cards = chatCards[lang] || chatCards['en'];
 
-/* ===== FADE IN ON SCROLL ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  let html = '';
+  cards.forEach((card, i) => {
+    html += `
+      <article class="chat-card" data-reveal>
+        <div class="context-tag"><span class="dot live"></span>${escapeHtml(card.tag)}</div>
+        <div class="msg msg-user">${escapeHtml(card.user)}</div>
+        <div class="msg msg-app">${escapeHtml(card.app)}</div>
+        ${buildChips(card.actions)}
+      </article>`;
+
+    // Inject ambient image after cards 1, 3, 5 (0-indexed: 1, 3, 5)
+    const ambient = ambientImages.find(a => a.after === i);
+    if (ambient) {
+      html += `
+      <div class="chat-ambient" data-reveal>
+        <img src="${escapeHtml(ambient.src)}" alt="" loading="lazy" decoding="async" width="320" height="180">
+      </div>`;
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  grid.innerHTML = html;
 
-/* ===== COUNTDOWN TIMER ===== */
-const launchDate = new Date('2026-05-15T00:00:00').getTime();
-
-function updateCountdown() {
-  const now = Date.now();
-  const diff = launchDate - now;
-
-  if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '0';
-    document.getElementById('cd-hours').textContent = '0';
-    document.getElementById('cd-mins').textContent = '0';
-    document.getElementById('cd-secs').textContent = '0';
-    return;
+  // Re-attach scroll-reveal observer to newly created nodes
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    grid.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+  } else {
+    grid.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
   }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById('cd-days').textContent = days;
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+/* ===== TRANSLATIONS ===== */
+const i18n = {
+  en: {
+    "hero.headline": "One chat.<br>Many lives.",
+    "hero.sub": "It already knows when the shop's closed, when the rain's coming, when you depart, what your kids drink off-menu.",
+    "hero.cta": "Join the waitlist",
+    "stream.eyebrow": "Real conversations",
+    "stream.title": "One chat. Many lives.",
+    "stream.sub": "Seven languages. Eight moments. This is what it actually feels like.",
+    "why.eyebrow": "Why this works",
+    "why.paragraph": "It moves with you — today's weather, today's hours, today's plan. It responds the way you'd actually ask, not the way a guidebook would answer. It knows what changes by evening, what never made it online, what locals only tell each other.",
+    "trust.heading": "Feel like a local.",
+    "trust.body": "<p>Not a tourist. Not someone given the same advice as everyone. Someone who knows the fishermen sell sea bass straight off their boats at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p>",
+    "cta.eyebrow": "Early access",
+    "cta.headline": "Coming<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Join waitlist",
+    "cta.note": "No spam. One email when we launch.",
+    "cta.thanks": "You're on the list. We'll be in touch."
+  },
+  ru: {
+    "hero.headline": "Один чат.<br>Много жизней.",
+    "hero.sub": "Он уже знает, когда закрыт магазин, когда начнётся дождь, когда вы уезжаете и что ваши дети заказывают вне меню.",
+    "hero.cta": "В список ожидания",
+    "stream.eyebrow": "Настоящие разговоры",
+    "stream.title": "Один чат. Много жизней.",
+    "stream.sub": "Семь языков. Восемь моментов. Вот как это работает.",
+    "why.eyebrow": "Почему это работает",
+    "why.paragraph": "Он движется вместе с тобой — сегодняшняя погода, сегодняшнее расписание, твой сегодняшний день. Отвечает так, как ты спрашиваешь, не переводя на туристический. Знает то, что меняется к вечеру, то, чего нет в Google, то, что местные говорят вслух только своим.",
+    "trust.heading": "Чувствовать себя местным",
+    "trust.body": "<p>Не туристом. Не тем, кому советуют то же, что всем. А тем, кто знает, что в 16:00 рыбаки прямо с лодок продают сибаса за €8/кг, наличными. Что у официанта в той семейной конобе есть яблочный сок не из меню — для детей. Что в субботу Старый Котор платный, а в воскресенье до полудня — нет.</p><p>Этот чат знает то, что местные передают друг другу. И теперь — тебе.</p>",
+    "cta.eyebrow": "Ранний доступ",
+    "cta.headline": "Старт<br>III квартал 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "В список ожидания",
+    "cta.note": "Никакого спама. Одно письмо при запуске.",
+    "cta.thanks": "Вы в списке. Напишем при запуске."
+  },
+  sr: {
+    "hero.headline": "Jedan razgovor.<br>Mnogo života.",
+    "hero.sub": "Već zna kada je prodavnica zatvorena, kada stiže kiša, kada odlazite i šta vaša deca piju van menija.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan razgovor. Mnogo života.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcioniše",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnje radno vreme, tvoj današnji dan. Odgovara onako kako bi stvarno pitao, ne kao turistički vodič. Zna šta se mijenja do večeri, šta nikad nije stiglo na internet, šta mještani govore samo jedni drugima.",
+    "trust.heading": "Oseti se kao lokalac.",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savete kao svima. Nego kao neko ko zna da u 16:00 ribari direktno s čamaca prodaju brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za decu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Nema spam-a. Jedan mejl pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javiću se pri lansiranju."
+  },
+  me: {
+    "hero.headline": "Jedan razgovor.<br>Mnogo života.",
+    "hero.sub": "Već zna kad je prodavnica zatvorena, kad dolazi kiša, kad odlazite i šta vaša djeca piju van menija.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan razgovor. Mnogo života.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcioniše",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnji raspored, tvoj današnji dan. Odgovara onako kako bi ti stvarno pitao, ne kao turistički vodič. Zna šta se mijenja do večeri, šta nikad nije dospjelo na internet, šta mještani prenose samo jedni drugima.",
+    "trust.heading": "Osjeti se kao mještanin.",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savjete kao svima. Nego kao neko ko zna da u 16:00 ribari direktno s čamaca prodaju brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za djecu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Nema spama. Jedan mejl pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javim se pri lansiranju."
+  },
+  uk: {
+    "hero.headline": "Один чат.<br>Багато життів.",
+    "hero.sub": "Він вже знає, коли зачинений магазин, коли буде дощ, коли ви їдете і що ваші діти п'ють поза меню.",
+    "hero.cta": "До списку очікування",
+    "stream.eyebrow": "Справжні розмови",
+    "stream.title": "Один чат. Багато життів.",
+    "stream.sub": "Сім мов. Вісім моментів. Ось як це виглядає насправді.",
+    "why.eyebrow": "Чому це працює",
+    "why.paragraph": "Він рухається разом із тобою — сьогоднішня погода, сьогодні графік, твій сьогоднішній день. Відповідає так, як ти справді питаєш, не мовою путівника. Знає те, що змінюється до вечора, те, чого нема в Google, те, що місцеві кажуть лише між собою.",
+    "trust.heading": "Відчути себе місцевим.",
+    "trust.body": "<p>Не туристом. Не тим, кому радять те саме, що й усім. А тим, хто знає, що о 16:00 рибалки прямо з човнів продають морського окуня за €8/кг, готівкою. Що офіціант у тій сімейній коноби має яблучний сік поза меню — для дітей. Що паркування в Старому Которі в суботу платне, а в неділю до полудня — безкоштовне.</p><p>Цей чат знає те, що місцеві передають одне одному. І тепер — тобі.</p>",
+    "cta.eyebrow": "Ранній доступ",
+    "cta.headline": "Вихід<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "До списку",
+    "cta.note": "Без спаму. Один лист при запуску.",
+    "cta.thanks": "Ви у списку. Напишемо при запуску."
+  },
+  hr: {
+    "hero.headline": "Jedan chat.<br>Mnogo života.",
+    "hero.sub": "Već zna kad je prodavaonica zatvorena, kad dolazi kiša, kad odlazite i što vaša djeca piju izvan jelovnika.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan chat. Mnogo života.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcionira",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnji raspored, tvoj današnji dan. Odgovara onako kako bi stvarno pitao, ne kao turistički vodič. Zna što se mijenja do večeri, što nikad nije stiglo na internet, što domaći govore samo jedni drugima.",
+    "trust.heading": "Osjeti se kao domaći.",
+    "trust.body": "<p>Ne kao turist. Ne kao netko kome daju iste savjete kao svima. Nego kao netko tko zna da u 16:00 ribari izravno s čamaca prodaju brancina za €8/kg, gotovina. Da konobar u onoj obiteljskoj konobi ima sok od jabuke izvan jelovnika — za djecu. Da je parkiranje u Starom Kotoru subotom plaćeno, a nedjeljom do podne — besplatno.</p><p>Ovaj chat zna ono što domaći prenose jedni drugima. I sada — tebi.</p>",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Bez spama. Jedan e-mail pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javit ćemo se pri lansiranju."
+  },
+  zh: {
+    "hero.headline": "一个聊天。<br>无数生活。",
+    "hero.sub": "它已经知道何时商店关门、何时下雨、何时你离开、你的孩子在菜单外喝什么。",
+    "hero.cta": "加入等候名单",
+    "stream.eyebrow": "真实对话",
+    "stream.title": "一个聊天。无数生活。",
+    "stream.sub": "七种语言。八个瞬间。这就是它的实际感受。",
+    "why.eyebrow": "为什么有效",
+    "why.paragraph": "它跟着你走 — 今天的天气、今天的营业时间、你今天的计划。它用你真正会问的方式回答，不是旅游手册的语气。它知道傍晚会变的事，知道没上过网的事，知道本地人只在彼此之间说的事。",
+    "trust.heading": "像本地人一样。",
+    "trust.body": "<p>不是游客。不是被给予和所有人一样建议的人。而是知道下午4点渔民直接从船上卖海鲈鱼€8/公斤现金的人。知道家庭餐馆的服务员有菜单外的苹果汁给孩子的人。知道科托尔老城停车周日中午前免费的人。</p><p>这个聊天知道本地人互相传递的事情。现在 — 传递给你。</p>",
+    "cta.eyebrow": "早期使用",
+    "cta.headline": "2026年<br>第三季度上线",
+    "cta.platforms": "iOS · Android · 网页",
+    "cta.submit": "加入等候名单",
+    "cta.note": "无垃圾邮件。上线时一封通知。",
+    "cta.thanks": "您已在名单上。上线时联系您。"
+  }
+};
 
-/* ===== SUBSCRIBER COUNT (localStorage) ===== */
-const BASE_COUNT = 340;
-function getSubscriberCount() {
-  const stored = localStorage.getItem('am_subscribers');
-  return stored ? parseInt(stored, 10) : 0;
-}
-function addSubscriber() {
-  const current = getSubscriberCount();
-  localStorage.setItem('am_subscribers', current + 1);
-  updateSocialProof();
-}
-function updateSocialProof() {
-  const total = BASE_COUNT + getSubscriberCount();
-  const text = total + '+';
-  const heroEl = document.getElementById('socialProofHero');
-  const ctaEl = document.getElementById('socialProofCta');
-  if (heroEl) heroEl.textContent = text;
-  if (ctaEl) ctaEl.textContent = text;
-}
-updateSocialProof();
+/* ===== LANGUAGE LOGIC ===== */
+let currentLang = 'en';
 
-/* ===== SUBSCRIBE FORM ===== */
-function handleSubscribe(e, source) {
+function detectLang() {
+  const stored = localStorage.getItem('askmn-lang');
+  if (stored && i18n[stored]) return stored;
+  const browserFull = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  const browser = browserFull.slice(0,2);
+  // ZH: match zh, zh-cn, zh-tw, zh-hk, zh-sg
+  if (browserFull.startsWith('zh')) return 'zh';
+  const map = { ru:'ru', sr:'sr', me:'me', uk:'uk', hr:'hr', bs:'me', mk:'sr' };
+  return map[browser] || 'en';
+}
+
+function applyLang(lang) {
+  if (!i18n[lang]) lang = 'en';
+  currentLang = lang;
+  localStorage.setItem('askmn-lang', lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  renderChatCards(lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+/* ===== SCROLL REVEAL ===== */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReduced) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+} else {
+  // Reduced motion: show everything immediately
+  document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+}
+
+/* ===== WAITLIST FORM ===== */
+function handleWaitlist(e) {
   e.preventDefault();
-  const inputId = source === 'hero' ? 'emailInput' : 'emailInput2';
-  const msgId = source === 'hero' ? 'formMsg' : 'formMsg2';
-  const email = document.getElementById(inputId).value.trim();
-  const msg = document.getElementById(msgId);
+  const email = document.getElementById('waitlist-email').value;
+  const form = document.getElementById('waitlist-form');
+  const thanks = document.getElementById('form-thanks');
 
-  if (!email || !email.includes('@')) {
-    msg.textContent = 'Please enter a valid email address.';
-    msg.style.color = 'var(--coral)';
-    return false;
-  }
+  // Fallback: open mailto
+  window.location.href = 'mailto:hello@askmontenegro.com?subject=Waitlist&body=' + encodeURIComponent(email);
 
-  /* Store in localStorage */
-  const emails = JSON.parse(localStorage.getItem('am_emails') || '[]');
-  if (!emails.includes(email)) {
-    emails.push(email);
-    localStorage.setItem('am_emails', JSON.stringify(emails));
-    addSubscriber();
-  }
-
-  msg.textContent = 'Thanks! We\'ll notify you when we launch.';
-  msg.style.color = 'var(--teal)';
-  document.getElementById(inputId).value = '';
-  return false;
+  form.style.opacity = '0.4';
+  form.style.pointerEvents = 'none';
+  thanks.style.display = 'block';
 }
 
-/* ===== SMOOTH SCROLL FOR NAV LINKS ===== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-/* ===== PHONE MOCKUP TYPING ANIMATION ===== */
-/* Chat is static — no animation needed */
+/* ===== INIT ===== */
+applyLang(detectLang());
 </script>
+
 </body>
 </html>
