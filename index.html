@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AskMontenegro — Your AI-Powered Guide to Montenegro</title>
-<meta name="description" content="Ask anything about Montenegro. Get local expert answers about beaches, restaurants, routes, and more. In 8 languages. Coming May 2026.">
+<meta name="description" content="Ask anything about Montenegro. Get local expert answers about beaches, restaurants, routes, and more. In 6 languages. Coming Q3 2026.">
 <meta name="theme-color" content="#0A7E8C">
 <meta property="og:title" content="AskMontenegro — Your AI-Powered Guide to Montenegro">
-<meta property="og:description" content="Ask anything. Get local expert answers. In 8 languages.">
+<meta property="og:description" content="Ask anything. Get local expert answers. In 6 languages.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://askmontenegro.com">
 <meta property="og:image" content="https://askmontenegro.com/og-image.png">
@@ -15,1388 +15,1101 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AskMontenegro — AI Tourist Guide">
-<meta name="twitter:description" content="Ask anything about Montenegro. Get expert answers in 8 languages.">
+<meta name="twitter:description" content="Ask anything about Montenegro. Get expert answers in 6 languages.">
 <meta name="twitter:image" content="https://askmontenegro.com/og-image.png">
 <link rel="canonical" href="https://askmontenegro.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 640 640' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z' fill='%230A7E8C'/%3E%3Cpath d='M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ===== CSS CUSTOM PROPERTIES ===== */
+/* ===== TOKENS ===== */
 :root {
-  --teal: #0A7E8C;
-  --teal-dark: #076570;
-  --teal-light: rgba(10,126,140,0.10);
   --coral: #FF6B35;
-  --coral-light: rgba(255,107,53,0.10);
+  --coral-glow: rgba(255,107,53,0.18);
+  --teal: #0A7E8C;
   --navy: #1B2B3A;
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-tertiary: #EAEAEC;
-  --text-primary: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-tertiary: #AEAEB2;
-  --divider: #E5E5EA;
-  --surface: #FFFFFF;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-  --shadow-xl: 0 25px 80px rgba(0,0,0,0.15);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --logo-bubble: #0A7E8C;
-  --logo-mountain: #FFFFFF;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #141414;
-    --bg-tertiary: #1C1C1E;
-    --text-primary: #F5F5F7;
-    --text-secondary: #98989D;
-    --text-tertiary: #636366;
-    --divider: #2C2C2E;
-    --surface: #1C1C1E;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
-    --shadow-xl: 0 25px 80px rgba(0,0,0,0.5);
-    --logo-bubble: #FFFFFF;
-    --logo-mountain: #0A7E8C;
-  }
+  --gold: #E8B84B;
+  --off-white: #FAFAFA;
+  --gray-light: #F3F4F6;
+  --gray-mid: #E5E7EB;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --radius-card: 24px;
+  --shadow-card: 0 8px 40px rgba(27,43,58,.08);
+  --section-pad: clamp(80px, 12vh, 160px);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===== RESET ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font);
+  background: var(--off-white);
+  color: var(--navy);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; line-height: 1.2; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
-input { font-family: inherit; }
+img { display:block; max-width:100%; }
+a { color: inherit; text-decoration:none; }
+button, input { font-family: inherit; }
 
-/* ===== UTILITY ===== */
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.section-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--teal);
-  margin-bottom: 12px;
-}
-.section-title {
-  font-size: clamp(28px, 5vw, 44px);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
-}
-.section-subtitle {
-  font-size: clamp(16px, 2.5vw, 18px);
-  color: var(--text-secondary);
-  max-width: 560px;
-  line-height: 1.7;
-}
-
-/* ===== FADE IN ANIMATION ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-
-/* ===== NAV ===== */
-.nav {
+/* ===== LANGUAGE SELECTOR ===== */
+.lang-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 16px 0;
-  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
-}
-.nav.scrolled {
-  background: var(--bg-primary);
-  box-shadow: var(--shadow-sm);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--divider);
-}
-@supports (backdrop-filter: blur(20px)) {
-  .nav.scrolled {
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-  /* Remove backdrop-filter when mobile menu is open — backdrop-filter creates
-     a new containing block, breaking position:fixed on .nav-links child */
-  .nav.scrolled.menu-open {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: var(--bg-primary);
-  }
-  @media (prefers-color-scheme: dark) {
-    .nav.scrolled {
-      background: rgba(10,10,10,0.8);
-    }
-    .nav.scrolled.menu-open {
-      background: var(--bg-primary);
-    }
-  }
-}
-.nav-inner {
+  top: 20px;
+  right: 24px;
+  z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 4px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(27,43,58,.1);
+  border-radius: 50px;
+  padding: 6px 10px;
 }
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-logo svg { width: 32px; height: 32px; }
-.nav-logo span {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.nav-links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-.nav-links a {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--teal); }
-.nav-cta {
-  background: var(--teal) !important;
-  color: #fff !important;
-  padding: 8px 20px;
-  border-radius: 100px;
-  font-weight: 600 !important;
-  transition: opacity 0.2s, background 0.2s !important;
-}
-.nav-cta:hover { opacity: 0.9; }
-
-/* ===== HAMBURGER MENU ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
+.lang-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: none;
+  border: none;
   cursor: pointer;
-  position: relative;
-  z-index: 1001;
-  padding: 4px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  transition: all 0.15s;
 }
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-@media (max-width: 768px) {
-  .hamburger { display: flex; }
-  .nav-links {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--bg-primary);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  }
-  .nav-links.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .nav-links a { font-size: 20px; }
+.lang-btn:hover { color: var(--navy); background: var(--gray-light); }
+.lang-btn.active {
+  color: #fff;
+  background: var(--navy);
 }
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100vh;
+  position: relative;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 24px 80px;
-  position: relative;
   overflow: hidden;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 50% 30%, var(--teal-light) 0%, transparent 50%);
-  pointer-events: none;
+  inset: 0;
+  background-image: url('assets/hero-bay-2026.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(27,43,58,0.72) 0%, rgba(27,43,58,0.35) 60%, rgba(27,43,58,0.55) 100%);
 }
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 720px;
+  z-index: 2;
+  padding: 0 24px;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.hero-logo {
-  margin: 0 auto 32px;
-  width: 96px;
-  height: 96px;
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.hero h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--teal) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.15;
-}
-.hero-tagline {
-  font-size: clamp(20px, 3.5vw, 28px);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  font-family: 'Inter', sans-serif;
-}
-.hero-subtitle {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-  line-height: 1.6;
-}
-
-/* Countdown */
-.countdown {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.countdown-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 72px;
-}
-.countdown-number {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 800;
-  color: var(--teal);
-  line-height: 1;
-}
-.countdown-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
+.hero-wordmark {
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-tertiary);
-  margin-top: 4px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
 }
-.countdown-sep {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(28px, 4vw, 40px);
+.hero-headline {
+  font-size: clamp(48px, 8vw, 96px);
   font-weight: 800;
-  color: var(--text-tertiary);
-  align-self: flex-start;
-  line-height: 1;
-  padding-top: 2px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 24px;
 }
-
-.hero-badge {
+.hero-sub {
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+.cta-btn {
   display: inline-block;
   background: var(--coral);
   color: #fff;
-  padding: 8px 24px;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(255,107,53,0.4);
+  text-decoration: none;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255,107,53,0.5);
+}
+
+/* ===== CHAT STREAM SECTION ===== */
+.chat-stream {
+  background: var(--off-white);
+  padding: var(--section-pad) 24px;
+}
+.section-eyebrow {
+  text-align: center;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--teal);
   margin-bottom: 16px;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.section-sub {
+  text-align: center;
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 64px;
+  line-height: 1.6;
+}
+
+/* Chat grid */
+.chat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .chat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+/* Chat card */
+.chat-card {
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s;
+}
+.chat-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-card:hover {
+  box-shadow: 0 16px 56px rgba(27,43,58,.13);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-card { opacity:1; transform:none; }
+}
+
+/* Context tag */
+.context-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--gray-light);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+.dot.live {
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(255,107,53,0); }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
 }
 
-/* Social proof */
-.social-proof {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-.social-proof-count {
-  color: var(--teal);
-  font-weight: 800;
-}
-
-.hero-form {
-  display: flex;
-  gap: 12px;
-  max-width: 460px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.hero-form input {
-  flex: 1;
-  min-width: 240px;
-  height: 52px;
-  padding: 0 20px;
-  border: 2px solid var(--divider);
-  border-radius: 100px;
-  font-size: 16px;
-  background: var(--surface);
-  color: var(--text-primary);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.hero-form input:focus { border-color: var(--teal); }
-.hero-form input::placeholder { color: var(--text-tertiary); }
-.hero-form button {
-  height: 52px;
-  padding: 0 32px;
-  background: var(--teal);
-  color: #fff;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.1s;
-  white-space: nowrap;
-}
-.hero-form button:hover { background: var(--teal-dark); }
-.hero-form button:active { transform: scale(0.97); }
-.hero-form-msg {
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: var(--teal);
-  min-height: 20px;
-  margin-top: 4px;
-}
-.hero-incentive {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: var(--coral);
-  font-weight: 600;
-  margin-top: 12px;
-}
-
-/* ===== FEATURES ===== */
-.features {
-  padding: 100px 0;
-}
-.features-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-.features-header .section-subtitle {
-  margin: 0 auto;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-@media (max-width: 900px) {
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 520px) {
-  .features-grid { grid-template-columns: 1fr; }
-}
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  background: var(--teal-light);
-}
-.feature-icon svg { width: 28px; height: 28px; }
-.feature-card:nth-child(2) .feature-icon { background: var(--coral-light); }
-.feature-card:nth-child(3) .feature-icon { background: rgba(52,199,89,0.10); }
-.feature-card:nth-child(4) .feature-icon { background: rgba(255,214,10,0.12); }
-.feature-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text-primary);
-}
-.feature-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* ===== APP PREVIEW ===== */
-.app-preview {
-  padding: 100px 0;
-  background: var(--bg-secondary);
-}
-.app-preview-inner {
-  display: flex;
-  align-items: center;
-  gap: 80px;
-}
-.app-preview-text {
-  flex: 1;
-}
-.app-preview-phone {
-  flex-shrink: 0;
-}
-@media (max-width: 900px) {
-  .app-preview-inner {
-    flex-direction: column-reverse;
-    gap: 48px;
-    text-align: center;
-  }
-  .app-preview-text .section-subtitle { margin: 0 auto; }
-}
-
-/* Phone Mockup */
-.phone-mockup {
-  width: 300px;
-  height: 720px;
-  background: var(--bg-primary);
-  border-radius: 40px;
-  box-shadow: var(--shadow-xl), 0 0 0 2px var(--divider);
-  position: relative;
-  overflow: hidden;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-mockup { box-shadow: var(--shadow-xl), 0 0 0 2px #333; }
-}
-.phone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 24px;
-  background: #000;
-  border-radius: 0 0 16px 16px;
-  z-index: 10;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-notch { background: #1a1a1a; }
-}
-.phone-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.phone-status-bar {
-  height: 44px;
-  padding: 14px 24px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 11;
-}
-.phone-header {
-  padding: 12px 20px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--divider);
-  flex-shrink: 0;
-}
-.phone-header-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.phone-header-credits {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--coral);
-  background: var(--coral-light);
-  padding: 4px 10px;
-  border-radius: 100px;
-}
-.phone-chat {
-  flex: 1;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow-y: auto;
-}
-.chat-msg {
-  max-width: 85%;
-  padding: 10px 14px;
-  border-radius: 16px;
-  font-size: 13px;
+/* Bubbles */
+.msg {
+  max-width: 88%;
+  font-size: 15px;
   line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 18px;
+  margin-bottom: 8px;
 }
-.chat-msg.user {
-  align-self: flex-end;
-  background: #0A7E8C;
+.msg:last-child { margin-bottom: 0; }
+.msg-user {
+  background: var(--gray-light);
+  color: var(--navy);
+  border-bottom-left-radius: 6px;
+  margin-right: auto;
+}
+.msg-app {
+  background: var(--navy);
   color: #fff;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  max-width: 92%;
 }
-.chat-msg.bot {
-  align-self: flex-start;
-  background: #F0F0F5;
-  color: #1D1D1F;
-  border-bottom-left-radius: 4px;
-}
-.bot-text { font-size: 13px; line-height: 1.5; margin-bottom: 6px; }
-.bot-tip { font-size: 11.5px; color: #6E6E73; margin-top: 6px; line-height: 1.4; }
-@media (prefers-color-scheme: dark) { .bot-tip { color: #AEAEB2; } }
-.rec-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-.rec-card {
-  background: #FFFFFF;
-  border: 1px solid #E5E5E5;
-  border-radius: 10px;
-  padding: 8px 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.rec-card-title {
-  font-weight: 700;
-  font-size: 12.5px;
-  color: #1D1D1F;
-}
-.rec-card-title .rating { color: #FF6B35; font-weight: 600; font-size: 11px; margin-left: 4px; }
-.rec-card-desc {
-  font-size: 11.5px;
-  color: #6E6E73;
-  line-height: 1.4;
-  margin-top: 2px;
-}
-.rec-card-meta {
-  font-size: 10.5px;
-  color: #8E8E93;
-  margin-top: 2px;
-}
-.rec-card-link {
-  font-size: 11px;
-  color: #0A7E8C;
-  font-weight: 600;
-  margin-top: 3px;
-  display: inline-block;
-}
-@media (prefers-color-scheme: dark) {
-  .phone-mockup { background: #2C2C2E; }
-  .phone-header { background: #2C2C2E; border-color: #48484A; }
-  .phone-status-bar { color: #F5F5F7; }
-  .phone-chat { background: #1C1C1E; }
-  .chat-msg.bot { background: #3A3A3C; color: #F5F5F7; }
-  .rec-card { background: #2C2C2E; border-color: #48484A; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-  .rec-card-title { color: #F5F5F7; }
-  .rec-card-desc { color: #AEAEB2; }
-  .rec-card-meta { color: #8E8E93; }
-  .phone-input-bar { background: #2C2C2E; border-color: #48484A; }
-  .phone-input-field { background: #3A3A3C; color: #F5F5F7; }
-  .phone-bottom-nav { background: #2C2C2E; border-color: #48484A; }
-  .rec-card-link { color: #12B5C9; }
-}
-.phone-input-bar {
-  padding: 10px 16px 28px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  border-top: 1px solid var(--divider);
-  flex-shrink: 0;
-}
-.phone-input-field {
-  flex: 1;
-  height: 36px;
-  background: var(--bg-secondary);
-  border-radius: 100px;
-  padding: 0 14px;
-  font-size: 12px;
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-}
-.phone-send-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.phone-send-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
-.phone-bottom-nav {
+
+/* Ambient images between cards */
+.chat-ambient {
   display: none;
 }
-
-/* Typing indicator */
-.typing-indicator {
-  align-self: flex-start;
-  background: var(--bg-secondary);
-  border-radius: 16px;
-  border-bottom-left-radius: 4px;
-  padding: 12px 18px;
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-}
-.typing-indicator.show { opacity: 1; }
-.typing-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-tertiary);
-  animation: typingBounce 1.4s infinite ease-in-out;
-}
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes typingBounce {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-6px); }
-}
-
-/* ===== ABOUT ===== */
-.about {
-  padding: 100px 0;
-}
-.about-inner {
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
-}
-.about-text { flex: 1; }
-.about-stats { flex-shrink: 0; }
-@media (max-width: 900px) {
-  .about-inner {
-    flex-direction: column;
-    gap: 48px;
+@media (min-width: 768px) {
+  .chat-ambient {
+    display: block;
+    grid-column: span 2;
+    text-align: center;
+    margin: 8px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .chat-ambient.visible { opacity: 1; transform: translateY(0); }
+  .chat-ambient img {
+    width: 100%;
+    max-width: 320px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0.32;
+    display: inline-block;
+    filter: saturate(0.7);
   }
 }
-.stat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+
+/* ===== WHY IT WORKS ===== */
+.why-section {
+  background: linear-gradient(135deg, #0A7E8C 0%, #1B2B3A 100%);
+  padding: var(--section-pad) 24px;
+  position: relative;
+  overflow: hidden;
 }
-.stat-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-md);
-  padding: 24px;
+.why-inner {
+  max-width: 720px;
+  margin: 0 auto;
   text-align: center;
-  min-width: 140px;
+  position: relative;
+  z-index: 2;
 }
-.stat-number {
-  font-family: 'Inter', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--teal);
-  margin-bottom: 4px;
+.why-title {
+  font-size: clamp(13px, 1.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 40px;
 }
-.stat-label {
-  font-size: 13px;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-.about-topics {
-  margin-top: 28px;
+.why-sentences {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 24px;
 }
-.topic-tag {
-  display: inline-block;
-  padding: 6px 14px;
-  background: var(--bg-secondary);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  border: 1px solid var(--divider);
+.why-sentence {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.why-sentence.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .why-sentence { opacity:1; transform:none; }
+}
+.why-ambient {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  opacity: 0.18;
+  border-radius: 20px;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .why-ambient { display:none; }
 }
 
-/* ===== SECOND CTA ===== */
-.second-cta {
-  padding: 80px 0;
-  background: var(--bg-secondary);
+/* ===== TRUST 18 ===== */
+.trust-section {
+  background: var(--off-white);
+  padding: var(--section-pad) 24px;
   text-align: center;
 }
-.second-cta .section-title {
-  margin-bottom: 8px;
-}
-.second-cta .section-subtitle {
-  margin: 0 auto 32px;
-}
-.second-cta .social-proof {
+.trust-number {
+  font-size: clamp(120px, 20vw, 200px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--gold);
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.second-cta-form {
+.trust-number.visible { opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce) { .trust-number { opacity:1; transform:none; } }
+.trust-headline {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 600;
+  color: var(--navy);
+  max-width: 520px;
+  margin: 0 auto 20px;
+  line-height: 1.4;
+}
+.trust-toggle {
+  display: inline-block;
+  color: var(--coral);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+}
+.trust-details {
+  max-width: 640px;
+  margin: 24px auto 0;
+  text-align: left;
+  display: none;
+}
+.trust-details.open { display: block; }
+.trust-rules {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 600px) {
+  .trust-rules { grid-template-columns: 1fr 1fr; }
+}
+.trust-rules li {
+  font-size: 14px;
+  color: var(--text-body);
+  padding: 10px 14px;
+  background: var(--gray-light);
+  border-radius: 10px;
+  line-height: 1.45;
+}
+.trust-rules li::before {
+  content: "—";
+  color: var(--coral);
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  min-height: 100svh;
+  background: var(--navy);
   display: flex;
-  gap: 12px;
-  max-width: 460px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px;
+}
+.cta-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.final-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.final-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+}
+.final-headline {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+.final-sub {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 40px;
+  letter-spacing: 0.06em;
+}
+.waitlist-form {
+  display: flex;
+  gap: 10px;
+  max-width: 420px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
 }
-.second-cta-form input {
+.waitlist-input {
   flex: 1;
-  min-width: 240px;
-  height: 52px;
-  padding: 0 20px;
-  border: 2px solid var(--divider);
-  border-radius: 100px;
-  font-size: 16px;
-  background: var(--surface);
-  color: var(--text-primary);
+  min-width: 200px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 15px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.15s;
 }
-.second-cta-form input:focus { border-color: var(--teal); }
-.second-cta-form input::placeholder { color: var(--text-tertiary); }
-.second-cta-form button {
-  height: 52px;
-  padding: 0 32px;
+.waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
+.waitlist-input:focus { border-color: var(--coral); }
+.waitlist-submit {
   background: var(--coral);
   color: #fff;
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.1s;
-  white-space: nowrap;
-}
-.second-cta-form button:hover { background: #e55a28; }
-.second-cta-form button:active { transform: scale(0.97); }
-.second-cta-msg {
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: var(--teal);
-  min-height: 20px;
-  margin-top: 4px;
-}
-.second-cta .hero-incentive {
-  margin-top: 12px;
-}
-
-/* ===== CONTACT / SOCIAL ===== */
-.contact {
-  padding: 100px 0;
-  text-align: center;
-}
-.contact-links {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-.contact-card {
-  background: var(--surface);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-lg);
-  padding: 28px 36px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-width: 220px;
-}
-.contact-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.contact-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--teal-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon svg { width: 22px; height: 22px; }
-.contact-info {
-  text-align: left;
-}
-.contact-info .label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.contact-info .value {
-  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 28px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.35);
+  white-space: nowrap;
+}
+.waitlist-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,53,0.45); }
+.form-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+}
+.form-thanks {
+  display: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  margin-top: 16px;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 32px 0;
-  text-align: center;
-  border-top: 1px solid var(--divider);
-}
-.footer p {
-  font-size: 14px;
-  color: var(--text-tertiary);
-  line-height: 1.8;
-}
-.footer .heart { color: var(--coral); }
-.footer-legal {
-  margin-top: 8px;
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-}
-.footer-legal a {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  transition: color 0.2s;
-}
-.footer-legal a:hover { color: var(--teal); }
-
-/* ===== SCROLL TOP BUTTON ===== */
-.scroll-top {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--teal);
-  color: #fff;
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s, transform 0.3s;
-  z-index: 999;
-  font-size: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-.scroll-top.visible {
-  opacity: 1;
-  transform: translateY(0);
+.footer-wordmark {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: -0.01em;
 }
-.scroll-top:hover { background: var(--teal-dark); }
+.footer-right {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-right a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#" class="nav-logo">
-      <svg viewBox="0 0 640 640" width="32" height="32">
-        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
-        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
-      </svg>
-      <span>AskMontenegro</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#features">Features</a>
-      <a href="#preview">Preview</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#hero" class="nav-cta">Get Notified</a>
-    </div>
-  </div>
+<!-- ===== LANGUAGE TOGGLE ===== -->
+<nav class="lang-bar" aria-label="Language selector">
+  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="ru">RU</button>
+  <button class="lang-btn" data-lang="sr">SR</button>
+  <button class="lang-btn" data-lang="me">ME</button>
+  <button class="lang-btn" data-lang="uk">UK</button>
+  <button class="lang-btn" data-lang="hr">HR</button>
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero" id="hero">
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Bay of Kotor panorama"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-logo fade-in">
-      <svg viewBox="0 0 640 640" width="96" height="96">
-        <path d="M0 128 C0 57.3 57.3 0 128 0 L512 0 C582.7 0 640 57.3 640 128 L640 400 C640 470.7 582.7 528 512 528 L200 528 L100 640 L120 528 L128 528 C57.3 528 0 470.7 0 400 Z" fill="var(--logo-bubble)"/>
-        <path d="M120 430 L220 180 L280 300 L320 140 L360 300 L420 180 L520 430 Z" fill="var(--logo-mountain)"/>
-      </svg>
-    </div>
-    <h1 class="fade-in fade-in-delay-1">Ask Anything About Montenegro.<br>Get Expert Answers Instantly.</h1>
-    <p class="hero-tagline fade-in fade-in-delay-1">Your AI-Powered Guide to Montenegro</p>
-    <p class="hero-subtitle fade-in fade-in-delay-2">Local expertise in 8 languages. Beaches, restaurants, routes, and more.</p>
-    <div class="fade-in fade-in-delay-2">
-      <span class="hero-badge">Coming May 2026</span>
-      <div class="countdown" id="countdown">
-        <div class="countdown-item"><span class="countdown-number" id="cd-days">--</span><span class="countdown-label">Days</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-item"><span class="countdown-number" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
+    <p class="hero-wordmark">AskMontenegro</p>
+    <h1 class="hero-headline" data-i18n="hero.headline">One chat.<br>Many lives.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">
+      It already knows when the shop's closed, when the rain's coming, when you depart, what your kids drink off-menu.
+    </p>
+    <a href="#waitlist" class="cta-btn" data-i18n="hero.cta">Join the waitlist</a>
+  </div>
+</section>
+
+<!-- ===== CHAT STREAM ===== -->
+<section class="chat-stream" id="chat-stream">
+  <p class="section-eyebrow" data-i18n="stream.eyebrow">Real conversations</p>
+  <h2 class="section-title" data-i18n="stream.title">One chat. Many lives.</h2>
+  <p class="section-sub" data-i18n="stream.sub">Six languages. Eight moments. This is what it actually feels like.</p>
+
+  <div class="chat-grid">
+
+    <!-- Card 1 — Solo · Active · RU · Херцег-Нови · 16:23 -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Solo &middot; Active &middot; RU &middot; Херцег-Нови &middot; 16:23
       </div>
+      <div class="msg msg-user">где щас свежая рыба недорого</div>
+      <div class="msg msg-app">Прямо сейчас: Konoba Skoljka, 4 мин, кальмар €10. Но в 16:00 у Перо на причале сибас €8/кг, наличные. Не для туристов.</div>
+    </article>
+
+    <!-- Card 2 — Family · Tourist · EN · Tivat · 11:42 -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Family &middot; Tourist &middot; EN &middot; Tivat &middot; 11:42
+      </div>
+      <div class="msg msg-user">is the aquarium open today? we have a 4yo melting down lol</div>
+      <div class="msg msg-app">Closed Mondays. Tivat aquarium open till 18:00, 22 min drive, kids €4. Apple juice at cafe (off menu) — ask staff.</div>
+    </article>
+
+    <!-- Ambient image 1 -->
+    <div class="chat-ambient" data-reveal>
+      <img src="assets/persona-marta-modern.png" alt="" loading="lazy" decoding="async" width="320" height="180">
     </div>
-    <p class="social-proof fade-in fade-in-delay-3">Join <span class="social-proof-count" id="socialProofHero">340+</span> early adopters already on the waitlist</p>
-    <form class="hero-form fade-in fade-in-delay-3" id="subscribeForm" onsubmit="return handleSubscribe(event, 'hero')">
-      <input type="email" id="emailInput" placeholder="your@email.com" required>
-      <button type="submit">Notify Me</button>
+
+    <!-- Card 3 — Resident · SR · Kotor · Saturday 09:15 -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Resident &middot; SR &middot; Kotor &middot; Saturday 09:15
+      </div>
+      <div class="msg msg-user">gde mogu da platim parking u Kotoru subotom</div>
+      <div class="msg msg-app">Stara zona 1: SMS na 9135, 2€/h. Plac kod tržnice 1.5€/h. Nedjeljom besplatno svuda u staroj zoni do 12:00.</div>
+    </article>
+
+    <!-- Card 4 — Pre-arrival · Couple · UK · Pre-Budva · Sunday morning -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Couple &middot; UK &middot; Pre-Budva &middot; Sunday morning
+      </div>
+      <div class="msg msg-user">приїжджаю в неділю в Будву, де поснідати</div>
+      <div class="msg msg-app">Pekara Mediteran — свіжий бурек з 7:00, місцеві черги, €3-4. Або кафе Mozart на променаді €8-12 — повільніше але з видом.</div>
+    </article>
+
+    <!-- Ambient image 2 -->
+    <div class="chat-ambient" data-reveal>
+      <img src="assets/persona-aleks-modern.png" alt="" loading="lazy" decoding="async" width="320" height="180">
+    </div>
+
+    <!-- Card 5 — Couple · Active · ME · Kotor · evening -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Couple &middot; Active &middot; ME &middot; Kotor &middot; evening
+      </div>
+      <div class="msg msg-user">gdje za sunset najbolje, ne preturistično</div>
+      <div class="msg msg-app">Tvrđava Sveti Ivan iznad Kotora — 1200 stepenica, 45 min penjanja. Sutra zalazak 19:42, vedro. Bez kafića, ponesi vodu.</div>
+    </article>
+
+    <!-- Card 6 — Solo · Active · HR · Risan · January morning -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Solo &middot; Active &middot; HR &middot; Risan &middot; January morning
+      </div>
+      <div class="msg msg-user">kayaking sutra rano? more je hladno</div>
+      <div class="msg msg-app">Jutros 16°C, sutra 17°C — granica. Iznajmljivanje Risan Bay s neoprenom 5mm uključen €30/3h. Ne preporučujem ako prvi put.</div>
+    </article>
+
+    <!-- Ambient image 3 -->
+    <div class="chat-ambient" data-reveal>
+      <img src="assets/persona-sofia-modern.png" alt="" loading="lazy" decoding="async" width="320" height="180">
+    </div>
+
+    <!-- Card 7 — Solo · Tourist · EN · Kotor · 22:18 -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Solo &middot; Tourist &middot; EN &middot; Kotor &middot; 22:18
+      </div>
+      <div class="msg msg-user">any cool bars tonight that aren't tourist traps</div>
+      <div class="msg msg-app">Bokun in old town — locals, no English menu, opens 21:00. Or Caribic Pub if you want live music — Wed is jazz night.</div>
+    </article>
+
+    <!-- Card 8 — Family · Tourist · RU · Tivat · 14:50 -->
+    <article class="chat-card" data-reveal>
+      <div class="context-tag">
+        <span class="dot live"></span>
+        Family &middot; Tourist &middot; RU &middot; Tivat &middot; 14:50
+      </div>
+      <div class="msg msg-user">где купаться с маленькими детьми, чтобы вход в воду пологий</div>
+      <div class="msg msg-app">Trašte (5 мин от Тивата) — пологий вход, песок, навесы. €15/день за два лежака. Альтернатива Plavi Horizonti €20.</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== WHY IT WORKS ===== -->
+<section class="why-section">
+  <img src="assets/persona-marko-modern.png" alt="" class="why-ambient" loading="lazy" decoding="async" width="280" height="400">
+  <div class="why-inner">
+    <p class="why-title" data-i18n="why.eyebrow">Why this works</p>
+    <div class="why-sentences">
+      <p class="why-sentence" data-reveal-seq data-i18n="why.s1">It learns what you order.</p>
+      <p class="why-sentence" data-reveal-seq data-i18n="why.s2">It checks the weather, the hours, your departure date.</p>
+      <p class="why-sentence" data-reveal-seq data-i18n="why.s3">It knows the SMS code per municipality.</p>
+      <p class="why-sentence" data-reveal-seq data-i18n="why.s4">It speaks like the locals do — formal Serbian, casual Russian, Ukrainian-with-Russian fallback.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST 18 ===== -->
+<section class="trust-section">
+  <div class="trust-number" data-reveal>18</div>
+  <h2 class="trust-headline" data-i18n="trust.headline">We've codified 18 hard rules so the chat never lies to you.</h2>
+  <button class="trust-toggle" id="trust-toggle" data-i18n="trust.toggle">see all 18 →</button>
+  <div class="trust-details" id="trust-details">
+    <ul class="trust-rules">
+      <li data-i18n="rule.1">We won't recommend a beach in cold rain</li>
+      <li data-i18n="rule.2">We won't recommend events after your departure</li>
+      <li data-i18n="rule.3">We won't surface a closed shop as a top pick</li>
+      <li data-i18n="rule.4">We won't recommend off-season venues without a flag</li>
+      <li data-i18n="rule.5">We won't show 18+ events to families</li>
+      <li data-i18n="rule.6">We won't ignore allergens silently</li>
+      <li data-i18n="rule.7">We won't give normal hours on a public holiday</li>
+      <li data-i18n="rule.8">We won't present a venue as wheelchair-accessible without data</li>
+      <li data-i18n="rule.9">We won't recommend late-night venues to families with kids</li>
+      <li data-i18n="rule.10">We won't recommend a sunset viewpoint after the sun has set</li>
+      <li data-i18n="rule.11">We won't recommend boat trips in low visibility weather</li>
+      <li data-i18n="rule.12">We won't recommend the Ada Bojana ferry in off-season</li>
+      <li data-i18n="rule.13">We won't tell you to go to the bank on a Sunday</li>
+      <li data-i18n="rule.14">We won't suggest street parking in Zone 1 without the SMS code</li>
+      <li data-i18n="rule.15">We won't recommend swimming if the sea is below 18°C without a warning</li>
+      <li data-i18n="rule.16">We won't suggest multi-day bookings on your last night</li>
+      <li data-i18n="rule.17">We won't present a duty pharmacy as 24/7 without confirming the rotation</li>
+      <li data-i18n="rule.18">We won't put outdoor activities top-of-list when rain is 75%+ likely</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" id="waitlist">
+  <div class="cta-glow"></div>
+  <div class="final-inner">
+    <p class="final-eyebrow" data-i18n="cta.eyebrow">Early access</p>
+    <h2 class="final-headline" data-i18n="cta.headline">Coming<br>Q3 2026</h2>
+    <p class="final-sub" data-i18n="cta.platforms">iOS &middot; Android &middot; Web</p>
+    <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlist(event)">
+      <input
+        type="email"
+        class="waitlist-input"
+        id="waitlist-email"
+        placeholder="your@email.com"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      >
+      <button type="submit" class="waitlist-submit" data-i18n="cta.submit">Join waitlist</button>
     </form>
-    <p class="hero-form-msg" id="formMsg"></p>
-    <p class="hero-incentive fade-in fade-in-delay-3">First 500 subscribers get 200 bonus credits at launch</p>
-  </div>
-</section>
-
-<!-- ===== FEATURES ===== -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="features-header fade-in">
-      <p class="section-label">Features</p>
-      <h2 class="section-title">Everything you need<br>to explore Montenegro</h2>
-      <p class="section-subtitle">From hidden beaches to the best local restaurants, your AI assistant knows it all.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
-        </div>
-        <h3>AI Chat</h3>
-        <p>Ask about beaches, restaurants, routes, and more. Powered by AI with local expertise.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3>Explore</h3>
-        <p>Discover places on an interactive map with curated local recommendations.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>8 Languages</h3>
-        <p>RU, EN, DE, PL, FR, IT, SR, TR &mdash; we speak your language fluently.</p>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFD60A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
-        </div>
-        <h3>50 Free Questions</h3>
-        <p>Start for free every month. No credit card needed. Just ask.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== APP PREVIEW ===== -->
-<section class="app-preview" id="preview">
-  <div class="container">
-    <div class="app-preview-inner">
-      <div class="app-preview-text fade-in">
-        <p class="section-label">App Preview</p>
-        <h2 class="section-title">Like chatting with a local friend</h2>
-        <p class="section-subtitle">Natural conversation. Instant answers. Whether you need the best beach near Herceg Novi or emergency numbers &mdash; just ask.</p>
-      </div>
-      <div class="app-preview-phone fade-in fade-in-delay-2">
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-status-bar">
-              <span>9:41</span>
-              <span style="display:flex;gap:4px;align-items:center;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
-              </span>
-            </div>
-            <div class="phone-header">
-              <span class="phone-header-title">AskMontenegro</span>
-              <span class="phone-header-credits">47 credits</span>
-            </div>
-            <div class="phone-chat" id="phoneChat">
-              <div class="chat-msg user">Best beaches near Herceg Novi?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Honestly, take the boat to Žanjice &mdash; nothing else compares. But if you want something wilder, hop off one stop earlier:</div>
-                <div class="rec-cards">
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Žanjice Beach <span class="rating">&starf; 4.9</span></div>
-                    <div class="rec-card-desc">Turquoise water, pine shade, beach bar. The one everyone talks about.</div>
-                    <div class="rec-card-meta">&#128674; Boat from HN marina, 20 min, &euro;5 round trip</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127958; Mirišta Beach</div>
-                    <div class="rec-card-desc">Same boat, one stop before Žanjice. No crowds, no sunbeds &mdash; just you and the sea.</div>
-                    <div class="rec-card-meta">&#128161; Bring water and snacks, no shops nearby</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                </div>
-                <div class="bot-tip">&#128172; Tip: boats leave every 30 min from 9 AM. Go before 11 to grab a good spot at Žanjice.</div>
-              </div>
-              <div class="chat-msg user">Where to eat fresh seafood?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Go to Konoba Feral, right on the marina. Order the grilled octopus &mdash; trust me.</div>
-                <div class="rec-cards">
-                  <div class="rec-card">
-                    <div class="rec-card-title">&#127869; Konoba Feral <span class="rating">&starf; 4.8</span></div>
-                    <div class="rec-card-desc">Waterfront terrace, huge portions, locals eat here too.</div>
-                    <div class="rec-card-meta">&#128176; &euro;12&ndash;18 per dish &middot; &#128694; 5 min walk from Old Town</div>
-                    <span class="rec-card-link">&#128205; View on map &rarr;</span>
-                  </div>
-                </div>
-                <div class="bot-tip">&#128172; Tip: no reservation needed for lunch, but book ahead for dinner &mdash; it fills up fast in summer.</div>
-              </div>
-              <div class="chat-msg user">Can I pay by card everywhere?</div>
-              <div class="chat-msg bot">
-                <div class="bot-text">Most restaurants and shops in Herceg Novi accept Visa and Mastercard. Smaller konobas and markets are still cash-only though, so keep &euro;20&ndash;30 on you. ATMs are on Njegoševa street and by the main square &mdash; use ones from CKB or Erste to avoid extra fees.</div>
-              </div>
-            </div>
-            <div class="phone-input-bar">
-              <div class="phone-input-field">Ask anything about Montenegro...</div>
-              <div class="phone-send-btn">
-                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-inner">
-      <div class="about-text fade-in">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Built for tourists exploring Montenegro</h2>
-        <p class="section-subtitle" style="margin-bottom:20px;">Phase 1 launches in Herceg Novi, expanding to cover all 25 municipalities of Montenegro.</p>
-        <p class="section-subtitle">Over 2.5 million tourists visit Montenegro every year. We're building the guide they deserve &mdash; one that speaks their language and knows every hidden corner.</p>
-        <div class="about-topics">
-          <span class="topic-tag">Beaches</span>
-          <span class="topic-tag">Restaurants</span>
-          <span class="topic-tag">Attractions</span>
-          <span class="topic-tag">Routes</span>
-          <span class="topic-tag">Emergency Info</span>
-          <span class="topic-tag">Transport</span>
-          <span class="topic-tag">Weather</span>
-          <span class="topic-tag">Nightlife</span>
-        </div>
-      </div>
-      <div class="about-stats fade-in fade-in-delay-2">
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-number">2.5M+</div>
-            <div class="stat-label">Tourists / year</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">25</div>
-            <div class="stat-label">Municipalities</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Languages</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">50</div>
-            <div class="stat-label">Free questions / mo</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SECOND EMAIL CTA ===== -->
-<section class="second-cta" id="secondCta">
-  <div class="container">
-    <div class="fade-in">
-      <p class="section-label">Get Early Access</p>
-      <h2 class="section-title">Ready to explore Montenegro smarter?</h2>
-      <p class="section-subtitle">Join the waitlist and be the first to experience AI-powered local expertise.</p>
-    </div>
-    <p class="social-proof fade-in fade-in-delay-1">Join <span class="social-proof-count" id="socialProofCta">340+</span> early adopters already on the waitlist</p>
-    <form class="second-cta-form fade-in fade-in-delay-2" id="subscribeForm2" onsubmit="return handleSubscribe(event, 'cta')">
-      <input type="email" id="emailInput2" placeholder="your@email.com" required>
-      <button type="submit">Join the Waitlist</button>
-    </form>
-    <p class="second-cta-msg" id="formMsg2"></p>
-    <p class="hero-incentive fade-in fade-in-delay-2">First 500 subscribers get 200 bonus credits at launch</p>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="fade-in">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Stay connected</h2>
-      <p class="section-subtitle" style="margin:0 auto;">Follow us for updates, tips, and launch announcements.</p>
-    </div>
-    <div class="contact-links fade-in fade-in-delay-1">
-      <a href="https://instagram.com/ask.montenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Instagram</div>
-          <div class="value">@ask.montenegro</div>
-        </div>
-      </a>
-      <a href="https://t.me/askmontenegro" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9 22 2z"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Telegram</div>
-          <div class="value">t.me/askmontenegro</div>
-        </div>
-      </a>
-      <a href="mailto:hello@askmontenegro.com" class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <div class="contact-info">
-          <div class="label">Email</div>
-          <div class="value">hello@askmontenegro.com</div>
-        </div>
-      </a>
-    </div>
+    <p class="form-note" data-i18n="cta.note">No spam. One email when we launch.</p>
+    <p class="form-thanks" id="form-thanks" data-i18n="cta.thanks">You're on the list. We'll be in touch.</p>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <div class="container">
-    <p>&copy; 2026 AskMontenegro</p>
-    <p>Made with <span class="heart">&hearts;</span> in Herceg Novi, Montenegro</p>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-  </div>
+  <span class="footer-wordmark">AskMontenegro</span>
+  <span class="footer-right">
+    &copy; 2026 AskMontenegro &nbsp;&middot;&nbsp;
+    <a href="mailto:hello@askmontenegro.com">hello@askmontenegro.com</a>
+  </span>
 </footer>
 
-<!-- ===== SCROLL TOP ===== -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">&#8593;</button>
-
 <script>
-/* ===== NAV SCROLL ===== */
-const nav = document.getElementById('nav');
-const scrollTopBtn = document.getElementById('scrollTop');
+/* ===== TRANSLATIONS ===== */
+const i18n = {
+  en: {
+    "hero.headline": "One chat.<br>Many lives.",
+    "hero.sub": "It already knows when the shop's closed, when the rain's coming, when you depart, what your kids drink off-menu.",
+    "hero.cta": "Join the waitlist",
+    "stream.eyebrow": "Real conversations",
+    "stream.title": "One chat. Many lives.",
+    "stream.sub": "Six languages. Eight moments. This is what it actually feels like.",
+    "why.eyebrow": "Why this works",
+    "why.s1": "It learns what you order.",
+    "why.s2": "It checks the weather, the hours, your departure date.",
+    "why.s3": "It knows the SMS code per municipality.",
+    "why.s4": "It speaks like the locals do — formal Serbian, casual Russian, Ukrainian-with-Russian fallback.",
+    "trust.headline": "We've codified 18 hard rules so the chat never lies to you.",
+    "trust.toggle": "see all 18 →",
+    "rule.1": "We won't recommend a beach in cold rain",
+    "rule.2": "We won't recommend events after your departure",
+    "rule.3": "We won't surface a closed shop as a top pick",
+    "rule.4": "We won't recommend off-season venues without a flag",
+    "rule.5": "We won't show 18+ events to families",
+    "rule.6": "We won't ignore allergens silently",
+    "rule.7": "We won't give normal hours on a public holiday",
+    "rule.8": "We won't present a venue as wheelchair-accessible without data",
+    "rule.9": "We won't recommend late-night venues to families with kids",
+    "rule.10": "We won't recommend a sunset viewpoint after the sun has set",
+    "rule.11": "We won't recommend boat trips in low visibility weather",
+    "rule.12": "We won't recommend the Ada Bojana ferry in off-season",
+    "rule.13": "We won't tell you to go to the bank on a Sunday",
+    "rule.14": "We won't suggest street parking in Zone 1 without the SMS code",
+    "rule.15": "We won't recommend swimming if the sea is below 18°C without a warning",
+    "rule.16": "We won't suggest multi-day bookings on your last night",
+    "rule.17": "We won't present a duty pharmacy as 24/7 without confirming the rotation",
+    "rule.18": "We won't put outdoor activities top-of-list when rain is 75%+ likely",
+    "cta.eyebrow": "Early access",
+    "cta.headline": "Coming<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Join waitlist",
+    "cta.note": "No spam. One email when we launch.",
+    "cta.thanks": "You're on the list. We'll be in touch."
+  },
+  ru: {
+    "hero.headline": "Один чат.<br>Много жизней.",
+    "hero.sub": "Он уже знает, когда закрыт магазин, когда начнётся дождь, когда вы уезжаете и что ваши дети заказывают вне меню.",
+    "hero.cta": "В список ожидания",
+    "stream.eyebrow": "Настоящие разговоры",
+    "stream.title": "Один чат. Много жизней.",
+    "stream.sub": "Шесть языков. Восемь моментов. Вот как это работает.",
+    "why.eyebrow": "Почему это работает",
+    "why.s1": "Он запоминает, что вы заказываете.",
+    "why.s2": "Он проверяет погоду, часы работы, дату вашего отъезда.",
+    "why.s3": "Он знает SMS-код для каждого муниципалитета.",
+    "why.s4": "Говорит как местные — официальный сербский, разговорный русский, украинский с русским фоллбэком.",
+    "trust.headline": "Мы закодировали 18 жёстких правил, чтобы чат никогда вас не вводил в заблуждение.",
+    "trust.toggle": "все 18 правил →",
+    "rule.1": "Не посоветуем пляж в холодный дождь",
+    "rule.2": "Не предложим мероприятия после вашего отъезда",
+    "rule.3": "Не будем рекомендовать закрытое место в топе",
+    "rule.4": "Не порекомендуем сезонные места без пометки",
+    "rule.5": "Не покажем мероприятия 18+ семьям с детьми",
+    "rule.6": "Не умолчим об аллергенах",
+    "rule.7": "Не дадим обычные часы работы в праздник",
+    "rule.8": "Не назовём место доступным для колясочников без данных",
+    "rule.9": "Не порекомендуем поздние заведения семьям с детьми",
+    "rule.10": "Не предложим смотровую площадку для заката после захода солнца",
+    "rule.11": "Не порекомендуем морские прогулки в плохую погоду",
+    "rule.12": "Не предложим паром на Аду Бояну в межсезонье",
+    "rule.13": "Не скажем «идите в банк» в воскресенье",
+    "rule.14": "Не предложим парковку в зоне 1 без SMS-кода",
+    "rule.15": "Не порекомендуем купаться при воде ниже 18°C без предупреждения",
+    "rule.16": "Не предложим многодневные бронирования в вашу последнюю ночь",
+    "rule.17": "Не назовём дежурную аптеку круглосуточной без подтверждения",
+    "rule.18": "Не поставим активный отдых на улице первым, если дождь с вероятностью 75%+",
+    "cta.eyebrow": "Ранний доступ",
+    "cta.headline": "Старт<br>III квартал 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "В список ожидания",
+    "cta.note": "Никакого спама. Одно письмо при запуске.",
+    "cta.thanks": "Вы в списке. Напишем при запуске."
+  },
+  sr: {
+    "hero.headline": "Jedan razgovor.<br>Mnogo života.",
+    "hero.sub": "Već zna kada je prodavnica zatvorena, kada stiže kiša, kada odlazite i šta vaša deca piju van menija.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan razgovor. Mnogo života.",
+    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcioniše",
+    "why.s1": "Pamti šta naručujete.",
+    "why.s2": "Proverava vreme, radno vreme, datum vašeg polaska.",
+    "why.s3": "Zna SMS kod za svaku opštinu.",
+    "why.s4": "Govori kao lokalci — zvanični srpski, opušteni ruski, ukrajinski sa ruskim rezervom.",
+    "trust.headline": "Kodirali smo 18 strogih pravila da razgovor nikada ne bi lagao.",
+    "trust.toggle": "sva 18 pravila →",
+    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
+    "rule.2": "Nećemo predlagati događaje posle vašeg odlaska",
+    "rule.3": "Nećemo staviti zatvoreno mesto u vrh preporuka",
+    "rule.4": "Nećemo preporučiti van-sezonska mesta bez napomene",
+    "rule.5": "Nećemo pokazivati 18+ događaje porodicama",
+    "rule.6": "Nećemo preskočiti alergene u tišini",
+    "rule.7": "Nećemo dati normalno radno vreme na praznik",
+    "rule.8": "Nećemo reći da je mesto pristupačno za kolica bez podataka",
+    "rule.9": "Nećemo preporučiti kasnonoćna mesta porodicama s decom",
+    "rule.10": "Nećemo predlagati vidikovec za zalazak posle zalaska sunca",
+    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
+    "rule.12": "Nećemo predlagati skelu za Adu Bojanu van sezone",
+    "rule.13": "Nećemo reći 'idite u banku' nedeljom",
+    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
+    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
+    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
+    "rule.17": "Nećemo reći da je dežurna apoteka 24/7 bez potvrde rotacije",
+    "rule.18": "Nećemo staviti outdoor aktivnost na vrh liste kad je kišovito 75%+",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Nema spam-a. Jedan mejl pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javiću se pri lansiranju."
+  },
+  me: {
+    "hero.headline": "Jedan razgovor.<br>Mnogo života.",
+    "hero.sub": "Već zna kad je prodavnica zatvorena, kad dolazi kiša, kad odlazite i šta vaša djeca piju van menija.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan razgovor. Mnogo života.",
+    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcioniše",
+    "why.s1": "Pamti šta naručujete.",
+    "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
+    "why.s3": "Zna SMS kod za svaku opštinu.",
+    "why.s4": "Govori kao mještani — zvanički crnogorski, opušteni ruski, ukrajinski sa ruskim rezervom.",
+    "trust.headline": "Kodirali smo 18 čvrstih pravila da razgovor nikad ne laže.",
+    "trust.toggle": "sva 18 pravila →",
+    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
+    "rule.2": "Nećemo predlagati događaje nakon vašeg odlaska",
+    "rule.3": "Nećemo staviti zatvoreno mjesto u vrh preporuka",
+    "rule.4": "Nećemo preporučiti van-sezonska mjesta bez napomene",
+    "rule.5": "Nećemo prikazivati 18+ događaje porodicama",
+    "rule.6": "Nećemo preskočiti alergene u tišini",
+    "rule.7": "Nećemo dati normalno radno vrijeme na praznik",
+    "rule.8": "Nećemo reći da je mjesto pristupačno za kolica bez podataka",
+    "rule.9": "Nećemo preporučiti kasnonoćna mjesta porodicama s djecom",
+    "rule.10": "Nećemo predlagati vidikovac za zalazak poslije zalaska",
+    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
+    "rule.12": "Nećemo predlagati trajekt za Adu Bojanu van sezone",
+    "rule.13": "Nećemo reći 'idite u banku' nedjeljom",
+    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
+    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
+    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
+    "rule.17": "Nećemo reći da je dežurna apoteka 24/7 bez potvrde rotacije",
+    "rule.18": "Nećemo stavljati outdoor aktivnost na vrh liste kad je kišovito 75%+",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Nema spama. Jedan mejl pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javim se pri lansiranju."
+  },
+  uk: {
+    "hero.headline": "Один чат.<br>Багато життів.",
+    "hero.sub": "Він вже знає, коли зачинений магазин, коли буде дощ, коли ви їдете і що ваші діти п'ють поза меню.",
+    "hero.cta": "До списку очікування",
+    "stream.eyebrow": "Справжні розмови",
+    "stream.title": "Один чат. Багато життів.",
+    "stream.sub": "Шість мов. Вісім моментів. Ось як це виглядає насправді.",
+    "why.eyebrow": "Чому це працює",
+    "why.s1": "Він запам'ятовує, що ви замовляєте.",
+    "why.s2": "Він перевіряє погоду, години роботи, дату вашого від'їзду.",
+    "why.s3": "Він знає SMS-код для кожного муніципалітету.",
+    "why.s4": "Говорить як місцеві — офіційна сербська, розмовна російська, українська з російським запасним варіантом.",
+    "trust.headline": "Ми закодували 18 жорстких правил, щоб чат ніколи вас не вводив в оману.",
+    "trust.toggle": "всі 18 правил →",
+    "rule.1": "Не порекомендуємо пляж у холодний дощ",
+    "rule.2": "Не запропонуємо події після вашого від'їзду",
+    "rule.3": "Не поставимо зачинене місце в топ рекомендацій",
+    "rule.4": "Не порекомендуємо позасезонні місця без позначки",
+    "rule.5": "Не покажемо заходи 18+ сім'ям з дітьми",
+    "rule.6": "Не промовчимо про алергени",
+    "rule.7": "Не надамо звичайний графік у свято",
+    "rule.8": "Не назвемо місце доступним для візків без даних",
+    "rule.9": "Не порекомендуємо нічні заклади сім'ям з дітьми",
+    "rule.10": "Не запропонуємо оглядовий майданчик для заходу після заходу сонця",
+    "rule.11": "Не порекомендуємо морські прогулянки в погану погоду",
+    "rule.12": "Не запропонуємо пором на Аду Бояну в міжсезоння",
+    "rule.13": "Не скажемо «йдіть у банк» у неділю",
+    "rule.14": "Не запропонуємо парковку в Зоні 1 без SMS-коду",
+    "rule.15": "Не порекомендуємо купатись при температурі моря нижче 18°C без попередження",
+    "rule.16": "Не запропонуємо багатоденні бронювання в останню ніч",
+    "rule.17": "Не назвемо чергову аптеку цілодобовою без підтвердження ротації",
+    "rule.18": "Не поставимо активний відпочинок на вулиці першим, якщо дощ з вірогідністю 75%+",
+    "cta.eyebrow": "Ранній доступ",
+    "cta.headline": "Вихід<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "До списку",
+    "cta.note": "Без спаму. Один лист при запуску.",
+    "cta.thanks": "Ви у списку. Напишемо при запуску."
+  },
+  hr: {
+    "hero.headline": "Jedan chat.<br>Mnogo života.",
+    "hero.sub": "Već zna kad je prodavaonica zatvorena, kad dolazi kiša, kad odlazite i što vaša djeca piju izvan jelovnika.",
+    "hero.cta": "Pridruži se listi čekanja",
+    "stream.eyebrow": "Pravi razgovori",
+    "stream.title": "Jedan chat. Mnogo života.",
+    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "why.eyebrow": "Zašto ovo funkcionira",
+    "why.s1": "Pamti što naručujete.",
+    "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
+    "why.s3": "Zna SMS kod za svaki municipalitet.",
+    "why.s4": "Govori kao lokalni — formalni srpski, opušteni ruski, ukrajinski s ruskim rezervnim jezikom.",
+    "trust.headline": "Kodirali smo 18 čvrstih pravila da razgovor nikad ne laže.",
+    "trust.toggle": "svih 18 pravila →",
+    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
+    "rule.2": "Nećemo predlagati događaje nakon vašeg odlaska",
+    "rule.3": "Nećemo staviti zatvoreno mjesto na vrh preporuka",
+    "rule.4": "Nećemo preporučiti izvansezionska mjesta bez napomene",
+    "rule.5": "Nećemo prikazivati 18+ događaje obiteljima",
+    "rule.6": "Nećemo preskočiti alergene u šutnji",
+    "rule.7": "Nećemo dati normalno radno vrijeme na blagdan",
+    "rule.8": "Nećemo reći da je mjesto dostupno za invalidska kolica bez podataka",
+    "rule.9": "Nećemo preporučiti noćne lokale obiteljima s djecom",
+    "rule.10": "Nećemo predlagati vidikovac za zalazak sunca nakon zalaska",
+    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
+    "rule.12": "Nećemo predlagati trajekt za Adu Bojanu izvan sezone",
+    "rule.13": "Nećemo reći 'idite u banku' u nedjelju",
+    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
+    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
+    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
+    "rule.17": "Nećemo reći da je dežurna ljekarna 24/7 bez potvrde rotacije",
+    "rule.18": "Nećemo staviti outdoor aktivnost na vrh liste kad je vjerojatnost kiše 75%+",
+    "cta.eyebrow": "Rani pristup",
+    "cta.headline": "Dolazi<br>Q3 2026",
+    "cta.platforms": "iOS · Android · Web",
+    "cta.submit": "Pridruži se",
+    "cta.note": "Bez spama. Jedan e-mail pri lansiranju.",
+    "cta.thanks": "Na listi ste. Javit ćemo se pri lansiranju."
+  }
+};
 
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  nav.classList.toggle('scrolled', y > 50);
-  scrollTopBtn.classList.toggle('visible', y > 600);
-});
+/* ===== LANGUAGE LOGIC ===== */
+let currentLang = 'en';
 
-/* ===== HAMBURGER MENU ===== */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+function detectLang() {
+  const stored = localStorage.getItem('askmn-lang');
+  if (stored && i18n[stored]) return stored;
+  const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase().slice(0,2);
+  const map = { ru:'ru', sr:'sr', me:'me', uk:'uk', hr:'hr', bs:'me', mk:'sr' };
+  return map[browser] || 'en';
+}
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('open');
-  nav.classList.toggle('menu-open', navLinks.classList.contains('open'));
-  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-});
+function applyLang(lang) {
+  if (!i18n[lang]) lang = 'en';
+  currentLang = lang;
+  localStorage.setItem('askmn-lang', lang);
+  document.documentElement.lang = lang;
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('open');
-    nav.classList.remove('menu-open');
-    document.body.style.overflow = '';
-  });
-});
-
-/* ===== FADE IN ON SCROLL ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-/* ===== COUNTDOWN TIMER ===== */
-const launchDate = new Date('2026-05-15T00:00:00').getTime();
-
-function updateCountdown() {
-  const now = Date.now();
-  const diff = launchDate - now;
-
-  if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '0';
-    document.getElementById('cd-hours').textContent = '0';
-    document.getElementById('cd-mins').textContent = '0';
-    document.getElementById('cd-secs').textContent = '0';
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById('cd-days').textContent = days;
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
 
-/* ===== SUBSCRIBER COUNT (localStorage) ===== */
-const BASE_COUNT = 340;
-function getSubscriberCount() {
-  const stored = localStorage.getItem('am_subscribers');
-  return stored ? parseInt(stored, 10) : 0;
-}
-function addSubscriber() {
-  const current = getSubscriberCount();
-  localStorage.setItem('am_subscribers', current + 1);
-  updateSocialProof();
-}
-function updateSocialProof() {
-  const total = BASE_COUNT + getSubscriberCount();
-  const text = total + '+';
-  const heroEl = document.getElementById('socialProofHero');
-  const ctaEl = document.getElementById('socialProofCta');
-  if (heroEl) heroEl.textContent = text;
-  if (ctaEl) ctaEl.textContent = text;
-}
-updateSocialProof();
+/* ===== SCROLL REVEAL ===== */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ===== SUBSCRIBE FORM ===== */
-function handleSubscribe(e, source) {
+if (!prefersReduced) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+  // Sequential reveal for why-section sentences
+  const seqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sentences = entry.target.querySelectorAll('[data-reveal-seq]');
+        sentences.forEach((s, i) => {
+          setTimeout(() => s.classList.add('visible'), i * 160);
+        });
+        seqObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  const whyInner = document.querySelector('.why-sentences');
+  if (whyInner) seqObserver.observe(whyInner.closest('.why-section'));
+} else {
+  // Reduced motion: show everything immediately
+  document.querySelectorAll('[data-reveal], [data-reveal-seq]').forEach(el => el.classList.add('visible'));
+}
+
+/* ===== TRUST TOGGLE ===== */
+document.getElementById('trust-toggle').addEventListener('click', function() {
+  const details = document.getElementById('trust-details');
+  const isOpen = details.classList.toggle('open');
+  this.innerHTML = isOpen
+    ? (i18n[currentLang]['trust.toggle'] || 'see all 18 →').replace('→', '↑')
+    : (i18n[currentLang]['trust.toggle'] || 'see all 18 →');
+});
+
+/* ===== WAITLIST FORM ===== */
+function handleWaitlist(e) {
   e.preventDefault();
-  const inputId = source === 'hero' ? 'emailInput' : 'emailInput2';
-  const msgId = source === 'hero' ? 'formMsg' : 'formMsg2';
-  const email = document.getElementById(inputId).value.trim();
-  const msg = document.getElementById(msgId);
+  const email = document.getElementById('waitlist-email').value;
+  const form = document.getElementById('waitlist-form');
+  const thanks = document.getElementById('form-thanks');
 
-  if (!email || !email.includes('@')) {
-    msg.textContent = 'Please enter a valid email address.';
-    msg.style.color = 'var(--coral)';
-    return false;
-  }
+  // Fallback: open mailto
+  window.location.href = 'mailto:hello@askmontenegro.com?subject=Waitlist&body=' + encodeURIComponent(email);
 
-  /* Store in localStorage */
-  const emails = JSON.parse(localStorage.getItem('am_emails') || '[]');
-  if (!emails.includes(email)) {
-    emails.push(email);
-    localStorage.setItem('am_emails', JSON.stringify(emails));
-    addSubscriber();
-  }
-
-  msg.textContent = 'Thanks! We\'ll notify you when we launch.';
-  msg.style.color = 'var(--teal)';
-  document.getElementById(inputId).value = '';
-  return false;
+  form.style.opacity = '0.4';
+  form.style.pointerEvents = 'none';
+  thanks.style.display = 'block';
 }
 
-/* ===== SMOOTH SCROLL FOR NAV LINKS ===== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-/* ===== PHONE MOCKUP TYPING ANIMATION ===== */
-/* Chat is static — no animation needed */
+/* ===== INIT ===== */
+applyLang(detectLang());
 </script>
+
 </body>
 </html>
