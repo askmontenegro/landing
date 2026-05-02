@@ -79,7 +79,7 @@ button, input { font-family: inherit; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 4px 6px;
   border-radius: 20px;
   transition: all 0.15s;
 }
@@ -371,74 +371,39 @@ button, input { font-family: inherit; }
   .why-ambient { display:none; }
 }
 
-/* ===== TRUST 18 ===== */
-.trust-section {
-  background: var(--off-white);
-  padding: var(--section-pad) 24px;
+/* ===== TRUST MANIFESTO ===== */
+.trust-manifesto {
+  padding: clamp(80px, 12vh, 160px) 24px;
+  background: #FAFAFA;
+}
+.trust-inner {
+  max-width: 720px;
+  margin: 0 auto;
   text-align: center;
 }
-.trust-number {
-  font-size: clamp(120px, 20vw, 200px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-  color: var(--gold);
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.trust-number.visible { opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce) { .trust-number { opacity:1; transform:none; } }
-.trust-headline {
-  font-size: clamp(18px, 2.5vw, 26px);
-  font-weight: 600;
-  color: var(--navy);
-  max-width: 520px;
-  margin: 0 auto 20px;
-  line-height: 1.4;
-}
-.trust-toggle {
-  display: inline-block;
-  color: var(--coral);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  background: none;
-  border: none;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  padding: 0;
-}
-.trust-details {
-  max-width: 640px;
-  margin: 24px auto 0;
-  text-align: left;
-  display: none;
-}
-.trust-details.open { display: block; }
-.trust-rules {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-@media (min-width: 600px) {
-  .trust-rules { grid-template-columns: 1fr 1fr; }
-}
-.trust-rules li {
-  font-size: 14px;
-  color: var(--text-body);
-  padding: 10px 14px;
-  background: var(--gray-light);
-  border-radius: 10px;
-  line-height: 1.45;
-}
-.trust-rules li::before {
-  content: "—";
-  color: var(--coral);
-  margin-right: 8px;
+.trust-heading {
+  font-size: clamp(36px, 5vw, 56px);
   font-weight: 700;
+  color: #1B2B3A;
+  margin-bottom: 32px;
+  line-height: 1.15;
+}
+.trust-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #FF6B35;
+  margin: 24px auto 0;
+}
+.trust-body {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.7;
+  color: #1B2B3A;
+  font-weight: 400;
+}
+.trust-body p {
+  margin-bottom: 1.2em;
 }
 
 /* ===== FINAL CTA ===== */
@@ -608,6 +573,7 @@ button, input { font-family: inherit; }
   <button class="lang-btn" data-lang="me">ME</button>
   <button class="lang-btn" data-lang="uk">UK</button>
   <button class="lang-btn" data-lang="hr">HR</button>
+  <button class="lang-btn" data-lang="zh">中文</button>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -649,32 +615,11 @@ button, input { font-family: inherit; }
   </div>
 </section>
 
-<!-- ===== TRUST 18 ===== -->
-<section class="trust-section">
-  <div class="trust-number" data-reveal>18</div>
-  <h2 class="trust-headline" data-i18n="trust.headline">We've codified 18 hard rules so the chat never lies to you.</h2>
-  <button class="trust-toggle" id="trust-toggle" data-i18n="trust.toggle">see all 18 →</button>
-  <div class="trust-details" id="trust-details">
-    <ul class="trust-rules">
-      <li data-i18n="rule.1">We won't recommend a beach in cold rain</li>
-      <li data-i18n="rule.2">We won't recommend events after your departure</li>
-      <li data-i18n="rule.3">We won't surface a closed shop as a top pick</li>
-      <li data-i18n="rule.4">We won't recommend off-season venues without a flag</li>
-      <li data-i18n="rule.5">We won't show 18+ events to families</li>
-      <li data-i18n="rule.6">We won't ignore allergens silently</li>
-      <li data-i18n="rule.7">We won't give normal hours on a public holiday</li>
-      <li data-i18n="rule.8">We won't present a venue as wheelchair-accessible without data</li>
-      <li data-i18n="rule.9">We won't recommend late-night venues to families with kids</li>
-      <li data-i18n="rule.10">We won't recommend a sunset viewpoint after the sun has set</li>
-      <li data-i18n="rule.11">We won't recommend boat trips in low visibility weather</li>
-      <li data-i18n="rule.12">We won't recommend the Ada Bojana ferry in off-season</li>
-      <li data-i18n="rule.13">We won't tell you to go to the bank on a Sunday</li>
-      <li data-i18n="rule.14">We won't suggest street parking in Zone 1 without the SMS code</li>
-      <li data-i18n="rule.15">We won't recommend swimming if the sea is below 18°C without a warning</li>
-      <li data-i18n="rule.16">We won't suggest multi-day bookings on your last night</li>
-      <li data-i18n="rule.17">We won't present a duty pharmacy as 24/7 without confirming the rotation</li>
-      <li data-i18n="rule.18">We won't put outdoor activities top-of-list when rain is 75%+ likely</li>
-    </ul>
+<!-- ===== TRUST MANIFESTO ===== -->
+<section class="trust-manifesto" id="trust">
+  <div class="trust-inner">
+    <h2 class="trust-heading" data-i18n="trust.heading">Feel like a local.</h2>
+    <div class="trust-body" data-i18n="trust.body"><p>Not a tourist. Not someone given the same advice as everyone. Someone who knows Pero at the dock has sea bass at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p></div>
   </div>
 </section>
 
@@ -1013,6 +958,56 @@ const chatCards = {
       app: 'Trašte (5 min od Tivta) — blag ulaz, pijesak, suncobrani. €15/dan za dvije ležaljke. Alternativa Plavi Horizonti €20.',
       actions: ['📍 Ruta Trašte', '🅿️ Parking blizu']
     }
+  ],
+  zh: [
+    {
+      tag: '独行 · 活跃 · ZH · 赫尔采格诺维 · 16:23',
+      user: '现在哪里有便宜的新鲜鱼',
+      app: '现在: Konoba Skoljka 步行4分钟，鱿鱼€10。或者下午4点 — Pero 在渔码头卖海鲈鱼 €8/公斤，现金，本地人才知道。',
+      actions: ['📍 路线到码头', '⏰ 16:00 提醒']
+    },
+    {
+      tag: '家庭 · 游客 · ZH · 蒂瓦特 · 11:42',
+      user: '今天水族馆开门吗？我们有个4岁孩子在闹脾气',
+      app: '周一闭馆。蒂瓦特水族馆开到18:00，22分钟车程，儿童€4。咖啡厅有菜单外的苹果汁 — 问服务员。',
+      actions: ['📍 在地图打开', '⏰ 营业到 18:00']
+    },
+    {
+      tag: '本地人 · ZH · 科托尔 · 周六 09:15',
+      user: '周六在科托尔哪里能付停车费',
+      app: '老城1区: 短信发9135，€2/小时。市场广场停车 €1.5/小时。周日老城正午前免费。',
+      actions: ['📋 复制短信码 9135', '📍 市场广场']
+    },
+    {
+      tag: '到达前 · 情侣 · ZH · 布德瓦 · 周日早晨',
+      user: '周日去布德瓦，哪里吃早餐',
+      app: 'Pekara Mediteran — 早7点开门有新鲜布雷克饼，本地人排队，€3-4。或者海滨大道的Mozart咖啡 €8-12，慢一点但有海景。',
+      actions: ['📍 路线到 Pekara']
+    },
+    {
+      tag: '情侣 · 活跃 · ZH · 科托尔 · 傍晚',
+      user: '日落最佳地点，不要太游客化',
+      app: '科托尔上方的圣伊万要塞 — 1200级台阶，爬45分钟。明天日落 19:42，晴。无咖啡厅，自带水。',
+      actions: ['📅 加入日历 19:42', '📍 路线']
+    },
+    {
+      tag: '独行 · 活跃 · ZH · 里桑 · 一月清晨',
+      user: '明早去划皮划艇？海水冷不冷',
+      app: '今早 16°C，明天 17°C — 勉强可以。Risan Bay 含5mm潜水服出租 €30/3小时。第一次不建议。',
+      actions: ['📞 联系 Risan Bay', '📅 明早']
+    },
+    {
+      tag: '独行 · 游客 · ZH · 科托尔 · 22:18',
+      user: '今晚有什么不是游客陷阱的酒吧',
+      app: '老城的 Bokun — 本地人去，没有英文菜单，21:00开门。或者 Caribic Pub 想听现场音乐 — 周三爵士夜。',
+      actions: ['📍 路线到 Bokun', '📅 周三爵士']
+    },
+    {
+      tag: '家庭 · 游客 · ZH · 蒂瓦特 · 14:50',
+      user: '带小孩在哪里游泳，水浅一点的',
+      app: 'Trašte（距蒂瓦特5分钟）— 浅水入口，沙滩，遮阳棚。两张躺椅€15/天。备选 Plavi Horizonti €20。',
+      actions: ['📍 路线到 Trašte', '🅿️ 附近停车']
+    }
   ]
 };
 
@@ -1091,32 +1086,14 @@ const i18n = {
     "hero.cta": "Join the waitlist",
     "stream.eyebrow": "Real conversations",
     "stream.title": "One chat. Many lives.",
-    "stream.sub": "Six languages. Eight moments. This is what it actually feels like.",
+    "stream.sub": "Seven languages. Eight moments. This is what it actually feels like.",
     "why.eyebrow": "Why this works",
     "why.s1": "It learns what you order.",
     "why.s2": "It checks the weather, the hours, your departure date.",
     "why.s3": "It knows the SMS code per municipality.",
     "why.s4": "It speaks like the locals do — formal Serbian, casual Russian, Ukrainian-with-Russian fallback.",
-    "trust.headline": "We've codified 18 hard rules so the chat never lies to you.",
-    "trust.toggle": "see all 18 →",
-    "rule.1": "We won't recommend a beach in cold rain",
-    "rule.2": "We won't recommend events after your departure",
-    "rule.3": "We won't surface a closed shop as a top pick",
-    "rule.4": "We won't recommend off-season venues without a flag",
-    "rule.5": "We won't show 18+ events to families",
-    "rule.6": "We won't ignore allergens silently",
-    "rule.7": "We won't give normal hours on a public holiday",
-    "rule.8": "We won't present a venue as wheelchair-accessible without data",
-    "rule.9": "We won't recommend late-night venues to families with kids",
-    "rule.10": "We won't recommend a sunset viewpoint after the sun has set",
-    "rule.11": "We won't recommend boat trips in low visibility weather",
-    "rule.12": "We won't recommend the Ada Bojana ferry in off-season",
-    "rule.13": "We won't tell you to go to the bank on a Sunday",
-    "rule.14": "We won't suggest street parking in Zone 1 without the SMS code",
-    "rule.15": "We won't recommend swimming if the sea is below 18°C without a warning",
-    "rule.16": "We won't suggest multi-day bookings on your last night",
-    "rule.17": "We won't present a duty pharmacy as 24/7 without confirming the rotation",
-    "rule.18": "We won't put outdoor activities top-of-list when rain is 75%+ likely",
+    "trust.heading": "Feel like a local.",
+    "trust.body": "<p>Not a tourist. Not someone given the same advice as everyone. Someone who knows Pero at the dock has sea bass at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p>",
     "cta.eyebrow": "Early access",
     "cta.headline": "Coming<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1130,32 +1107,14 @@ const i18n = {
     "hero.cta": "В список ожидания",
     "stream.eyebrow": "Настоящие разговоры",
     "stream.title": "Один чат. Много жизней.",
-    "stream.sub": "Шесть языков. Восемь моментов. Вот как это работает.",
+    "stream.sub": "Семь языков. Восемь моментов. Вот как это работает.",
     "why.eyebrow": "Почему это работает",
     "why.s1": "Он запоминает, что вы заказываете.",
     "why.s2": "Он проверяет погоду, часы работы, дату вашего отъезда.",
     "why.s3": "Он знает SMS-код для каждого муниципалитета.",
     "why.s4": "Говорит как местные — официальный сербский, разговорный русский, украинский с русским фоллбэком.",
-    "trust.headline": "Мы закодировали 18 жёстких правил, чтобы чат никогда вас не вводил в заблуждение.",
-    "trust.toggle": "все 18 правил →",
-    "rule.1": "Не посоветуем пляж в холодный дождь",
-    "rule.2": "Не предложим мероприятия после вашего отъезда",
-    "rule.3": "Не будем рекомендовать закрытое место в топе",
-    "rule.4": "Не порекомендуем сезонные места без пометки",
-    "rule.5": "Не покажем мероприятия 18+ семьям с детьми",
-    "rule.6": "Не умолчим об аллергенах",
-    "rule.7": "Не дадим обычные часы работы в праздник",
-    "rule.8": "Не назовём место доступным для колясочников без данных",
-    "rule.9": "Не порекомендуем поздние заведения семьям с детьми",
-    "rule.10": "Не предложим смотровую площадку для заката после захода солнца",
-    "rule.11": "Не порекомендуем морские прогулки в плохую погоду",
-    "rule.12": "Не предложим паром на Аду Бояну в межсезонье",
-    "rule.13": "Не скажем «идите в банк» в воскресенье",
-    "rule.14": "Не предложим парковку в зоне 1 без SMS-кода",
-    "rule.15": "Не порекомендуем купаться при воде ниже 18°C без предупреждения",
-    "rule.16": "Не предложим многодневные бронирования в вашу последнюю ночь",
-    "rule.17": "Не назовём дежурную аптеку круглосуточной без подтверждения",
-    "rule.18": "Не поставим активный отдых на улице первым, если дождь с вероятностью 75%+",
+    "trust.heading": "Чувствовать себя местным",
+    "trust.body": "<p>Не туристом. Не тем, кому советуют то же, что всем. А тем, кто знает, что в 16:00 у Перо на причале сибас за €8/кг наличными. Что у официанта в той семейной конобе есть яблочный сок не из меню — для детей. Что в субботу Старый Котор платный, а в воскресенье до полудня — нет.</p><p>Этот чат знает то, что местные передают друг другу. И теперь — тебе.</p>",
     "cta.eyebrow": "Ранний доступ",
     "cta.headline": "Старт<br>III квартал 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1169,32 +1128,14 @@ const i18n = {
     "hero.cta": "Pridruži se listi čekanja",
     "stream.eyebrow": "Pravi razgovori",
     "stream.title": "Jedan razgovor. Mnogo života.",
-    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcioniše",
     "why.s1": "Pamti šta naručujete.",
     "why.s2": "Proverava vreme, radno vreme, datum vašeg polaska.",
     "why.s3": "Zna SMS kod za svaku opštinu.",
     "why.s4": "Govori kao lokalci — zvanični srpski, opušteni ruski, ukrajinski sa ruskim rezervom.",
-    "trust.headline": "Kodirali smo 18 strogih pravila da razgovor nikada ne bi lagao.",
-    "trust.toggle": "sva 18 pravila →",
-    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
-    "rule.2": "Nećemo predlagati događaje posle vašeg odlaska",
-    "rule.3": "Nećemo staviti zatvoreno mesto u vrh preporuka",
-    "rule.4": "Nećemo preporučiti van-sezonska mesta bez napomene",
-    "rule.5": "Nećemo pokazivati 18+ događaje porodicama",
-    "rule.6": "Nećemo preskočiti alergene u tišini",
-    "rule.7": "Nećemo dati normalno radno vreme na praznik",
-    "rule.8": "Nećemo reći da je mesto pristupačno za kolica bez podataka",
-    "rule.9": "Nećemo preporučiti kasnonoćna mesta porodicama s decom",
-    "rule.10": "Nećemo predlagati vidikovec za zalazak posle zalaska sunca",
-    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
-    "rule.12": "Nećemo predlagati skelu za Adu Bojanu van sezone",
-    "rule.13": "Nećemo reći 'idite u banku' nedeljom",
-    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
-    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
-    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
-    "rule.17": "Nećemo reći da je dežurna apoteka 24/7 bez potvrde rotacije",
-    "rule.18": "Nećemo staviti outdoor aktivnost na vrh liste kad je kišovito 75%+",
+    "trust.heading": "Oseti se kao lokalac.",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savete kao svima. Nego kao neko ko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za decu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1208,32 +1149,14 @@ const i18n = {
     "hero.cta": "Pridruži se listi čekanja",
     "stream.eyebrow": "Pravi razgovori",
     "stream.title": "Jedan razgovor. Mnogo života.",
-    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcioniše",
     "why.s1": "Pamti šta naručujete.",
     "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
     "why.s3": "Zna SMS kod za svaku opštinu.",
     "why.s4": "Govori kao mještani — zvanički crnogorski, opušteni ruski, ukrajinski sa ruskim rezervom.",
-    "trust.headline": "Kodirali smo 18 čvrstih pravila da razgovor nikad ne laže.",
-    "trust.toggle": "sva 18 pravila →",
-    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
-    "rule.2": "Nećemo predlagati događaje nakon vašeg odlaska",
-    "rule.3": "Nećemo staviti zatvoreno mjesto u vrh preporuka",
-    "rule.4": "Nećemo preporučiti van-sezonska mjesta bez napomene",
-    "rule.5": "Nećemo prikazivati 18+ događaje porodicama",
-    "rule.6": "Nećemo preskočiti alergene u tišini",
-    "rule.7": "Nećemo dati normalno radno vrijeme na praznik",
-    "rule.8": "Nećemo reći da je mjesto pristupačno za kolica bez podataka",
-    "rule.9": "Nećemo preporučiti kasnonoćna mjesta porodicama s djecom",
-    "rule.10": "Nećemo predlagati vidikovac za zalazak poslije zalaska",
-    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
-    "rule.12": "Nećemo predlagati trajekt za Adu Bojanu van sezone",
-    "rule.13": "Nećemo reći 'idite u banku' nedjeljom",
-    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
-    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
-    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
-    "rule.17": "Nećemo reći da je dežurna apoteka 24/7 bez potvrde rotacije",
-    "rule.18": "Nećemo stavljati outdoor aktivnost na vrh liste kad je kišovito 75%+",
+    "trust.heading": "Osjeti se kao mještanin.",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savjete kao svima. Nego kao neko ko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za djecu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1247,32 +1170,14 @@ const i18n = {
     "hero.cta": "До списку очікування",
     "stream.eyebrow": "Справжні розмови",
     "stream.title": "Один чат. Багато життів.",
-    "stream.sub": "Шість мов. Вісім моментів. Ось як це виглядає насправді.",
+    "stream.sub": "Сім мов. Вісім моментів. Ось як це виглядає насправді.",
     "why.eyebrow": "Чому це працює",
     "why.s1": "Він запам'ятовує, що ви замовляєте.",
     "why.s2": "Він перевіряє погоду, години роботи, дату вашого від'їзду.",
     "why.s3": "Він знає SMS-код для кожного муніципалітету.",
     "why.s4": "Говорить як місцеві — офіційна сербська, розмовна російська, українська з російським запасним варіантом.",
-    "trust.headline": "Ми закодували 18 жорстких правил, щоб чат ніколи вас не вводив в оману.",
-    "trust.toggle": "всі 18 правил →",
-    "rule.1": "Не порекомендуємо пляж у холодний дощ",
-    "rule.2": "Не запропонуємо події після вашого від'їзду",
-    "rule.3": "Не поставимо зачинене місце в топ рекомендацій",
-    "rule.4": "Не порекомендуємо позасезонні місця без позначки",
-    "rule.5": "Не покажемо заходи 18+ сім'ям з дітьми",
-    "rule.6": "Не промовчимо про алергени",
-    "rule.7": "Не надамо звичайний графік у свято",
-    "rule.8": "Не назвемо місце доступним для візків без даних",
-    "rule.9": "Не порекомендуємо нічні заклади сім'ям з дітьми",
-    "rule.10": "Не запропонуємо оглядовий майданчик для заходу після заходу сонця",
-    "rule.11": "Не порекомендуємо морські прогулянки в погану погоду",
-    "rule.12": "Не запропонуємо пором на Аду Бояну в міжсезоння",
-    "rule.13": "Не скажемо «йдіть у банк» у неділю",
-    "rule.14": "Не запропонуємо парковку в Зоні 1 без SMS-коду",
-    "rule.15": "Не порекомендуємо купатись при температурі моря нижче 18°C без попередження",
-    "rule.16": "Не запропонуємо багатоденні бронювання в останню ніч",
-    "rule.17": "Не назвемо чергову аптеку цілодобовою без підтвердження ротації",
-    "rule.18": "Не поставимо активний відпочинок на вулиці першим, якщо дощ з вірогідністю 75%+",
+    "trust.heading": "Відчути себе місцевим.",
+    "trust.body": "<p>Не туристом. Не тим, кому радять те саме, що й усім. А тим, хто знає, що в 16:00 у Перо на причалі морський окунь за €8/кг готівкою. Що офіціант у тій сімейній коноби має яблучний сік поза меню — для дітей. Що паркування в Старому Которі в суботу платне, а в неділю до полудня — безкоштовне.</p><p>Цей чат знає те, що місцеві передають одне одному. І тепер — тобі.</p>",
     "cta.eyebrow": "Ранній доступ",
     "cta.headline": "Вихід<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1286,38 +1191,41 @@ const i18n = {
     "hero.cta": "Pridruži se listi čekanja",
     "stream.eyebrow": "Pravi razgovori",
     "stream.title": "Jedan chat. Mnogo života.",
-    "stream.sub": "Šest jezika. Osam trenutaka. Ovako to zapravo izgleda.",
+    "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcionira",
     "why.s1": "Pamti što naručujete.",
     "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
     "why.s3": "Zna SMS kod za svaki municipalitet.",
     "why.s4": "Govori kao lokalni — formalni srpski, opušteni ruski, ukrajinski s ruskim rezervnim jezikom.",
-    "trust.headline": "Kodirali smo 18 čvrstih pravila da razgovor nikad ne laže.",
-    "trust.toggle": "svih 18 pravila →",
-    "rule.1": "Nećemo preporučiti plažu u hladnoj kiši",
-    "rule.2": "Nećemo predlagati događaje nakon vašeg odlaska",
-    "rule.3": "Nećemo staviti zatvoreno mjesto na vrh preporuka",
-    "rule.4": "Nećemo preporučiti izvansezionska mjesta bez napomene",
-    "rule.5": "Nećemo prikazivati 18+ događaje obiteljima",
-    "rule.6": "Nećemo preskočiti alergene u šutnji",
-    "rule.7": "Nećemo dati normalno radno vrijeme na blagdan",
-    "rule.8": "Nećemo reći da je mjesto dostupno za invalidska kolica bez podataka",
-    "rule.9": "Nećemo preporučiti noćne lokale obiteljima s djecom",
-    "rule.10": "Nećemo predlagati vidikovac za zalazak sunca nakon zalaska",
-    "rule.11": "Nećemo preporučiti brodske izlete po lošem vremenu",
-    "rule.12": "Nećemo predlagati trajekt za Adu Bojanu izvan sezone",
-    "rule.13": "Nećemo reći 'idite u banku' u nedjelju",
-    "rule.14": "Nećemo predlagati parkiranje u Zoni 1 bez SMS koda",
-    "rule.15": "Nećemo preporučiti kupanje kad je more ispod 18°C bez upozorenja",
-    "rule.16": "Nećemo predlagati višednevne rezervacije uoči polaska",
-    "rule.17": "Nećemo reći da je dežurna ljekarna 24/7 bez potvrde rotacije",
-    "rule.18": "Nećemo staviti outdoor aktivnost na vrh liste kad je vjerojatnost kiše 75%+",
+    "trust.heading": "Osjeti se kao domaći.",
+    "trust.body": "<p>Ne kao turist. Ne kao netko kome daju iste savjete kao svima. Nego kao netko tko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, gotovina. Da konobar u onoj obiteljskoj konobi ima sok od jabuke izvan jelovnika — za djecu. Da je parkiranje u Starom Kotoru subotom plaćeno, a nedjeljom do podne — besplatno.</p><p>Ovaj chat zna ono što domaći prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
     "cta.submit": "Pridruži se",
     "cta.note": "Bez spama. Jedan e-mail pri lansiranju.",
     "cta.thanks": "Na listi ste. Javit ćemo se pri lansiranju."
+  },
+  zh: {
+    "hero.headline": "一个聊天。<br>无数生活。",
+    "hero.sub": "它已经知道何时商店关门、何时下雨、何时你离开、你的孩子在菜单外喝什么。",
+    "hero.cta": "加入等候名单",
+    "stream.eyebrow": "真实对话",
+    "stream.title": "一个聊天。无数生活。",
+    "stream.sub": "七种语言。八个瞬间。这就是它的实际感受。",
+    "why.eyebrow": "为什么有效",
+    "why.s1": "它学习你点什么。",
+    "why.s2": "它检查天气、营业时间、你的离开日期。",
+    "why.s3": "它知道每个城市的停车短信码。",
+    "why.s4": "它说话像本地人 — 正式的塞尔维亚语、随意的俄语、乌克兰语带俄语备份。",
+    "trust.heading": "像本地人一样。",
+    "trust.body": "<p>不是游客。不是被给予和所有人一样建议的人。而是知道下午4点Pero在码头卖海鲈鱼€8/公斤现金的人。知道家庭餐馆的服务员有菜单外的苹果汁给孩子的人。知道科托尔老城停车周日中午前免费的人。</p><p>这个聊天知道本地人互相传递的事情。现在 — 传递给你。</p>",
+    "cta.eyebrow": "早期使用",
+    "cta.headline": "2026年<br>第三季度上线",
+    "cta.platforms": "iOS · Android · 网页",
+    "cta.submit": "加入等候名单",
+    "cta.note": "无垃圾邮件。上线时一封通知。",
+    "cta.thanks": "您已在名单上。上线时联系您。"
   }
 };
 
@@ -1327,7 +1235,10 @@ let currentLang = 'en';
 function detectLang() {
   const stored = localStorage.getItem('askmn-lang');
   if (stored && i18n[stored]) return stored;
-  const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase().slice(0,2);
+  const browserFull = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  const browser = browserFull.slice(0,2);
+  // ZH: match zh, zh-cn, zh-tw, zh-hk, zh-sg
+  if (browserFull.startsWith('zh')) return 'zh';
   const map = { ru:'ru', sr:'sr', me:'me', uk:'uk', hr:'hr', bs:'me', mk:'sr' };
   return map[browser] || 'en';
 }
@@ -1390,15 +1301,6 @@ if (!prefersReduced) {
   // Reduced motion: show everything immediately
   document.querySelectorAll('[data-reveal], [data-reveal-seq]').forEach(el => el.classList.add('visible'));
 }
-
-/* ===== TRUST TOGGLE ===== */
-document.getElementById('trust-toggle').addEventListener('click', function() {
-  const details = document.getElementById('trust-details');
-  const isOpen = details.classList.toggle('open');
-  this.innerHTML = isOpen
-    ? (i18n[currentLang]['trust.toggle'] || 'see all 18 →').replace('→', '↑')
-    : (i18n[currentLang]['trust.toggle'] || 'see all 18 →');
-});
 
 /* ===== WAITLIST FORM ===== */
 function handleWaitlist(e) {
