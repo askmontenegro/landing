@@ -341,7 +341,7 @@ button, input { font-family: inherit; }
   flex-direction: column;
   gap: 24px;
 }
-.why-sentence {
+.why-paragraph {
   font-size: clamp(20px, 3vw, 26px);
   font-weight: 500;
   line-height: 1.6;
@@ -350,12 +350,12 @@ button, input { font-family: inherit; }
   transform: translateY(16px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.why-sentence.visible {
+.why-paragraph.visible {
   opacity: 1;
   transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
-  .why-sentence { opacity:1; transform:none; }
+  .why-paragraph { opacity:1; transform:none; }
 }
 .why-ambient {
   position: absolute;
@@ -607,10 +607,7 @@ button, input { font-family: inherit; }
   <div class="why-inner">
     <p class="why-title" data-i18n="why.eyebrow">Why this works</p>
     <div class="why-sentences">
-      <p class="why-sentence" data-reveal-seq data-i18n="why.s1">It learns what you order.</p>
-      <p class="why-sentence" data-reveal-seq data-i18n="why.s2">It checks the weather, the hours, your departure date.</p>
-      <p class="why-sentence" data-reveal-seq data-i18n="why.s3">It knows the SMS code per municipality.</p>
-      <p class="why-sentence" data-reveal-seq data-i18n="why.s4">It speaks like the locals do — formal Serbian, casual Russian, Ukrainian-with-Russian fallback.</p>
+      <p class="why-paragraph" data-reveal data-i18n="why.paragraph">It moves with you — today's weather, today's hours, today's plan. It responds the way you'd actually ask, not the way a guidebook would answer. It knows what changes by evening, what never made it online, what locals only tell each other.</p>
     </div>
   </div>
 </section>
@@ -619,7 +616,7 @@ button, input { font-family: inherit; }
 <section class="trust-manifesto" id="trust">
   <div class="trust-inner">
     <h2 class="trust-heading" data-i18n="trust.heading">Feel like a local.</h2>
-    <div class="trust-body" data-i18n="trust.body"><p>Not a tourist. Not someone given the same advice as everyone. Someone who knows Pero at the dock has sea bass at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p></div>
+    <div class="trust-body" data-i18n="trust.body"><p>Not a tourist. Not someone given the same advice as everyone. Someone who knows the fishermen sell sea bass straight off their boats at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p></div>
   </div>
 </section>
 
@@ -663,7 +660,7 @@ const chatCards = {
     {
       tag: 'Соло · Активный · RU · Херцег-Нови · 16:23',
       user: 'где щас свежая рыба недорого',
-      app: 'Прямо сейчас: Konoba Skoljka, 4 мин, кальмар €10. Но в 16:00 у Перо на причале сибас €8/кг, наличные. Не для туристов.',
+      app: 'Прямо сейчас: Konoba Skoljka, 4 мин, кальмар €10. Или в 16:00 — рыбаки у причала, сибас прямо с лодок €8/кг, наличные. Не для туристов.',
       actions: ['📍 Маршрут к причалу', '⏰ Напомнить 16:00']
     },
     {
@@ -713,7 +710,7 @@ const chatCards = {
     {
       tag: 'Solo · Active · EN · Herceg Novi · 16:23',
       user: 'where can i get fresh fish cheap right now',
-      app: 'Right now: Konoba Skoljka, 4 min, squid €10. Or at 16:00 — Pero at the fishing dock, sea bass €8/kg, cash only. Locals only.',
+      app: 'Right now: Konoba Skoljka, 4 min, squid €10. Or at 16:00 — fishermen at the dock, sea bass straight off the boats, €8/kg, cash only. Locals only.',
       actions: ['📍 Route to dock', '⏰ Remind at 16:00']
     },
     {
@@ -763,7 +760,7 @@ const chatCards = {
     {
       tag: 'Sam · Aktivan · SR · Herceg Novi · 16:23',
       user: 'gdje mogu da uzmem svježu ribu jeftino sad',
-      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — Pero na ribarskom molu, brancin €8/kg, keš. Samo za domaće.',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na molu, brancin direktno s čamaca €8/kg, keš. Samo za domaće.',
       actions: ['📍 Ruta do mola', '⏰ Podsjeti u 16:00']
     },
     {
@@ -813,7 +810,7 @@ const chatCards = {
     {
       tag: 'Sam · Aktivan · ME · Herceg Novi · 16:23',
       user: 'gdje mogu da nađem svježu ribu jeftino sad',
-      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — Pero na ribarskom molu, brancin €8/kg, keš. Samo za mještane.',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na molu, brancin direktno s čamaca €8/kg, keš. Samo za mještane.',
       actions: ['📍 Ruta do mola', '⏰ Podsjeti u 16:00']
     },
     {
@@ -863,7 +860,7 @@ const chatCards = {
     {
       tag: 'Соло · Активний · UK · Херцег-Нові · 16:23',
       user: 'де зараз свіжа риба недорого',
-      app: 'Прямо зараз: Konoba Skoljka, 4 хв, кальмар €10. Або о 16:00 — Перо на причалі, морський окунь €8/кг, готівка. Не для туристів.',
+      app: 'Прямо зараз: Konoba Skoljka, 4 хв, кальмар €10. Або о 16:00 — рибалки у причалу, морський окунь прямо з човнів €8/кг, готівка. Не для туристів.',
       actions: ['📍 Маршрут до причалу', '⏰ Нагадати о 16:00']
     },
     {
@@ -913,7 +910,7 @@ const chatCards = {
     {
       tag: 'Sam · Aktivan · HR · Herceg Novi · 16:23',
       user: 'gdje mogu nabaviti svježu ribu jeftino sad',
-      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — Pero na ribarskom gatu, brancin €8/kg, gotovina. Samo za domaće.',
+      app: 'Upravo sad: Konoba Skoljka, 4 min, lignje €10. Ili u 16:00 — ribari na gatu, brancin direktno s čamaca €8/kg, gotovina. Samo za domaće.',
       actions: ['📍 Put do mola', '⏰ Podsjeti u 16:00']
     },
     {
@@ -963,7 +960,7 @@ const chatCards = {
     {
       tag: '独行 · 活跃 · ZH · 赫尔采格诺维 · 16:23',
       user: '现在哪里有便宜的新鲜鱼',
-      app: '现在: Konoba Skoljka 步行4分钟，鱿鱼€10。或者下午4点 — Pero 在渔码头卖海鲈鱼 €8/公斤，现金，本地人才知道。',
+      app: '现在: Konoba Skoljka 步行4分钟，鱿鱼€10。或者下午4点 — 渔民在码头直接从船上卖海鲈鱼 €8/公斤，现金，本地人才知道。',
       actions: ['📍 路线到码头', '⏰ 16:00 提醒']
     },
     {
@@ -1088,12 +1085,9 @@ const i18n = {
     "stream.title": "One chat. Many lives.",
     "stream.sub": "Seven languages. Eight moments. This is what it actually feels like.",
     "why.eyebrow": "Why this works",
-    "why.s1": "It learns what you order.",
-    "why.s2": "It checks the weather, the hours, your departure date.",
-    "why.s3": "It knows the SMS code per municipality.",
-    "why.s4": "It speaks like the locals do — formal Serbian, casual Russian, Ukrainian-with-Russian fallback.",
+    "why.paragraph": "It moves with you — today's weather, today's hours, today's plan. It responds the way you'd actually ask, not the way a guidebook would answer. It knows what changes by evening, what never made it online, what locals only tell each other.",
     "trust.heading": "Feel like a local.",
-    "trust.body": "<p>Not a tourist. Not someone given the same advice as everyone. Someone who knows Pero at the dock has sea bass at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p>",
+    "trust.body": "<p>Not a tourist. Not someone given the same advice as everyone. Someone who knows the fishermen sell sea bass straight off their boats at 16:00 for €8/kg, cash. That the waiter at the family konoba has fresh apple juice off menu for the kids. That Old Kotor parking is free Sunday before noon.</p><p>This chat knows what locals pass to each other. Now — to you.</p>",
     "cta.eyebrow": "Early access",
     "cta.headline": "Coming<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1109,12 +1103,9 @@ const i18n = {
     "stream.title": "Один чат. Много жизней.",
     "stream.sub": "Семь языков. Восемь моментов. Вот как это работает.",
     "why.eyebrow": "Почему это работает",
-    "why.s1": "Он запоминает, что вы заказываете.",
-    "why.s2": "Он проверяет погоду, часы работы, дату вашего отъезда.",
-    "why.s3": "Он знает SMS-код для каждого муниципалитета.",
-    "why.s4": "Говорит как местные — официальный сербский, разговорный русский, украинский с русским фоллбэком.",
+    "why.paragraph": "Он движется вместе с тобой — сегодняшняя погода, сегодняшнее расписание, твой сегодняшний день. Отвечает так, как ты спрашиваешь, не переводя на туристический. Знает то, что меняется к вечеру, то, чего нет в Google, то, что местные говорят вслух только своим.",
     "trust.heading": "Чувствовать себя местным",
-    "trust.body": "<p>Не туристом. Не тем, кому советуют то же, что всем. А тем, кто знает, что в 16:00 у Перо на причале сибас за €8/кг наличными. Что у официанта в той семейной конобе есть яблочный сок не из меню — для детей. Что в субботу Старый Котор платный, а в воскресенье до полудня — нет.</p><p>Этот чат знает то, что местные передают друг другу. И теперь — тебе.</p>",
+    "trust.body": "<p>Не туристом. Не тем, кому советуют то же, что всем. А тем, кто знает, что в 16:00 рыбаки прямо с лодок продают сибаса за €8/кг, наличными. Что у официанта в той семейной конобе есть яблочный сок не из меню — для детей. Что в субботу Старый Котор платный, а в воскресенье до полудня — нет.</p><p>Этот чат знает то, что местные передают друг другу. И теперь — тебе.</p>",
     "cta.eyebrow": "Ранний доступ",
     "cta.headline": "Старт<br>III квартал 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1130,12 +1121,9 @@ const i18n = {
     "stream.title": "Jedan razgovor. Mnogo života.",
     "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcioniše",
-    "why.s1": "Pamti šta naručujete.",
-    "why.s2": "Proverava vreme, radno vreme, datum vašeg polaska.",
-    "why.s3": "Zna SMS kod za svaku opštinu.",
-    "why.s4": "Govori kao lokalci — zvanični srpski, opušteni ruski, ukrajinski sa ruskim rezervom.",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnje radno vreme, tvoj današnji dan. Odgovara onako kako bi stvarno pitao, ne kao turistički vodič. Zna šta se mijenja do večeri, šta nikad nije stiglo na internet, šta mještani govore samo jedni drugima.",
     "trust.heading": "Oseti se kao lokalac.",
-    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savete kao svima. Nego kao neko ko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za decu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savete kao svima. Nego kao neko ko zna da u 16:00 ribari direktno s čamaca prodaju brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za decu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1151,12 +1139,9 @@ const i18n = {
     "stream.title": "Jedan razgovor. Mnogo života.",
     "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcioniše",
-    "why.s1": "Pamti šta naručujete.",
-    "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
-    "why.s3": "Zna SMS kod za svaku opštinu.",
-    "why.s4": "Govori kao mještani — zvanički crnogorski, opušteni ruski, ukrajinski sa ruskim rezervom.",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnji raspored, tvoj današnji dan. Odgovara onako kako bi ti stvarno pitao, ne kao turistički vodič. Zna šta se mijenja do večeri, šta nikad nije dospjelo na internet, šta mještani prenose samo jedni drugima.",
     "trust.heading": "Osjeti se kao mještanin.",
-    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savjete kao svima. Nego kao neko ko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za djecu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
+    "trust.body": "<p>Ne kao turist. Ne kao neko kome daju iste savjete kao svima. Nego kao neko ko zna da u 16:00 ribari direktno s čamaca prodaju brancina za €8/kg, keš. Da konobar u onoj porodičnoj konobi ima sok od jabuke van menija — za djecu. Da je parking u Starom Kotoru subotom plaćen, a nedjeljom do podne — besplatan.</p><p>Ovaj chat zna ono što mještani prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1172,12 +1157,9 @@ const i18n = {
     "stream.title": "Один чат. Багато життів.",
     "stream.sub": "Сім мов. Вісім моментів. Ось як це виглядає насправді.",
     "why.eyebrow": "Чому це працює",
-    "why.s1": "Він запам'ятовує, що ви замовляєте.",
-    "why.s2": "Він перевіряє погоду, години роботи, дату вашого від'їзду.",
-    "why.s3": "Він знає SMS-код для кожного муніципалітету.",
-    "why.s4": "Говорить як місцеві — офіційна сербська, розмовна російська, українська з російським запасним варіантом.",
+    "why.paragraph": "Він рухається разом із тобою — сьогоднішня погода, сьогодні графік, твій сьогоднішній день. Відповідає так, як ти справді питаєш, не мовою путівника. Знає те, що змінюється до вечора, те, чого нема в Google, те, що місцеві кажуть лише між собою.",
     "trust.heading": "Відчути себе місцевим.",
-    "trust.body": "<p>Не туристом. Не тим, кому радять те саме, що й усім. А тим, хто знає, що в 16:00 у Перо на причалі морський окунь за €8/кг готівкою. Що офіціант у тій сімейній коноби має яблучний сік поза меню — для дітей. Що паркування в Старому Которі в суботу платне, а в неділю до полудня — безкоштовне.</p><p>Цей чат знає те, що місцеві передають одне одному. І тепер — тобі.</p>",
+    "trust.body": "<p>Не туристом. Не тим, кому радять те саме, що й усім. А тим, хто знає, що о 16:00 рибалки прямо з човнів продають морського окуня за €8/кг, готівкою. Що офіціант у тій сімейній коноби має яблучний сік поза меню — для дітей. Що паркування в Старому Которі в суботу платне, а в неділю до полудня — безкоштовне.</p><p>Цей чат знає те, що місцеві передають одне одному. І тепер — тобі.</p>",
     "cta.eyebrow": "Ранній доступ",
     "cta.headline": "Вихід<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1193,12 +1175,9 @@ const i18n = {
     "stream.title": "Jedan chat. Mnogo života.",
     "stream.sub": "Sedam jezika. Osam trenutaka. Ovako to zapravo izgleda.",
     "why.eyebrow": "Zašto ovo funkcionira",
-    "why.s1": "Pamti što naručujete.",
-    "why.s2": "Provjerava vrijeme, radno vrijeme, datum vašeg polaska.",
-    "why.s3": "Zna SMS kod za svaki municipalitet.",
-    "why.s4": "Govori kao lokalni — formalni srpski, opušteni ruski, ukrajinski s ruskim rezervnim jezikom.",
+    "why.paragraph": "Kreće se s tobom — današnje vrijeme, današnji raspored, tvoj današnji dan. Odgovara onako kako bi stvarno pitao, ne kao turistički vodič. Zna što se mijenja do večeri, što nikad nije stiglo na internet, što domaći govore samo jedni drugima.",
     "trust.heading": "Osjeti se kao domaći.",
-    "trust.body": "<p>Ne kao turist. Ne kao netko kome daju iste savjete kao svima. Nego kao netko tko zna da Pero na pristaništu u 16:00 ima brancina za €8/kg, gotovina. Da konobar u onoj obiteljskoj konobi ima sok od jabuke izvan jelovnika — za djecu. Da je parkiranje u Starom Kotoru subotom plaćeno, a nedjeljom do podne — besplatno.</p><p>Ovaj chat zna ono što domaći prenose jedni drugima. I sada — tebi.</p>",
+    "trust.body": "<p>Ne kao turist. Ne kao netko kome daju iste savjete kao svima. Nego kao netko tko zna da u 16:00 ribari izravno s čamaca prodaju brancina za €8/kg, gotovina. Da konobar u onoj obiteljskoj konobi ima sok od jabuke izvan jelovnika — za djecu. Da je parkiranje u Starom Kotoru subotom plaćeno, a nedjeljom do podne — besplatno.</p><p>Ovaj chat zna ono što domaći prenose jedni drugima. I sada — tebi.</p>",
     "cta.eyebrow": "Rani pristup",
     "cta.headline": "Dolazi<br>Q3 2026",
     "cta.platforms": "iOS · Android · Web",
@@ -1214,12 +1193,9 @@ const i18n = {
     "stream.title": "一个聊天。无数生活。",
     "stream.sub": "七种语言。八个瞬间。这就是它的实际感受。",
     "why.eyebrow": "为什么有效",
-    "why.s1": "它学习你点什么。",
-    "why.s2": "它检查天气、营业时间、你的离开日期。",
-    "why.s3": "它知道每个城市的停车短信码。",
-    "why.s4": "它说话像本地人 — 正式的塞尔维亚语、随意的俄语、乌克兰语带俄语备份。",
+    "why.paragraph": "它跟着你走 — 今天的天气、今天的营业时间、你今天的计划。它用你真正会问的方式回答，不是旅游手册的语气。它知道傍晚会变的事，知道没上过网的事，知道本地人只在彼此之间说的事。",
     "trust.heading": "像本地人一样。",
-    "trust.body": "<p>不是游客。不是被给予和所有人一样建议的人。而是知道下午4点Pero在码头卖海鲈鱼€8/公斤现金的人。知道家庭餐馆的服务员有菜单外的苹果汁给孩子的人。知道科托尔老城停车周日中午前免费的人。</p><p>这个聊天知道本地人互相传递的事情。现在 — 传递给你。</p>",
+    "trust.body": "<p>不是游客。不是被给予和所有人一样建议的人。而是知道下午4点渔民直接从船上卖海鲈鱼€8/公斤现金的人。知道家庭餐馆的服务员有菜单外的苹果汁给孩子的人。知道科托尔老城停车周日中午前免费的人。</p><p>这个聊天知道本地人互相传递的事情。现在 — 传递给你。</p>",
     "cta.eyebrow": "早期使用",
     "cta.headline": "2026年<br>第三季度上线",
     "cta.platforms": "iOS · Android · 网页",
@@ -1281,25 +1257,9 @@ if (!prefersReduced) {
   }, { threshold: 0.12 });
 
   document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-  // Sequential reveal for why-section sentences
-  const seqObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const sentences = entry.target.querySelectorAll('[data-reveal-seq]');
-        sentences.forEach((s, i) => {
-          setTimeout(() => s.classList.add('visible'), i * 160);
-        });
-        seqObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  const whyInner = document.querySelector('.why-sentences');
-  if (whyInner) seqObserver.observe(whyInner.closest('.why-section'));
 } else {
   // Reduced motion: show everything immediately
-  document.querySelectorAll('[data-reveal], [data-reveal-seq]').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
 }
 
 /* ===== WAITLIST FORM ===== */
